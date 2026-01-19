@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with Linear Marketing Solutions. Let's discuss how we can help scale your business with full-service marketing, AI-powered content, and strategic execution.">
+    <title>Contact Us | Linear Marketing Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-hero {
+            padding: 140px 24px 80px;
+            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+            text-align: center;
+        }
+        
+        .contact-hero h1 {
+            margin-bottom: 24px;
+        }
+        
+        .contact-hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .contact-page-content {
+            padding: 80px 24px;
+            background: var(--color-bg-white);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            padding: 40px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 16px;
+            border: 1px solid #e8e8e8;
+        }
+        
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 32px;
+        }
+        
+        .info-item {
+            margin-bottom: 32px;
+        }
+        
+        .info-item h3 {
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+            color: var(--color-black);
+        }
+        
+        .info-item p,
+        .info-item a {
+            font-size: 1rem;
+            color: var(--color-gray);
+            line-height: 1.6;
+        }
+        
+        .info-item a {
+            color: var(--color-accent-purple);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        
+        .info-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .response-time {
+            margin-top: 40px;
+            padding: 24px;
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        .response-time h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .response-time p {
+            font-size: 0.95rem;
+        }
+        
+        .contact-form-wrapper {
+            padding: 40px;
+            background: white;
+            border-radius: 16px;
+            border: 2px solid var(--color-accent-purple);
+        }
+        
+        .contact-form-wrapper h2 {
+            font-size: 2rem;
+            margin-bottom: 32px;
+        }
+        
+        .expanded-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .expanded-form .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <div class="nav-logo">
+                    <span class="logo-linear">Linear</span>
+                    <span class="logo-slash">/</span>
+                    <span class="logo-ms">MS</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#services">Services</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="contact.html">Contact</a>
+                <a href="#contact-form" class="nav-cta">Let's Talk</a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <h1>Let's build something great together</h1>
+        <p>Whether you're exploring options or ready to start today, we're here to help. Share your challenges, goals, or questions. We'll respond within 24 hours.</p>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-page-content">
+        <div class="contact-grid">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                
+                <div class="info-item">
+                    <h3>Email</h3>
+                    <a href="/cdn-cgi/l/email-protection#7d14131b123d111413181c0f101c0f16180914131a0e121108091412130e531e1210"><span class="__cf_email__" data-cfemail="9cf5f2faf3dcf0f5f2f9fdeef1fdeef7f9e8f5f2fbeff3f0e9e8f5f3f2efb2fff3f1">[email&#160;protected]</span></a>
+                </div>
+                
+                <div class="info-item">
+                    <h3>Phone</h3>
+                    <a href="tel:9283024852">928-302-4852</a>
+                </div>
+                
+                <div class="info-item">
+                    <h3>Location</h3>
+                    <p>Los Angeles, CA</p>
+                </div>
+                
+                <div class="response-time">
+                    <h3>Response Time</h3>
+                    <p>We typically respond within 24 hours. If you need immediate assistance, call us directly.</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper">
+                <h2 id="contact-form">Send Us a Message</h2>
+                
+                <form class="expanded-form" id="contact-page-form">
+                    <div class="form-group">
+                        <label for="contact-name">Full Name *</label>
+                        <input type="text" id="contact-name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-email">Email Address *</label>
+                        <input type="email" id="contact-email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-phone">Phone Number (Optional)</label>
+                        <input type="tel" id="contact-phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-company">Company Name *</label>
+                        <input type="text" id="contact-company" name="company" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-position">Your Role/Position *</label>
+                        <input type="text" id="contact-position" name="position" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-challenges">What marketing challenges are you facing? *</label>
+                        <textarea id="contact-challenges" name="challenges" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-goals">What are your primary goals right now? *</label>
+                        <textarea id="contact-goals" name="goals" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-additional">Anything else we should know?</label>
+                        <textarea id="contact-additional" name="additional" rows="3"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-linear" style="color: white;">Linear</span>
+                        <span class="logo-slash">/</span>
+                        <span class="logo-ms" style="color: #888;">MS</span>
+                    </div>
+                    <p>Full-scale marketing department without the overhead or the risk.</p>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#71181f171e311d181f1410031c10031a1405181f16021e1d0405181e1f025f121e1c"><span class="__cf_email__" data-cfemail="6b02050d042b0702050e0a19060a19000e1f02050c1804071e1f0204051845080406">[email&#160;protected]</span></a></p>
+                    <p><strong>Phone:</strong> <a href="tel:9283024852">928-302-4852</a></p>
+                    <p><strong>Location:</strong><br>Los Angeles, CA</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Linear Marketing Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
+    <script>
+        // Contact page specific form handling
+        const contactPageForm = document.getElementById('contact-page-form');
+        
+        if (contactPageForm) {
+            contactPageForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = {
+                    name: document.getElementById('contact-name').value,
+                    email: document.getElementById('contact-email').value,
+                    phone: document.getElementById('contact-phone').value,
+                    company: document.getElementById('contact-company').value,
+                    position: document.getElementById('contact-position').value,
+                    challenges: document.getElementById('contact-challenges').value,
+                    goals: document.getElementById('contact-goals').value,
+                    additional: document.getElementById('contact-additional').value
+                };
+                
+                // Validate required fields
+                if (!formData.name || !formData.email || !formData.company || !formData.position || !formData.challenges || !formData.goals) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(formData.email)) {
+                    ale
