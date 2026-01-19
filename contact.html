@@ -165,7 +165,7 @@
                 
                 <div class="info-item">
                     <h3>Email</h3>
-                    <a href="/cdn-cgi/l/email-protection#7d14131b123d111413181c0f101c0f16180914131a0e121108091412130e531e1210"><span class="__cf_email__" data-cfemail="9cf5f2faf3dcf0f5f2f9fdeef1fdeef7f9e8f5f2fbeff3f0e9e8f5f3f2efb2fff3f1">[email&#160;protected]</span></a>
+                    <a href="mailto:info@linearmarketingsolutions.com">info@linearmarketingsolutions.com</a>
                 </div>
                 
                 <div class="info-item">
@@ -250,7 +250,7 @@
                 
                 <div class="footer-contact">
                     <h4>Contact</h4>
-                    <p><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#71181f171e311d181f1410031c10031a1405181f16021e1d0405181e1f025f121e1c"><span class="__cf_email__" data-cfemail="6b02050d042b0702050e0a19060a19000e1f02050c1804071e1f0204051845080406">[email&#160;protected]</span></a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@linearmarketingsolutions.com">info@linearmarketingsolutions.com</a></p>
                     <p><strong>Phone:</strong> <a href="tel:9283024852">928-302-4852</a></p>
                     <p><strong>Location:</strong><br>Los Angeles, CA</p>
                 </div>
@@ -279,7 +279,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
+    <script src="script.js"></script>
     <script>
         // Contact page specific form handling
         const contactPageForm = document.getElementById('contact-page-form');
@@ -308,4 +308,15 @@
                 // Email validation
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(formData.email)) {
-                    ale
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                
+                console.log('Contact form submitted:', formData);
+                alert('Thank you for reaching out! We\'ll respond within 24 hours.');
+                contactPageForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>

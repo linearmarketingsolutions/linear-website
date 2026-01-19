@@ -171,3 +171,25 @@
             mouseX = e.clientX;
             mouseY = e.clientY;
         });
+
+        // Smooth cursor animation (optional - uncomment to enable)
+        // function animateCursor() {
+        //     cursorX += (mouseX - cursorX) * 0.1;
+        //     cursorY += (mouseY - cursorY) * 0.1;
+        //     requestAnimationFrame(animateCursor);
+        // }
+        // animateCursor();
+
+        // ========================================
+        // CLOSE MOBILE MENU ON LINK CLICK
+        // ========================================
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.querySelector('.nav-links');
+                const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+                if (navLinks && mobileMenuToggle) {
+                    navLinks.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                }
+            });
+        });
