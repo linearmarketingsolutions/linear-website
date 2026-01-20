@@ -1,0 +1,9 @@
+{
+  "name": "linear-marketing-website",
+  "version": "1.0.0",
+  "description": "Linear Marketing Solutions website with contact form",
+  "private": true,
+  "dependencies": {
+    "resend": "^2.0.0"
+  }
+}

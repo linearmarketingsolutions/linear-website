@@ -45,10 +45,61 @@
         }
 
         // ========================================
-        // EMAIL CAPTURE
+        // FORM STATUS MESSAGE HELPER
         // ========================================
-        function captureEmail(inputId) {
+        function showFormMessage(form, message, isError = false) {
+            // Remove existing message if any
+            const existingMessage = form.querySelector('.form-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            // Create message element
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `form-message ${isError ? 'form-message-error' : 'form-message-success'}`;
+            messageDiv.textContent = message;
+            messageDiv.style.cssText = `
+                padding: 16px;
+                margin-top: 16px;
+                border-radius: 8px;
+                text-align: center;
+                font-weight: 600;
+                grid-column: 1 / -1;
+                ${isError 
+                    ? 'background: #fee2e2; color: #dc2626; border: 1px solid #fecaca;' 
+                    : 'background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0;'}
+            `;
+            
+            form.appendChild(messageDiv);
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 5000);
+        }
+
+        // ========================================
+        // SET BUTTON LOADING STATE
+        // ========================================
+        function setButtonLoading(button, isLoading) {
+            if (isLoading) {
+                button.disabled = true;
+                button.dataset.originalText = button.innerHTML;
+                button.innerHTML = '<span>Sending...</span>';
+                button.style.opacity = '0.7';
+            } else {
+                button.disabled = false;
+                button.innerHTML = button.dataset.originalText || '<span>Submit</span>';
+                button.style.opacity = '1';
+            }
+        }
+
+        // ========================================
+        // EMAIL CAPTURE (Hero Section)
+        // ========================================
+        async function captureEmail(inputId) {
             const emailInput = document.getElementById(inputId);
+            const button = emailInput.parentElement.querySelector('button');
             const email = emailInput.value.trim();
             
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -63,42 +114,91 @@
                 return;
             }
             
-            console.log('Email captured:', email);
-            alert('Thanks! We\'ll be in touch soon.');
-            emailInput.value = '';
+            // Set loading state
+            setButtonLoading(button, true);
+            
+            try {
+                const response = await fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert(data.message);
+                    emailInput.value = '';
+                } else {
+                    alert(data.error || 'Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Unable to connect to server. Please try again later or email us directly.');
+            } finally {
+                setButtonLoading(button, false);
+            }
         }
 
         // ========================================
-        // CONTACT FORM SUBMISSION
+        // CONTACT FORM SUBMISSION (index.html)
         // ========================================
         const contactForm = document.getElementById('main-contact-form');
 
         if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
+            contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                
                 const formData = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    company: document.getElementById('company').value,
-                    position: document.getElementById('position').value,
-                    message: document.getElementById('message').value
+                    name: document.getElementById('name').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    company: document.getElementById('company').value.trim(),
+                    position: document.getElementById('position').value.trim(),
+                    message: document.getElementById('message').value.trim()
                 };
                 
+                // Client-side validation
                 if (!formData.name || !formData.email || !formData.company || !formData.position || !formData.message) {
-                    alert('Please fill in all required fields.');
+                    showFormMessage(contactForm, 'Please fill in all required fields.', true);
                     return;
                 }
                 
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(formData.email)) {
-                    alert('Please enter a valid email address.');
+                    showFormMessage(contactForm, 'Please enter a valid email address.', true);
                     return;
                 }
                 
-                console.log('Form submitted:', formData);
-                alert('Thank you for reaching out! We\'ll respond within 24 hours.');
-                contactForm.reset();
+                // Set loading state
+                setButtonLoading(submitButton, true);
+                
+                try {
+                    const response = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        showFormMessage(contactForm, data.message, false);
+                        contactForm.reset();
+                    } else {
+                        showFormMessage(contactForm, data.error || 'Something went wrong. Please try again.', true);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    showFormMessage(contactForm, 'Unable to connect to server. Please try again later or email us directly at info@linearmarketingsolutions.com', true);
+                } finally {
+                    setButtonLoading(submitButton, false);
+                }
             });
         }
 
