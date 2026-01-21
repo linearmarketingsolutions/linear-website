@@ -1,13 +1,21 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const EMAIL_TO = process.env.EMAIL_TO || 'info@linearmarketingsolutions.com';
+const EMAIL_FROM = process.env.EMAIL_FROM || 'Linear Marketing Solutions <onboarding@resend.dev>';
 
 export default async function handler(req, res) {
     // Only allow POST requests
     if (req.method !== 'POST') {
         return res.status(405).json({ success: false, error: 'Method not allowed' });
     }
+
+    // Guard for missing API key
+    if (!process.env.RESEND_API_KEY) {
+        console.error('RESEND_API_KEY is not configured');
+        return res.status(500).json({ success: false, error: 'Email service not configured.' });
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     try {
         const { name, email, company, position, message } = req.body;
@@ -31,7 +39,7 @@ export default async function handler(req, res) {
 
         // Send email via Resend
         const { data, error } = await resend.emails.send({
-            from: 'Linear Marketing Solutions <onboarding@resend.dev>',
+            from: EMAIL_FROM,
             to: [EMAIL_TO],
             replyTo: email,
             subject: `New Contact Form Submission from ${name}`,
