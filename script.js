@@ -145,61 +145,61 @@
         // ========================================
         // CONTACT FORM SUBMISSION (index.html)
         // ========================================
-        const contactForm = document.getElementById('main-contact-form');
-
-        if (contactForm) {
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-                
-                const formData = {
-                    name: document.getElementById('name').value.trim(),
-                    email: document.getElementById('email').value.trim(),
-                    company: document.getElementById('company').value.trim(),
-                    position: document.getElementById('position').value.trim(),
-                    message: document.getElementById('message').value.trim()
-                };
-                
-                // Client-side validation
-                if (!formData.name || !formData.email || !formData.company || !formData.position || !formData.message) {
-                    showFormMessage(contactForm, 'Please fill in all required fields.', true);
-                    return;
-                }
-                
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(formData.email)) {
-                    showFormMessage(contactForm, 'Please enter a valid email address.', true);
-                    return;
-                }
-                
-                // Set loading state
-                setButtonLoading(submitButton, true);
-                
-                try {
-                    const response = await fetch('/api/contact', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(formData)
-                    });
-                    
-                    const data = await response.json();
-                    
-                    if (data.success) {
-                        showFormMessage(contactForm, data.message, false);
-                        contactForm.reset();
-                    } else {
-                        showFormMessage(contactForm, data.error || 'Something went wrong. Please try again.', true);
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    showFormMessage(contactForm, 'Unable to connect to server. Please try again later or email us directly at info@linearmarketingsolutions.com', true);
-                } finally {
-                    setButtonLoading(submitButton, false);
-                }
-            });
+//         const contactForm = document.getElementById('main-contact-form');
+// 
+//         if (contactForm) {
+//             contactForm.addEventListener('submit', async (e) => {
+//                 e.preventDefault();
+//                 
+//                 const submitButton = contactForm.querySelector('button[type="submit"]');
+//                 
+//                 const formData = {
+//                     name: document.getElementById('name').value.trim(),
+//                     email: document.getElementById('email').value.trim(),
+//                     company: document.getElementById('company').value.trim(),
+//                     position: document.getElementById('position').value.trim(),
+//                     message: document.getElementById('message').value.trim()
+//                 };
+//                 
+//                 // Client-side validation
+//                 if (!formData.name || !formData.email || !formData.company || !formData.position || !formData.message) {
+//                     showFormMessage(contactForm, 'Please fill in all required fields.', true);
+//                     return;
+//                 }
+//                 
+//                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//                 if (!emailRegex.test(formData.email)) {
+//                     showFormMessage(contactForm, 'Please enter a valid email address.', true);
+//                     return;
+//                 }
+//                 
+//                 // Set loading state
+//                 setButtonLoading(submitButton, true);
+//                 
+//                 try {
+//                     const response = await fetch('/api/contact', {
+//                         method: 'POST',
+//                         headers: {
+//                             'Content-Type': 'application/json'
+//                         },
+//                         body: JSON.stringify(formData)
+//                     });
+//                     
+//                     const data = await response.json();
+//                     
+//                     if (data.success) {
+//                         showFormMessage(contactForm, data.message, false);
+//                         contactForm.reset();
+//                     } else {
+//                         showFormMessage(contactForm, data.error || 'Something went wrong. Please try again.', true);
+//                     }
+//                 } catch (error) {
+//                     console.error('Error:', error);
+//                     showFormMessage(contactForm, 'Unable to connect to server. Please try again later or email us directly at info@linearmarketingsolutions.com', true);
+//                 } finally {
+//                     setButtonLoading(submitButton, false);
+//                 }
+//             });
         }
 
         // ========================================
