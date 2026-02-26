@@ -7,6 +7,7 @@ const syne = Syne({
   weight: ["700", "800"],
   variable: "--font-display",
   display: "swap",
+  fallback: ["sans-serif"],
 });
 
 const dmSans = DM_Sans({
@@ -14,12 +15,14 @@ const dmSans = DM_Sans({
   weight: ["300", "400", "500"],
   variable: "--font-body",
   display: "swap",
+  fallback: ["sans-serif"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
+  fallback: ["monospace"],
 });
 
 export const metadata: Metadata = {
