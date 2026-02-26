@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 80" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="mark-gradient" x1="0%" y1="0%" x2="100%" y2="100%" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <filter id="mark-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <text
+    x="12"
+    y="56"
+    text-anchor="middle"
+    font-family="Syne, sans-serif"
+    font-weight="800"
+    font-size="56"
+    fill="url(#mark-gradient)"
+    filter="url(#mark-glow)"
+  >/</text>
+</svg>
