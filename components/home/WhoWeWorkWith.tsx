@@ -1,9 +1,13 @@
 "use client";
 
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { fadeUp, transitionBase } from "@/lib/animations";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { SplitText } from "@/components/ui/SplitText";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FIT_ITEMS = [
   "You need marketing, technology, and AI deployed as one system.",
@@ -14,61 +18,69 @@ const FIT_ITEMS = [
 ];
 
 export function WhoWeWorkWith() {
-  return (
-    <Section id="who-we-work-with">
-      <Container as="div">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Left — text content */}
-          <motion.div
-            variants={fadeUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            transition={transitionBase}
-          >
-            <h2 className="font-display font-bold text-text-primary text-[clamp(2rem,3.5vw,40px)] leading-tight mb-4">
-              Built for operators.
-            </h2>
-            <p className="text-text-secondary text-lg leading-relaxed max-w-[50ch]">
-              LMS deploys for founders, operators, and growth-stage companies done
-              waiting for results. From first marketing system to multi-location
-              scale — execution without bureaucracy.
-            </p>
-          </motion.div>
+  const listRef = useRef<HTMLDivElement>(null);
 
-          {/* Right — fit criteria card */}
-          <motion.div
-            variants={fadeUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            transition={{ ...transitionBase, delay: 0.15 }}
-            className="gradient-border-card p-8 shadow-[var(--shadow-glow)]"
+  useGSAP(() => {
+    if (!listRef.current) return;
+    const items = listRef.current.querySelectorAll("[data-fit-item]");
+
+    gsap.from(items, {
+      x: 60,
+      opacity: 0,
+      duration: 0.7,
+      stagger: 0.12,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: listRef.current,
+        start: "top 75%",
+        once: true,
+      },
+    });
+  });
+
+  return (
+    <section id="who-we-work-with" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        {/* Left — huge text */}
+        <div>
+          <span className="font-mono text-accent text-[11px] tracking-[0.3em] uppercase block mb-4">
+            Who we work with
+          </span>
+          <SplitText
+            as="h2"
+            mode="words"
+            stagger={0.05}
+            className="font-display font-bold text-text-primary leading-[0.95] tracking-[-0.02em] mb-8"
+            {...{ style: { fontSize: "clamp(2.5rem, 5vw, 72px)" } } as React.HTMLAttributes<HTMLElement>}
           >
-            <h3 className="font-body font-semibold text-text-primary text-xl mb-6">
-              You&apos;re a fit if:
-            </h3>
-            <ul className="flex flex-col gap-4">
-              {FIT_ITEMS.map((item, i) => (
-                <motion.li
-                  key={i}
-                  variants={fadeUp}
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true }}
-                  transition={{ ...transitionBase, delay: 0.2 + i * 0.06 }}
-                  className="flex gap-3 items-start text-text-primary leading-relaxed"
-                >
-                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-accent/15 text-accent text-xs font-bold shrink-0 mt-0.5">
-                    ✓
-                  </span>
-                  {item}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+            Built for operators.
+          </SplitText>
+          <ScrollReveal direction="up" distance={30} delay={0.3}>
+            <p className="text-text-secondary text-xl leading-relaxed max-w-[45ch]">
+              Founders, operators, and growth-stage companies done waiting for results.
+              Execution without bureaucracy.
+            </p>
+          </ScrollReveal>
         </div>
-      </Container>
-    </Section>
+
+        {/* Right — checklist with dramatic styling */}
+        <div ref={listRef} className="flex flex-col gap-0 lg:pt-16">
+          {FIT_ITEMS.map((item, i) => (
+            <div
+              key={i}
+              data-fit-item
+              className="group flex items-start gap-5 py-6 border-b border-white/[0.06] transition-all duration-300 hover:border-accent/20 hover:pl-2"
+            >
+              <span className="font-mono text-accent/40 text-sm mt-1 shrink-0 group-hover:text-accent transition-colors">
+                0{i + 1}
+              </span>
+              <p className="text-text-primary/70 text-lg leading-relaxed group-hover:text-text-primary transition-colors">
+                {item}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

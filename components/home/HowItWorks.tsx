@@ -1,10 +1,18 @@
 "use client";
 
+import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
-import { fadeUp, transitionBase } from "@/lib/animations";
-import { motion } from "framer-motion";
+import { SplitText } from "@/components/ui/SplitText";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { TerminalBlock } from "@/components/ui/TerminalBlock";
+import { VeilGlow } from "@/components/ui/VeilGlow";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import Link from "next/link";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const STEPS = [
   {
@@ -24,99 +32,163 @@ const STEPS = [
   },
 ];
 
+const TERMINAL_LINES = [
+  { type: "command" as const, text: "lms deploy --client acme-corp", delay: 400 },
+  { type: "output" as const, text: "Scanning business model...", delay: 300 },
+  { type: "output" as const, text: "Mapping growth vectors...", delay: 200 },
+  { type: "success" as const, text: "✓ 6 automation workflows configured", delay: 300 },
+  { type: "success" as const, text: "✓ CRM pipeline deployed", delay: 200 },
+  { type: "success" as const, text: "✓ Content engine online", delay: 200 },
+  { type: "success" as const, text: "✓ Analytics dashboard live", delay: 200 },
+  { type: "command" as const, text: "lms status", delay: 600 },
+  { type: "accent" as const, text: "All systems operational. Revenue compounding.", delay: 300 },
+];
+
 export function HowItWorks() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!lineRef.current) return;
+    gsap.fromTo(
+      lineRef.current,
+      { scaleX: 0, transformOrigin: "left center" },
+      {
+        scaleX: 1,
+        duration: 1.2,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%",
+          once: true,
+        },
+      }
+    );
+  }, { scope: sectionRef });
+
+  useGSAP(() => {
+    if (!sectionRef.current) return;
+    const badges = sectionRef.current.querySelectorAll("[data-step-badge]");
+    const texts = sectionRef.current.querySelectorAll("[data-step-text]");
+
+    gsap.from(badges, {
+      scale: 0,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.2,
+      ease: "back.out(2)",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 70%",
+        once: true,
+      },
+    });
+
+    gsap.from(texts, {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.2,
+      delay: 0.3,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 70%",
+        once: true,
+      },
+    });
+  }, { scope: sectionRef });
+
   return (
-    <Section id="how-it-works">
+    <Section id="how-it-works" className="relative overflow-hidden">
+      <VeilGlow color="rgba(204, 255, 0, 0.04)" direction="left" />
+
       <Container as="div">
-        <motion.div
-          variants={fadeUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          transition={transitionBase}
-          className="mb-12"
-        >
-          <h2 className="font-display font-bold text-text-primary text-[clamp(2rem,3.5vw,40px)] leading-tight mb-4">
-            Three steps. Full deployment.
-          </h2>
-        </motion.div>
-
-        {/* Desktop: horizontal flow */}
-        <div className="hidden md:grid md:grid-cols-3 gap-0 relative">
-          {/* Connector line */}
-          <div className="absolute top-12 left-[16%] right-[16%] h-px bg-gradient-to-r from-accent/60 via-accent to-accent/60" />
-
-          {STEPS.map((step, i) => (
-            <motion.div
-              key={step.number}
-              variants={fadeUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              transition={{ ...transitionBase, delay: i * 0.12 }}
-              className="flex flex-col items-center text-center px-8 relative z-10"
+        <section ref={sectionRef}>
+          <div className="mb-12">
+            <SplitText
+              as="h2"
+              mode="words"
+              stagger={0.05}
+              className="font-display font-bold text-text-primary text-[clamp(2rem,3.5vw,40px)] leading-tight mb-4"
             >
-              {/* Step number badge */}
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent text-bg font-mono text-sm font-bold mb-6 shadow-[var(--shadow-glow)]">
-                {step.number}
+              Three steps. Full deployment.
+            </SplitText>
+          </div>
+
+          {/* Desktop: horizontal flow */}
+          <div className="hidden md:grid md:grid-cols-3 gap-0 relative">
+            <div
+              ref={lineRef}
+              className="absolute top-12 left-[16%] right-[16%] h-px bg-gradient-to-r from-accent/60 via-accent to-accent/60"
+            />
+            {STEPS.map((step) => (
+              <div
+                key={step.number}
+                className="flex flex-col items-center text-center px-8 relative z-10"
+              >
+                <div
+                  data-step-badge
+                  className="flex items-center justify-center w-12 h-12 rounded-full bg-accent text-bg font-mono text-sm font-bold mb-6 shadow-[0_0_30px_rgba(204,255,0,0.3)]"
+                >
+                  {step.number}
+                </div>
+                <div data-step-text>
+                  <h3 className="font-body font-semibold text-text-primary text-xl mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-text-secondary leading-relaxed max-w-[28ch]">
+                    {step.body}
+                  </p>
+                </div>
               </div>
+            ))}
+          </div>
 
-              <h3 className="font-body font-semibold text-text-primary text-xl mb-3">
-                {step.title}
-              </h3>
-
-              <p className="text-text-secondary leading-relaxed max-w-[28ch]">
-                {step.body}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Mobile: vertical timeline */}
-        <div className="flex flex-col md:hidden gap-0 relative">
-          {/* Vertical connector */}
-          <div className="absolute top-6 bottom-6 left-5 w-px bg-gradient-to-b from-accent/60 via-accent to-accent/60" />
-
-          {STEPS.map((step, i) => (
-            <motion.div
-              key={step.number}
-              variants={fadeUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              transition={{ ...transitionBase, delay: i * 0.1 }}
-              className="flex gap-6 py-6 relative"
-            >
-              <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-accent text-bg font-mono text-xs font-bold z-10 shadow-[var(--shadow-glow)]">
-                {step.number}
+          {/* Mobile: vertical timeline */}
+          <div className="flex flex-col md:hidden gap-0 relative">
+            <div className="absolute top-6 bottom-6 left-5 w-px bg-gradient-to-b from-accent/60 via-accent to-accent/60" />
+            {STEPS.map((step) => (
+              <div key={step.number} className="flex gap-6 py-6 relative">
+                <div
+                  data-step-badge
+                  className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-accent text-bg font-mono text-xs font-bold z-10 shadow-[0_0_30px_rgba(204,255,0,0.3)]"
+                >
+                  {step.number}
+                </div>
+                <div data-step-text>
+                  <h3 className="font-body font-semibold text-text-primary text-xl mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-text-secondary leading-relaxed">
+                    {step.body}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-body font-semibold text-text-primary text-xl mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-text-secondary leading-relaxed">
-                  {step.body}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <motion.div
-          variants={fadeUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          transition={{ ...transitionBase, delay: 0.4 }}
-          className="text-center mt-14"
-        >
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-accent text-bg font-body font-semibold text-lg rounded-[var(--radius-md)] transition-all duration-150 hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
-          >
-            Begin Your Build
-          </Link>
-        </motion.div>
+          {/* Terminal demo */}
+          <div className="mt-14 max-w-2xl mx-auto">
+            <TerminalBlock
+              lines={TERMINAL_LINES}
+              title="lms-deploy"
+              typeSpeed={18}
+            />
+          </div>
+
+          <div className="text-center mt-10">
+            <MagneticButton strength={0.25}>
+              <Link
+                href="/contact"
+                className="group relative inline-flex items-center justify-center px-8 py-4 bg-accent text-bg font-body font-semibold text-lg rounded-[var(--radius-md)] overflow-hidden transition-all duration-150 hover:shadow-[0_0_60px_rgba(204,255,0,0.3)]"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
+                <span className="relative">Begin Your Build</span>
+              </Link>
+            </MagneticButton>
+          </div>
+        </section>
       </Container>
     </Section>
   );

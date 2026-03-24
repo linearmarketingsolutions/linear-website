@@ -1,17 +1,25 @@
 "use client";
 
-import { Container } from "@/components/ui/Container";
-import { fadeUp, scaleIn, transitionBase } from "@/lib/animations";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import { SplitText } from "@/components/ui/SplitText";
+import { GlowBlob } from "@/components/ui/GlowBlob";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { PixelGrid } from "@/components/ui/PixelGrid";
+import { VeilGlow } from "@/components/ui/VeilGlow";
 import { CountUp } from "./CountUp";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
-const HEADLINES = [
-  "One operator.",
-  "Every capability.",
-  "No ceiling.",
-];
+const ParticleField = dynamic(
+  () => import("@/components/three/ParticleField").then((m) => m.ParticleField),
+  { ssr: false }
+);
+const FloatingOrb = dynamic(
+  () => import("@/components/three/FloatingOrb").then((m) => m.FloatingOrb),
+  { ssr: false }
+);
 
 const STATS = [
   { end: 3, prefix: "$", suffix: "M+", label: "Revenue Deployed" },
@@ -19,177 +27,204 @@ const STATS = [
   { end: 50, suffix: "+", label: "Operations Active" },
 ];
 
-const METRICS = [
-  { label: "Conversions", value: "12.4%" },
-  { label: "ROAS", value: "3.2x" },
-  { label: "Leads", value: "847" },
-  { label: "Status", value: "Active" },
-];
-
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    if (!sectionRef.current) return;
+
+    // Overline entrance
+    gsap.from("[data-hero-overline]", {
+      width: 0,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.1,
+      ease: "power3.out",
+    });
+
+    // Sub text
+    gsap.from("[data-hero-sub]", {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      delay: 1,
+      ease: "power3.out",
+    });
+
+    // CTAs
+    gsap.from("[data-hero-cta]", {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.15,
+      delay: 1.2,
+      ease: "power3.out",
+    });
+
+    // Stats
+    gsap.from("[data-stat]", {
+      y: 20,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      delay: 1.5,
+      ease: "power3.out",
+    });
+
+    // Orb
+    gsap.from("[data-hero-orb]", {
+      scale: 0,
+      opacity: 0,
+      duration: 1.5,
+      delay: 0.5,
+      ease: "elastic.out(1, 0.5)",
+    });
+  }, { scope: sectionRef });
+
   return (
     <section
+      ref={sectionRef}
       id="hero"
-      className="relative min-h-dvh overflow-hidden flex items-center"
+      className="relative min-h-dvh overflow-hidden"
     >
-      {/* Background image */}
-      <Image
-        src="/images/hero-bg.webp"
-        alt=""
-        fill
-        priority
-        className="object-cover object-center opacity-40 pointer-events-none"
-      />
+      {/* 3D Particle field */}
+      <ParticleField className="z-[1] opacity-60" />
 
-      {/* Dot grid overlay */}
-      <div className="absolute inset-0 dot-grid-bg pointer-events-none" />
+      {/* Pixel grid */}
+      <div className="absolute inset-0 z-[2] flex items-center justify-center opacity-20 overflow-hidden pointer-events-none">
+        <PixelGrid
+          cols={50}
+          rows={25}
+          pixelSize={4}
+          gap={8}
+          hoverRadius={6}
+          color="rgba(255,255,255,0.015)"
+          hoverColor="rgba(204, 255, 0, 0.35)"
+          className="pointer-events-auto"
+        />
+      </div>
 
-      {/* Ambient glow blob */}
+      {/* Veil glow */}
+      <VeilGlow color="rgba(204, 255, 0, 0.05)" direction="right" />
+
+      {/* Scan lines */}
       <div
-        className="absolute pointer-events-none rounded-full w-[min(80vw,700px)] h-[min(80vw,700px)] -right-[10%] top-1/2 -translate-y-1/2 blur-3xl"
+        className="absolute inset-0 z-[3] pointer-events-none opacity-[0.02]"
         style={{
-          background: "radial-gradient(ellipse at center, rgba(204, 255, 0, 0.1), transparent 70%)",
-          animation: "glow-blob-breathe 6s ease-in-out infinite",
+          backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(204, 255, 0, 0.15) 2px, rgba(204, 255, 0, 0.15) 4px)",
+          backgroundSize: "100% 4px",
         }}
       />
 
-      <Container as="div" className="relative z-10 py-32 lg:py-40">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-16 lg:gap-20">
-          {/* Left content */}
-          <div className="flex flex-col gap-8 w-full lg:max-w-[55%]">
-            {/* Headlines */}
-            <motion.div
-              variants={{ animate: { transition: { staggerChildren: 0.15 } } }}
-              initial="initial"
-              animate="animate"
-              className="flex flex-col gap-1"
+      <GlowBlob color="rgba(204, 255, 0, 0.5)" size={800} opacity={0.07} blur="160px" className="z-[1]" />
+
+      {/* Content — full bleed, no container */}
+      <div className="relative z-10 min-h-dvh flex flex-col justify-center px-6 md:px-12 lg:px-20 xl:px-32">
+        {/* Overline */}
+        <div className="flex items-center gap-4 mb-8" data-hero-overline>
+          <span className="h-px w-12 bg-accent" />
+          <span className="font-mono text-accent text-[11px] tracking-[0.3em] uppercase">
+            AI Growth Engine v4.0
+          </span>
+        </div>
+
+        {/* Main layout — text left, orb right */}
+        <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-0">
+          {/* Left — MASSIVE typography */}
+          <div className="flex-1 lg:max-w-[65%]">
+            <div className="flex flex-col">
+              <SplitText
+                as="h1"
+                mode="chars"
+                stagger={0.02}
+                duration={0.4}
+                delay={0.2}
+                scrollTrigger={false}
+                className="font-display font-bold text-text-primary leading-[0.95] tracking-[-0.03em]"
+                {...{ style: { fontSize: "clamp(3.5rem, 9vw, 130px)" } } as React.HTMLAttributes<HTMLElement>}
+              >
+                One
+              </SplitText>
+              <SplitText
+                as="h1"
+                mode="chars"
+                stagger={0.02}
+                duration={0.4}
+                delay={0.4}
+                scrollTrigger={false}
+                className="font-display font-bold text-accent leading-[0.95] tracking-[-0.03em]"
+                {...{ style: { fontSize: "clamp(3.5rem, 9vw, 130px)" } } as React.HTMLAttributes<HTMLElement>}
+              >
+                operator.
+              </SplitText>
+              <SplitText
+                as="h1"
+                mode="chars"
+                stagger={0.02}
+                duration={0.4}
+                delay={0.6}
+                scrollTrigger={false}
+                className="font-display font-bold text-text-primary/30 leading-[0.95] tracking-[-0.03em]"
+                {...{ style: { fontSize: "clamp(3.5rem, 9vw, 130px)" } } as React.HTMLAttributes<HTMLElement>}
+              >
+                No ceiling.
+              </SplitText>
+            </div>
+
+            {/* Sub */}
+            <p
+              data-hero-sub
+              className="text-text-secondary font-body text-lg lg:text-xl leading-relaxed max-w-[48ch] mt-8"
             >
-              {HEADLINES.map((line, i) => (
-                <motion.h1
-                  key={i}
-                  variants={fadeUp}
-                  transition={transitionBase}
-                  className="font-display font-bold text-text-primary leading-[1.05]"
-                  style={{ fontSize: "clamp(2.75rem, 5.5vw, 76px)" }}
+              Marketing, development, automation, and intelligence — deployed
+              as a single integrated system. Infrastructure that compounds.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 mt-8">
+              <MagneticButton strength={0.3}>
+                <Link
+                  href="/contact"
+                  data-hero-cta
+                  className="group relative inline-flex items-center justify-center px-10 py-5 bg-accent text-bg font-body font-bold text-lg rounded-full overflow-hidden transition-all duration-200 hover:shadow-[0_0_80px_rgba(204,255,0,0.4)]"
                 >
-                  {line}
-                </motion.h1>
-              ))}
-            </motion.div>
-
-            {/* Subheadline */}
-            <motion.p
-              variants={fadeUp}
-              initial="initial"
-              animate="animate"
-              transition={{ ...transitionBase, delay: 0.45 }}
-              className="text-text-secondary font-body text-lg lg:text-xl leading-relaxed max-w-[42ch]"
-            >
-              LMS is an AI-native growth engine. Marketing, development,
-              automation, and intelligence — deployed as a single integrated
-              system. No team to hire. No agency overhead. Just infrastructure
-              that compounds.
-            </motion.p>
-
-            {/* CTA buttons */}
-            <motion.div
-              variants={fadeUp}
-              initial="initial"
-              animate="animate"
-              transition={{ ...transitionBase, delay: 0.6 }}
-              className="flex flex-wrap gap-4"
-            >
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-accent text-bg font-body font-semibold text-lg rounded-[var(--radius-md)] transition-all duration-150 hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
-              >
-                Start Your Build
-              </Link>
-              <Link
-                href="/work"
-                className="inline-flex items-center justify-center px-8 py-4 font-body font-semibold text-lg text-text-primary border border-accent bg-transparent rounded-[var(--radius-md)] transition-all duration-150 hover:bg-accent/10"
-              >
-                View Operations
-              </Link>
-            </motion.div>
-
-            {/* Stats bar */}
-            <motion.div
-              variants={fadeUp}
-              initial="initial"
-              animate="animate"
-              transition={{ ...transitionBase, delay: 0.9 }}
-              className="flex flex-wrap gap-10 pt-8 border-t border-border"
-            >
-              {STATS.map((stat) => (
-                <div key={stat.label} className="flex flex-col">
-                  <span className="font-mono text-accent text-[28px] font-semibold">
-                    <CountUp
-                      end={stat.end}
-                      prefix={stat.prefix}
-                      suffix={stat.suffix}
-                      duration={1800}
-                    />
-                  </span>
-                  <span className="font-body text-text-secondary text-sm">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </motion.div>
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
+                  <span className="relative">Start your build</span>
+                </Link>
+              </MagneticButton>
+              <MagneticButton strength={0.3}>
+                <Link
+                  href="/work"
+                  data-hero-cta
+                  className="inline-flex items-center justify-center px-10 py-5 font-body font-bold text-lg text-text-primary border border-white/10 bg-white/[0.03] backdrop-blur-sm rounded-full transition-all duration-300 hover:border-accent/40 hover:bg-accent/5 hover:shadow-[0_0_40px_rgba(204,255,0,0.1)]"
+                >
+                  View operations
+                  <svg className="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </Link>
+              </MagneticButton>
+            </div>
           </div>
 
-          {/* Right — floating dashboard card */}
-          <motion.div
-            variants={scaleIn}
-            initial="initial"
-            animate="animate"
-            transition={{ ...transitionBase, delay: 0.5 }}
-            className="hidden lg:block w-full max-w-[400px]"
-            style={{ animation: "float 6s ease-in-out infinite" }}
-          >
-            <div className="gradient-border-card p-6 shadow-[var(--shadow-glow)] backdrop-blur-sm">
-              {/* Card header */}
-              <div className="flex items-center gap-2 mb-5">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-accent-secondary opacity-75" style={{ animation: "pulse-ring 1.5s ease-in-out infinite" }} />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent-secondary" />
-                </span>
-                <span className="font-mono text-text-muted text-xs tracking-wide">
-                  Live metrics
-                </span>
-              </div>
-
-              {/* Bar chart */}
-              <div className="h-24 mb-5 rounded-lg flex items-end gap-1.5 bg-black/30 p-2">
-                {[40, 65, 45, 80, 55, 90, 70, 85, 75, 92, 68].map((h, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ height: 0 }}
-                    animate={{ height: `${h}%` }}
-                    transition={{ delay: 0.8 + i * 0.05, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                    className="flex-1 rounded-sm min-w-[6px] bg-accent opacity-90"
-                  />
-                ))}
-              </div>
-
-              {/* Metrics grid */}
-              <div className="grid grid-cols-2 gap-4">
-                {METRICS.map((m) => (
-                  <div key={m.label} className="p-3 rounded-lg bg-black/20">
-                    <div className="font-mono text-text-muted text-[11px] mb-1">
-                      {m.label}
-                    </div>
-                    <div className="font-mono text-text-primary text-sm font-semibold">
-                      {m.value}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+          {/* Right — 3D Floating Orb */}
+          <div data-hero-orb className="hidden lg:block flex-1 max-w-[500px] h-[500px] -mr-12">
+            <FloatingOrb className="w-full h-full" />
+          </div>
         </div>
-      </Container>
+
+        {/* Stats — bottom strip */}
+        <div className="flex flex-wrap gap-12 mt-16 pt-8 border-t border-white/[0.06]">
+          {STATS.map((stat) => (
+            <div key={stat.label} data-stat className="flex flex-col">
+              <span className="font-mono text-accent text-3xl font-bold tracking-tight">
+                <CountUp end={stat.end} prefix={stat.prefix} suffix={stat.suffix} duration={1800} />
+              </span>
+              <span className="font-mono text-text-muted text-xs tracking-wider uppercase mt-1">
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

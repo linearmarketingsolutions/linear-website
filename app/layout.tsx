@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { PageShell } from "@/components/ui/PageShell";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -79,7 +81,10 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body>
-        <PageShell>{children}</PageShell>
+        <SmoothScroll>
+          <CustomCursor />
+          <PageShell>{children}</PageShell>
+        </SmoothScroll>
       </body>
     </html>
   );

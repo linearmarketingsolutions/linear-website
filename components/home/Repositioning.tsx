@@ -1,100 +1,146 @@
 "use client";
 
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { fadeUp, transitionBase } from "@/lib/animations";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { SplitText } from "@/components/ui/SplitText";
+import { TextRevealOnScroll } from "@/components/ui/TextRevealOnScroll";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const OLD_WAY = [
   "Teams of 12 doing the work of one system.",
   "Agencies billing hours instead of shipping outcomes.",
   "Freelancers who see one piece, never the whole machine.",
-  "The result: six figures spent. No operating system built.",
 ];
 
 const LMS_WAY = [
   "One integrated operator. Strategy through deployment.",
   "AI at every layer — content, automation, research, code.",
   "Systems built once, compounding indefinitely.",
-  "Full transparency. Measurable outcomes. No overhead.",
 ];
 
 export function Repositioning() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    if (!sectionRef.current) return;
+
+    // Animate the divider line growing
+    gsap.from("[data-divider]", {
+      scaleY: 0,
+      transformOrigin: "top",
+      duration: 1.2,
+      ease: "power3.inOut",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 60%",
+        once: true,
+      },
+    });
+
+    // Stagger list items
+    gsap.from("[data-old-item]", {
+      x: -40,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 65%",
+        once: true,
+      },
+    });
+
+    gsap.from("[data-new-item]", {
+      x: 40,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      delay: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 65%",
+        once: true,
+      },
+    });
+  }, { scope: sectionRef });
+
   return (
-    <Section id="repositioning">
-      <Container as="div">
-        <motion.div
-          variants={fadeUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          transition={transitionBase}
-          className="mb-12"
+    <section
+      ref={sectionRef}
+      id="repositioning"
+      className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32"
+    >
+      {/* Massive headline */}
+      <div className="mb-20">
+        <SplitText
+          as="h2"
+          mode="words"
+          stagger={0.05}
+          className="font-display font-bold text-text-primary leading-[0.95] tracking-[-0.03em]"
+          {...{ style: { fontSize: "clamp(2.5rem, 6vw, 88px)" } } as React.HTMLAttributes<HTMLElement>}
         >
-          <h2 className="font-display font-bold text-text-primary text-[clamp(2rem,3.5vw,40px)] leading-tight mb-4">
-            The old model is dead.
-          </h2>
-          <p className="text-text-secondary text-lg max-w-[52ch] leading-relaxed">
-            The marketing industry runs on bloat. We built the replacement.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Old Way */}
-          <motion.div
-            variants={fadeUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            transition={{ ...transitionBase, delay: 0.1 }}
-            className="rounded-[var(--radius-lg)] p-8 bg-surface-1 border border-border"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-red-500/10 text-red-400 text-sm font-mono">
-                ✕
-              </span>
-              <h3 className="font-body font-semibold text-text-muted text-xl">
-                The Old Way
-              </h3>
-            </div>
-            <ul className="flex flex-col gap-4">
-              {OLD_WAY.map((item, i) => (
-                <li key={i} className="flex gap-3 text-text-secondary leading-relaxed">
-                  <span className="text-text-muted mt-0.5 shrink-0">—</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* LMS Way */}
-          <motion.div
-            variants={fadeUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            transition={{ ...transitionBase, delay: 0.2 }}
-            className="gradient-border-card p-8 shadow-[var(--shadow-glow)]"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 text-accent text-sm font-mono font-bold">
-                ✓
-              </span>
-              <h3 className="font-body font-semibold text-accent text-xl">
-                The LMS Way
-              </h3>
-            </div>
-            <ul className="flex flex-col gap-4">
-              {LMS_WAY.map((item, i) => (
-                <li key={i} className="flex gap-3 text-text-primary leading-relaxed">
-                  <span className="text-accent mt-0.5 shrink-0 font-bold">✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+          The old model is dead.
+        </SplitText>
+        <div className="mt-6 max-w-[600px]">
+          <TextRevealOnScroll as="p" className="text-xl leading-relaxed">
+            The marketing industry runs on bloat. Layers of people doing what one system could do better. We built the replacement.
+          </TextRevealOnScroll>
         </div>
-      </Container>
-    </Section>
+      </div>
+
+      {/* Full-bleed split comparison */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1fr] gap-0 lg:gap-16">
+        {/* Old Way */}
+        <div className="py-8">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="w-3 h-3 rounded-full bg-red-500/40" />
+            <span className="font-mono text-text-muted text-xs tracking-[0.2em] uppercase">
+              How it was
+            </span>
+          </div>
+          <div className="flex flex-col gap-6">
+            {OLD_WAY.map((item, i) => (
+              <p
+                key={i}
+                data-old-item
+                className="text-text-secondary/60 text-xl lg:text-2xl leading-relaxed font-body"
+                style={{ textDecoration: "line-through", textDecorationColor: "rgba(239,68,68,0.3)" }}
+              >
+                {item}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div data-divider className="hidden lg:block bg-gradient-to-b from-transparent via-accent/40 to-transparent" />
+
+        {/* LMS Way */}
+        <div className="py-8">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_rgba(204,255,0,0.5)]" />
+            <span className="font-mono text-accent text-xs tracking-[0.2em] uppercase">
+              How it is
+            </span>
+          </div>
+          <div className="flex flex-col gap-6">
+            {LMS_WAY.map((item, i) => (
+              <p
+                key={i}
+                data-new-item
+                className="text-text-primary text-xl lg:text-2xl leading-relaxed font-body"
+              >
+                {item}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

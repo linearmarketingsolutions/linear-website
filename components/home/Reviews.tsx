@@ -1,107 +1,125 @@
 "use client";
 
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { fadeUp, transitionBase } from "@/lib/animations";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { SplitText } from "@/components/ui/SplitText";
+import { HorizontalScrollSection } from "@/components/ui/HorizontalScrollSection";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const REVIEWS = [
   {
-    quote:
-      "Blake and his team didn't just run our marketing — they rebuilt our entire go-to-market system from scratch. Within 90 days we had a content engine, a CRM that actually worked, and campaigns producing real leads. I've never seen execution like this from a single partner.",
+    quote: "Blake didn't just run our marketing — he rebuilt our entire go-to-market system. Within 90 days we had a content engine, a CRM, and campaigns producing real leads.",
     author: "Marcus T.",
     role: "CEO, Pacific Rim Distributors",
+    metric: "3x",
+    metricLabel: "Lead growth",
   },
   {
-    quote:
-      "We came to LMS for social media help and left with an automated lead pipeline, a new website, and a custom dashboard that our sales team uses every day. The scope of what they can do is genuinely surprising.",
+    quote: "We came for social media help and left with an automated lead pipeline, a new website, and a dashboard our sales team uses every day.",
     author: "Danielle K.",
     role: "Founder, Clearpath Wellness",
+    metric: "47%",
+    metricLabel: "Cost reduction",
   },
   {
-    quote:
-      "The AI integration work alone was worth the engagement. Our team now runs on tools that Blake built and trained us to use. We operate faster and smarter than companies three times our size.",
+    quote: "The AI integration alone was worth it. Our team now runs on tools Blake built and trained us to use. We operate faster than companies three times our size.",
     author: "Jordan M.",
-    role: "Director of Operations, NexLayer Tech",
+    role: "Director of Ops, NexLayer Tech",
+    metric: "5x",
+    metricLabel: "Speed increase",
   },
   {
-    quote:
-      "I was skeptical about outsourcing marketing and operations to one partner. Six months later our monthly revenue has tripled and I have more clarity on our business than I've ever had. LMS is the real deal.",
+    quote: "Six months later our monthly revenue has tripled and I have more clarity on our business than I've ever had. LMS is the real deal.",
     author: "Sofia R.",
     role: "Co-Founder, Forma Studio",
+    metric: "3x",
+    metricLabel: "Revenue growth",
   },
   {
-    quote:
-      "The website they built us is the best thing that's happened to our brand. It doesn't look like a template. It looks like us — better than we could have imagined. And the ongoing support has been seamless.",
+    quote: "The website they built us is the best thing that's happened to our brand. It doesn't look like a template. It looks like us — better than we imagined.",
     author: "Derek W.",
     role: "President, SummitCore Group",
+    metric: "92",
+    metricLabel: "Lighthouse score",
   },
 ];
 
 export function Reviews() {
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!headerRef.current) return;
+    gsap.from("[data-review-number]", {
+      textContent: 0,
+      duration: 2,
+      ease: "power2.out",
+      snap: { textContent: 1 },
+      scrollTrigger: {
+        trigger: headerRef.current,
+        start: "top 80%",
+        once: true,
+      },
+    });
+  });
+
   return (
-    <Section id="reviews">
-      <Container as="div">
-        <motion.div
-          variants={fadeUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          transition={transitionBase}
-          className="mb-12"
+    <section id="reviews" className="relative py-24 md:py-40">
+      {/* Header */}
+      <div ref={headerRef} className="px-6 md:px-12 lg:px-20 xl:px-32 mb-12">
+        <span className="font-mono text-accent text-[11px] tracking-[0.3em] uppercase block mb-4">
+          Client Operations
+        </span>
+        <SplitText
+          as="h2"
+          mode="words"
+          stagger={0.04}
+          className="font-display font-bold text-text-primary leading-[0.95] tracking-[-0.02em]"
+          {...{ style: { fontSize: "clamp(2rem, 4.5vw, 64px)" } } as React.HTMLAttributes<HTMLElement>}
         >
-          <h2 className="font-display font-bold text-text-primary text-[clamp(2rem,3.5vw,40px)] leading-tight mb-4">
-            Client operations.
-          </h2>
-          <p className="text-text-secondary text-lg max-w-[52ch] leading-relaxed">
-            Real results from real engagements. No case study fluff.
-          </p>
-        </motion.div>
+          Real results. No case study fluff.
+        </SplitText>
+      </div>
 
-        {/* Masonry-like grid */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
+      {/* Horizontal scroll cards */}
+      <HorizontalScrollSection scrollHeight={200} className="!h-auto">
+        <div className="flex items-stretch gap-6 px-6 md:px-12 lg:px-20 xl:px-32 py-8">
           {REVIEWS.map((r, i) => (
-            <motion.div
+            <div
               key={r.author}
-              variants={fadeUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              transition={{ ...transitionBase, delay: i * 0.06 }}
-              className="break-inside-avoid"
+              className="group relative flex-shrink-0 w-[380px] md:w-[450px] rounded-2xl p-8 bg-surface-2 border border-white/[0.06] overflow-hidden transition-all duration-500 hover:border-accent/20 hover:shadow-[0_0_40px_rgba(204,255,0,0.08)]"
             >
-              <div className="group relative rounded-[var(--radius-lg)] p-7 bg-surface-2 border border-border overflow-hidden transition-all duration-300 hover:border-accent/20">
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent to-accent-secondary" />
+              {/* Large metric */}
+              <div className="mb-6">
+                <span className="font-display font-bold text-accent text-5xl tracking-tight">
+                  {r.metric}
+                </span>
+                <span className="block font-mono text-text-muted text-xs tracking-wider uppercase mt-1">
+                  {r.metricLabel}
+                </span>
+              </div>
 
-                {/* Quote icon */}
-                <svg className="text-accent/20 mb-4" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
+              {/* Quote */}
+              <p className="text-text-primary/80 leading-relaxed mb-8 text-[15px]">
+                &ldquo;{r.quote}&rdquo;
+              </p>
 
-                <p className="text-text-primary leading-relaxed mb-5">
-                  {r.quote}
-                </p>
-
-                <div className="flex items-center gap-3 pt-4 border-t border-border">
-                  {/* Avatar placeholder */}
-                  <div className="flex items-center justify-center w-9 h-9 rounded-full bg-accent/10 text-accent font-mono text-xs font-bold">
-                    {r.author.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="text-text-primary text-sm font-medium">
-                      {r.author}
-                    </p>
-                    <p className="text-text-muted text-xs">
-                      {r.role}
-                    </p>
-                  </div>
+              {/* Author */}
+              <div className="mt-auto flex items-center gap-3 pt-6 border-t border-white/[0.06]">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-accent/10 text-accent font-mono text-sm font-bold">
+                  {r.author.charAt(0)}
+                </div>
+                <div>
+                  <p className="text-text-primary text-sm font-medium">{r.author}</p>
+                  <p className="text-text-muted text-xs">{r.role}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </Container>
-    </Section>
+      </HorizontalScrollSection>
+    </section>
   );
 }
