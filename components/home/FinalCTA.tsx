@@ -35,7 +35,7 @@ export function FinalCTA() {
             lineHeight: 1.2,
           }}
         >
-          Ready to operate at a different level?
+          Ready to deploy?
         </motion.h2>
         <motion.p
           variants={fadeUp}
@@ -54,8 +54,8 @@ export function FinalCTA() {
             marginRight: "auto",
           }}
         >
-          The conversation starts with a call. No pitch. No pressure. Just a clear
-          picture of what&apos;s possible.
+          One call. No pitch. A clear picture of what&apos;s possible — and a
+          timeline to build it.
         </motion.p>
         <motion.div
           variants={fadeUp}
@@ -67,14 +67,15 @@ export function FinalCTA() {
         >
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] text-white font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
             style={{
-              background: "var(--gradient-brand)",
+              background: "var(--color-accent-primary)",
+              color: "#09090B",
               fontFamily: "var(--font-body)",
               fontSize: 18,
             }}
           >
-            Book a Call
+            Begin Your Build
           </Link>
           <Link
             href="/services"
@@ -83,12 +84,11 @@ export function FinalCTA() {
               fontFamily: "var(--font-body)",
               fontSize: 18,
               color: "var(--color-text-primary)",
-              border: "1px solid transparent",
-              background:
-                "linear-gradient(var(--color-bg), var(--color-bg)) padding-box, var(--gradient-brand) border-box",
+              border: "1px solid var(--color-accent-primary)",
+              background: "transparent",
             }}
           >
-            View Our Services
+            View Capabilities
           </Link>
         </motion.div>
       </Container>

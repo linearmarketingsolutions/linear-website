@@ -6,18 +6,17 @@ import { fadeUp, transitionBase } from "@/lib/animations";
 import { motion } from "framer-motion";
 
 const OLD_WAY = [
-  "Hiring a full team: 6 figures in salaries before they produce anything",
-  "Agencies: cookie-cutter strategies, slow execution, enterprise pricing",
-  "Freelancers: inconsistent, unaccountable, can't see the full picture",
-  "Result: wasted budget, fragmented strategy, no one owns the outcome",
+  "Teams of 12 doing the work of one system.",
+  "Agencies billing hours instead of shipping outcomes.",
+  "Freelancers who see one piece, never the whole machine.",
+  "The result: six figures spent. No operating system built.",
 ];
 
 const LMS_WAY = [
-  "One integrated partner who owns strategy, creative, technology, and AI",
-  "Built for speed — systems and execution from day one",
-  "AI-powered at every layer — content, automation, research, development",
-  "Measurable outcomes with full transparency",
-  "One expert. All capabilities. Results that move your business.",
+  "One integrated operator. Strategy through deployment.",
+  "AI at every layer — content, automation, research, code.",
+  "Systems built once, compounding indefinitely.",
+  "Full transparency. Measurable outcomes. No overhead.",
 ];
 
 export function Repositioning() {
@@ -38,7 +37,7 @@ export function Repositioning() {
             marginBottom: "var(--space-xl)",
           }}
         >
-          The old model is broken.
+          The old model is dead.
         </motion.h2>
         <div
           className="grid grid-cols-1 md:grid-cols-2 gap-6"

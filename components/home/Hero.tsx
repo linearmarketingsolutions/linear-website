@@ -7,9 +7,9 @@ import Link from "next/link";
 import { CountUp } from "./CountUp";
 
 const HEADLINES = [
-  "Your business.",
-  "Fully automated.",
-  "Infinitely scalable.",
+  "One operator.",
+  "Every capability.",
+  "No ceiling.",
 ];
 
 export function Hero() {
@@ -61,7 +61,7 @@ export function Hero() {
                 className="text-white"
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontWeight: 800,
+                  fontWeight: 700,
                   fontSize: "clamp(2.5rem, 5vw, 72px)",
                   lineHeight: 1.1,
                 }}
@@ -85,10 +85,10 @@ export function Hero() {
               maxWidth: "42ch",
             }}
           >
-            Linear Marketing Solutions is your AI-powered operating system for
-            marketing, technology, and growth. Strategy, creative, automation,
-            and development — all under one roof. No overhead. No risk. Just
-            results.
+            LMS is an AI-native growth engine. Marketing, development,
+            automation, and intelligence — deployed as a single integrated
+            system. No team to hire. No agency overhead. Just infrastructure
+            that compounds.
           </motion.p>
 
           <motion.div
@@ -100,14 +100,15 @@ export function Hero() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] text-white font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
               style={{
-                background: "var(--gradient-brand)",
+                background: "var(--color-accent-primary)",
+                color: "#09090B",
                 fontFamily: "var(--font-body)",
                 fontSize: 18,
               }}
             >
-              Start a Project
+              Start Your Build
             </Link>
             <Link
               href="/work"
@@ -116,12 +117,11 @@ export function Hero() {
                 fontFamily: "var(--font-body)",
                 fontSize: 18,
                 color: "var(--color-text-primary)",
-                border: "1px solid transparent",
-                background:
-                  "linear-gradient(var(--color-bg), var(--color-bg)) padding-box, var(--gradient-brand) border-box",
+                border: "1px solid var(--color-accent-primary)",
+                background: "transparent",
               }}
             >
-              See Our Work
+              View Operations
             </Link>
           </motion.div>
 
@@ -152,7 +152,7 @@ export function Hero() {
                   fontSize: 14,
                 }}
               >
-                Revenue Generated for Clients
+                Revenue Deployed
               </span>
             </div>
             <div className="flex flex-col">
@@ -173,7 +173,7 @@ export function Hero() {
                   fontSize: 14,
                 }}
               >
-                Social Audience Built
+                Systems Online
               </span>
             </div>
             <div className="flex flex-col">
@@ -194,7 +194,7 @@ export function Hero() {
                   fontSize: 14,
                 }}
               >
-                Brands Elevated
+                Operations Active
               </span>
             </div>
           </motion.div>
@@ -245,7 +245,7 @@ export function Hero() {
                 transition={{ delay: 0.7 + i * 0.05, duration: 0.4 }}
                 className="flex-1 rounded-sm min-w-[6px]"
                 style={{
-                  background: "var(--gradient-brand)",
+                  background: "var(--color-accent-primary)",
                   opacity: 0.9,
                 }}
               />

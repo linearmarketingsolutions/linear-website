@@ -5,36 +5,38 @@ const FOOTER_COLUMNS = [
   {
     title: "Services",
     links: [
-      { href: "/services", label: "Services" },
-      { href: "/services#strategy", label: "Strategy" },
-      { href: "/services#creative", label: "Creative" },
-      { href: "/services#execution", label: "Execution" },
+      { href: "/services", label: "All Services" },
+      { href: "/services#strategy", label: "Growth Engine" },
+      { href: "/services#creative", label: "Content Pipeline" },
+      { href: "/services#execution", label: "Development" },
     ],
   },
   {
     title: "Work",
     links: [
-      { href: "/work", label: "Portfolio" },
+      { href: "/work", label: "Operations" },
       { href: "/work#apps", label: "Apps" },
       { href: "/work#dashboards", label: "Dashboards" },
       { href: "/work#websites", label: "Websites" },
     ],
   },
   {
-    title: "AI Tools",
+    title: "Platform",
     links: [
-      { href: "/ai-tools", label: "AI Tools" },
-      { href: "/ai-tools#openclaw", label: "OpenClaw Setup" },
+      { href: "/ai-tools", label: "AI Platform" },
+      { href: "/ai-tools#openclaw", label: "OpenClaw" },
     ],
   },
   {
     title: "Company",
-    links: [{ href: "/contact", label: "Contact" }],
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/contact", label: "Contact" },
+    ],
   },
 ];
 
-const TAGLINE =
-  "Strategy. Creative. AI. Execution. Linear Marketing Solutions does it all.";
+const TAGLINE = "The AI growth engine.";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -46,12 +48,12 @@ export function Footer() {
           <Link
             href="/"
             className="footer-logo"
-            aria-label="Linear Marketing Solutions — Home"
+            aria-label="LMS — Home"
           >
             <Image
               src="/logo-full.svg"
               alt=""
-              width={320}
+              width={280}
               height={48}
               className="footer-logo-img"
             />
@@ -80,11 +82,11 @@ export function Footer() {
       <div className="footer-bottom">
         <div className="footer-inner footer-bottom-inner">
           <p className="footer-copyright">
-            © {year} Linear Marketing Solutions. All rights reserved.
+            © {year} LMS. All rights reserved.
           </p>
           <div className="footer-bottom-right">
             <p className="footer-statement">
-              Built with AI. Operated by humans.
+              Built by AI. Directed by one.
             </p>
             <div className="footer-social">
             <a

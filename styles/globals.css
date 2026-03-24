@@ -1,6 +1,6 @@
 /**
  * LMS Design System — Global styles
- * Import tokens first. No reference to old styles.css.
+ * Import tokens first. Rebrand v2: Dark monochrome + electric chartreuse.
  */
 
 @import "./tokens.css";
@@ -43,15 +43,12 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
 
-/* Utility: gradient text */
+/* Utility: accent text */
 .gradient-text {
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-accent-primary);
 }
 
-/* Utility: gradient border (use on a wrapper with border-image or pseudo) */
+/* Utility: accent border */
 .gradient-border {
   border: 1px solid transparent;
   background: linear-gradient(var(--color-surface-1), var(--color-surface-1))
@@ -89,7 +86,7 @@ body::before {
 }
 
 .glow-md {
-  box-shadow: var(--shadow-glow), var(--shadow-glow-cyan);
+  box-shadow: var(--shadow-glow);
 }
 
 /* Scrollbar — dark theme */
@@ -167,7 +164,7 @@ body::before {
     box-shadow var(--transition-base);
 }
 .navbar-root[data-scrolled="true"] {
-  background: rgba(10, 10, 15, 0.85);
+  background: rgba(9, 9, 11, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom-color: var(--color-border-accent);
@@ -187,7 +184,7 @@ body::before {
   transition: filter var(--transition-base);
 }
 .navbar-logo:hover .navbar-logo-img {
-  filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.5));
+  filter: drop-shadow(0 0 12px rgba(204, 255, 0, 0.4));
 }
 .navbar-logo-img {
   transition: filter var(--transition-base);
@@ -195,10 +192,10 @@ body::before {
 @keyframes logo-slash-glow {
   0%,
   100% {
-    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.4));
+    filter: drop-shadow(0 0 8px rgba(204, 255, 0, 0.3));
   }
   50% {
-    filter: drop-shadow(0 0 16px rgba(99, 102, 241, 0.6));
+    filter: drop-shadow(0 0 16px rgba(204, 255, 0, 0.5));
   }
 }
 .navbar-logo:hover .navbar-logo-img {
@@ -231,7 +228,7 @@ body::before {
   bottom: 0;
   width: 0;
   height: 2px;
-  background: var(--color-text-primary);
+  background: var(--color-accent-primary);
   transition: width var(--transition-base);
 }
 .navbar-link:hover {
@@ -241,10 +238,7 @@ body::before {
   width: 100%;
 }
 .navbar-link-active {
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-accent-primary);
 }
 .navbar-link-active::after {
   display: none;
@@ -260,14 +254,10 @@ body::before {
 .navbar-cta-btn {
   display: inline-block;
   padding: var(--space-sm) var(--space-lg);
-  background: linear-gradient(
-    135deg,
-    var(--color-accent-primary),
-    var(--color-accent-secondary)
-  );
-  color: white;
+  background: var(--color-accent-primary);
+  color: #09090B;
   font-family: var(--font-body);
-  font-weight: 500;
+  font-weight: 600;
   font-size: var(--text-body);
   text-decoration: none;
   border-radius: var(--radius-md);
@@ -357,27 +347,19 @@ body::before {
   text-decoration: none;
   transition: color var(--transition-fast);
 }
-.navbar-mobile-link:hover,
-.navbar-mobile-link.gradient-text:hover {
-  color: var(--color-text-primary);
+.navbar-mobile-link:hover {
+  color: var(--color-accent-primary);
 }
 .navbar-mobile-link.gradient-text {
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-accent-primary);
 }
 .navbar-mobile-cta {
   margin-top: var(--space-md);
   padding: var(--space-md) var(--space-xl);
-  background: linear-gradient(
-    135deg,
-    var(--color-accent-primary),
-    var(--color-accent-secondary)
-  );
-  color: white;
+  background: var(--color-accent-primary);
+  color: #09090B;
   font-family: var(--font-body);
-  font-weight: 500;
+  font-weight: 600;
   font-size: var(--text-body);
   text-decoration: none;
   border-radius: var(--radius-md);
@@ -391,8 +373,7 @@ body::before {
 /* --- Footer --- */
 .footer-root {
   background: var(--color-surface-1);
-  border-top: 1px solid transparent;
-  border-image: var(--gradient-brand) 1;
+  border-top: 1px solid var(--color-accent-primary);
   margin-top: auto;
 }
 .footer-top {
@@ -513,7 +494,7 @@ body::before {
   transition: color var(--transition-fast);
 }
 .footer-social-link:hover {
-  color: var(--color-text-primary);
+  color: var(--color-accent-primary);
 }
 .footer-social-link:focus-visible {
   outline: 2px solid var(--color-accent-primary);

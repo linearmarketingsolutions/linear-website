@@ -109,7 +109,7 @@ export function ProjectCard({ project, isFilteredOut }: ProjectCardProps) {
             fontFamily: "var(--font-body)",
           }}
         >
-          View Project →
+          View operation →
         </a>
       </div>
     </motion.article>

@@ -32,7 +32,7 @@ export function WorkFilter({ activeCategory, onSelect }: WorkFilterProps) {
               : "1px solid var(--color-border)",
           background:
             activeCategory === null
-              ? "rgba(99, 102, 241, 0.15)"
+              ? "rgba(204, 255, 0, 0.12)"
               : "var(--color-surface-1)",
           color:
             activeCategory === null
@@ -61,7 +61,7 @@ export function WorkFilter({ activeCategory, onSelect }: WorkFilterProps) {
                 : "1px solid var(--color-border)",
             background:
               activeCategory === cat
-                ? "rgba(99, 102, 241, 0.15)"
+                ? "rgba(204, 255, 0, 0.12)"
                 : "var(--color-surface-1)",
             color:
               activeCategory === cat

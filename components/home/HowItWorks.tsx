@@ -9,18 +9,18 @@ import Link from "next/link";
 const STEPS = [
   {
     number: "01",
-    title: "Discovery Call",
-    body: "We learn your business, goals, current stack, and gaps. No pitch. Just clarity. This call is the foundation of everything we build together.",
+    title: "Discovery",
+    body: "A 30-minute call. We map your business, identify gaps, and determine if LMS is the right fit. No pitch. Just signal.",
   },
   {
     number: "02",
-    title: "System Design",
-    body: "We map your full operating picture — marketing, technology, automation, and growth. You get a clear plan before a single dollar is spent.",
+    title: "Architecture",
+    body: "We design your operating system — marketing, technology, automation, and growth. You approve the blueprint before anything is built.",
   },
   {
     number: "03",
-    title: "Build & Execute",
-    body: "We build, launch, optimize, and scale. You get a partner who owns outcomes, not just deliverables. Weekly check-ins, full transparency, measurable results.",
+    title: "Deployment",
+    body: "We build, launch, and optimize. Weekly reporting. Full transparency. Systems that compound from day one.",
   },
 ];
 
@@ -42,7 +42,7 @@ export function HowItWorks() {
             marginBottom: "var(--space-xl)",
           }}
         >
-          Simple entry. Serious depth.
+          Three steps. Full deployment.
         </motion.h2>
 
         {/* Desktop: horizontal flow with gradient connector */}
@@ -115,11 +115,11 @@ export function HowItWorks() {
               <div
                 className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
                 style={{
-                  background: "var(--gradient-brand)",
+                  background: "var(--color-accent-primary)",
                   fontFamily: "var(--font-mono)",
                   fontSize: 12,
                   fontWeight: 600,
-                  color: "white",
+                  color: "#09090B",
                 }}
               >
                 {step.number}
@@ -161,14 +161,15 @@ export function HowItWorks() {
         >
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] text-white font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
             style={{
-              background: "var(--gradient-brand)",
+              background: "var(--color-accent-primary)",
+              color: "#09090B",
               fontFamily: "var(--font-body)",
               fontSize: 18,
             }}
           >
-            Book Your Discovery Call
+            Begin Your Build
           </Link>
         </motion.div>
       </Container>
