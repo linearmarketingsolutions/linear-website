@@ -42,71 +42,24 @@ export function Reviews() {
   return (
     <Section id="reviews">
       <Container as="div">
-        <motion.h2
+        <motion.div
           variants={fadeUp}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
           transition={transitionBase}
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 700,
-            fontSize: "var(--text-h2)",
-            color: "var(--color-text-primary)",
-            marginBottom: "var(--space-xl)",
-          }}
+          className="mb-12"
         >
-          Client operations.
-        </motion.h2>
+          <h2 className="font-display font-bold text-text-primary text-[clamp(2rem,3.5vw,40px)] leading-tight mb-4">
+            Client operations.
+          </h2>
+          <p className="text-text-secondary text-lg max-w-[52ch] leading-relaxed">
+            Real results from real engagements. No case study fluff.
+          </p>
+        </motion.div>
 
-        {/* Mobile: horizontal scroll */}
-        <div className="md:hidden overflow-x-auto pb-4 -mx-[var(--space-lg)] px-[var(--space-lg)] scrollbar-thin">
-          <div className="flex gap-4" style={{ width: "max-content" }}>
-            {REVIEWS.map((r, i) => (
-              <motion.div
-                key={r.author}
-                variants={fadeUp}
-                initial="initial"
-                whileInView="animate"
-                viewport={{ once: true }}
-                transition={{ ...transitionBase, delay: i * 0.05 }}
-                className="flex-shrink-0 w-[85vw] max-w-[380px] rounded-[var(--radius-lg)] p-6 relative overflow-hidden"
-                style={{
-                  background: "var(--color-surface-2)",
-                  boxShadow: "var(--shadow-card)",
-                }}
-              >
-                <div
-                  className="absolute top-0 left-0 right-0 h-[3px]"
-                  style={{ background: "var(--color-accent-primary)" }}
-                />
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--text-body)",
-                    color: "var(--color-text-primary)",
-                    lineHeight: 1.6,
-                    marginBottom: "var(--space-md)",
-                  }}
-                >
-                  &ldquo;{r.quote}&rdquo;
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--text-small)",
-                    color: "var(--color-text-secondary)",
-                  }}
-                >
-                  — {r.author}, {r.role}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Desktop: 3-column grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6">
+        {/* Masonry-like grid */}
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {REVIEWS.map((r, i) => (
             <motion.div
               key={r.author}
@@ -114,37 +67,37 @@ export function Reviews() {
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
-              transition={{ ...transitionBase, delay: i * 0.05 }}
-              className="rounded-[var(--radius-lg)] p-6 relative overflow-hidden"
-              style={{
-                background: "var(--color-surface-2)",
-                boxShadow: "var(--shadow-card)",
-              }}
+              transition={{ ...transitionBase, delay: i * 0.06 }}
+              className="break-inside-avoid"
             >
-              <div
-                className="absolute top-0 left-0 right-0 h-[3px]"
-                style={{ background: "var(--color-accent-primary)" }}
-              />
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "var(--text-body)",
-                  color: "var(--color-text-primary)",
-                  lineHeight: 1.6,
-                  marginBottom: "var(--space-md)",
-                }}
-              >
-                &ldquo;{r.quote}&rdquo;
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "var(--text-small)",
-                  color: "var(--color-text-secondary)",
-                }}
-              >
-                — {r.author}, {r.role}
-              </p>
+              <div className="group relative rounded-[var(--radius-lg)] p-7 bg-surface-2 border border-border overflow-hidden transition-all duration-300 hover:border-accent/20">
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent to-accent-secondary" />
+
+                {/* Quote icon */}
+                <svg className="text-accent/20 mb-4" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+
+                <p className="text-text-primary leading-relaxed mb-5">
+                  {r.quote}
+                </p>
+
+                <div className="flex items-center gap-3 pt-4 border-t border-border">
+                  {/* Avatar placeholder */}
+                  <div className="flex items-center justify-center w-9 h-9 rounded-full bg-accent/10 text-accent font-mono text-xs font-bold">
+                    {r.author.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="text-text-primary text-sm font-medium">
+                      {r.author}
+                    </p>
+                    <p className="text-text-muted text-xs">
+                      {r.role}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

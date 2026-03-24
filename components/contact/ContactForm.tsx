@@ -6,6 +6,12 @@ import { motion } from "framer-motion";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
+const INPUT_CLASS =
+  "w-full px-4 py-3 bg-surface-2 border border-border rounded-[var(--radius-md)] text-text-primary font-body outline-none transition-[border-color] duration-150 focus-visible:border-accent placeholder:text-text-muted";
+
+const LABEL_CLASS =
+  "block font-body text-xs font-medium text-text-secondary uppercase tracking-wider mb-1.5";
+
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -50,117 +56,80 @@ export function ContactForm() {
         initial="initial"
         animate="animate"
         transition={transitionBase}
-        className="rounded-[var(--radius-lg)] p-8"
-        style={{
-          background: "var(--color-surface-1)",
-          border: "1px solid var(--color-accent-primary)",
-          textAlign: "center",
-        }}
+        className="rounded-[var(--radius-lg)] p-10 bg-surface-1 border border-accent text-center"
       >
-        <p
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 700,
-            fontSize: "var(--text-h3)",
-            color: "var(--color-accent-primary)",
-            marginBottom: "var(--space-sm)",
-          }}
+        {/* Checkmark animation */}
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
+          className="flex items-center justify-center w-16 h-16 rounded-full bg-accent/15 mx-auto mb-5"
         >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-accent">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </motion.div>
+        <p className="font-display font-bold text-accent text-2xl mb-2">
           Message received.
         </p>
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "var(--text-body)",
-            color: "var(--color-text-secondary)",
-          }}
-        >
-          We'll be in touch within 24 hours.
+        <p className="text-text-secondary">
+          We&apos;ll be in touch within 24 hours.
         </p>
       </motion.div>
     );
   }
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "12px 16px",
-    background: "var(--color-surface-2)",
-    border: "1px solid var(--color-border)",
-    borderRadius: "var(--radius-md)",
-    color: "var(--color-text-primary)",
-    fontFamily: "var(--font-body)",
-    fontSize: "var(--text-body)",
-    outline: "none",
-    transition: "var(--transition-fast)",
-  };
-
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    fontFamily: "var(--font-body)",
-    fontSize: "var(--text-small)",
-    fontWeight: 500,
-    color: "var(--color-text-secondary)",
-    marginBottom: "var(--space-xs)",
-    textTransform: "uppercase" as const,
-    letterSpacing: "0.05em",
-  };
-
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "var(--space-lg)" }}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
       <div>
-        <label htmlFor="name" style={labelStyle}>Name</label>
+        <label htmlFor="name" className={LABEL_CLASS}>Name</label>
         <input
           id="name"
           name="name"
           type="text"
           required
           placeholder="Your name"
-          style={inputStyle}
-          onFocus={(e) => (e.target.style.borderColor = "var(--color-accent-primary)")}
-          onBlur={(e) => (e.target.style.borderColor = "var(--color-border)")}
+          className={INPUT_CLASS}
         />
       </div>
+
       <div>
-        <label htmlFor="email" style={labelStyle}>Email</label>
+        <label htmlFor="email" className={LABEL_CLASS}>Email</label>
         <input
           id="email"
           name="email"
           type="email"
           required
           placeholder="you@company.com"
-          style={inputStyle}
-          onFocus={(e) => (e.target.style.borderColor = "var(--color-accent-primary)")}
-          onBlur={(e) => (e.target.style.borderColor = "var(--color-border)")}
+          className={INPUT_CLASS}
         />
       </div>
+
       <div>
-        <label htmlFor="company" style={labelStyle}>Company</label>
+        <label htmlFor="company" className={LABEL_CLASS}>Company</label>
         <input
           id="company"
           name="company"
           type="text"
           placeholder="Your company (optional)"
-          style={inputStyle}
-          onFocus={(e) => (e.target.style.borderColor = "var(--color-accent-primary)")}
-          onBlur={(e) => (e.target.style.borderColor = "var(--color-border)")}
+          className={INPUT_CLASS}
         />
       </div>
+
       <div>
-        <label htmlFor="message" style={labelStyle}>Message</label>
+        <label htmlFor="message" className={LABEL_CLASS}>Message</label>
         <textarea
           id="message"
           name="message"
           required
           rows={5}
           placeholder="Tell us about your business and what you're looking to build."
-          style={{ ...inputStyle, resize: "vertical" }}
-          onFocus={(e) => (e.target.style.borderColor = "var(--color-accent-primary)")}
-          onBlur={(e) => (e.target.style.borderColor = "var(--color-border)")}
+          className={`${INPUT_CLASS} resize-y`}
         />
       </div>
 
       {status === "error" && (
-        <p style={{ color: "#ef4444", fontFamily: "var(--font-body)", fontSize: "var(--text-small)" }}>
+        <p className="text-red-400 text-sm">
           {errorMsg}
         </p>
       )}
@@ -168,17 +137,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
-        style={{
-          background: "var(--color-accent-primary)",
-          color: "#09090B",
-          fontFamily: "var(--font-body)",
-          fontWeight: 600,
-          fontSize: 18,
-          border: "none",
-          cursor: status === "sending" ? "wait" : "pointer",
-          opacity: status === "sending" ? 0.7 : 1,
-        }}
+        className="inline-flex items-center justify-center px-8 py-4 bg-accent text-bg font-body font-semibold text-lg rounded-[var(--radius-md)] border-none cursor-pointer transition-all duration-150 hover:brightness-110 hover:shadow-[var(--shadow-glow)] disabled:opacity-70 disabled:cursor-wait"
       >
         {status === "sending" ? "Sending..." : "Send message"}
       </button>

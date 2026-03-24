@@ -12,157 +12,63 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
-      <Section id="about" className="!pt-[var(--space-3xl)]">
+      <Section id="about" className="!pt-32 lg:!pt-40">
         <Container>
           <h1
-            style={{
-              fontFamily: "var(--font-display)",
-              fontWeight: 700,
-              fontSize: "clamp(2.25rem, 4.5vw, var(--text-h1))",
-              lineHeight: 1.1,
-              color: "var(--color-text-primary)",
-              marginBottom: "var(--space-xl)",
-              maxWidth: "18ch",
-            }}
+            className="font-display font-bold text-text-primary leading-[1.1] mb-12 max-w-[18ch]"
+            style={{ fontSize: "clamp(2.5rem, 5vw, 56px)" }}
           >
             One operator. The full stack.
           </h1>
 
-          <div
-            className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-8 md:gap-12"
-            style={{ marginBottom: "var(--space-2xl)" }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "var(--space-lg)",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 18,
-                  color: "var(--color-text-secondary)",
-                  lineHeight: 1.7,
-                }}
-              >
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1fr] gap-10 lg:gap-16 mb-20">
+            {/* Left — narrative */}
+            <div className="flex flex-col gap-6">
+              <p className="text-text-secondary text-lg leading-relaxed">
                 LMS started with a question: what happens when one person has
                 access to every AI tool that exists — and knows how to deploy
                 them?
               </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 18,
-                  color: "var(--color-text-secondary)",
-                  lineHeight: 1.7,
-                }}
-              >
+              <p className="text-text-secondary text-lg leading-relaxed">
                 The answer is this company. Marketing, development, automation,
                 intelligence, operations — built and run by a single operator
                 with an AI-native infrastructure that scales without headcount.
               </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 18,
-                  color: "var(--color-text-secondary)",
-                  lineHeight: 1.7,
-                }}
-              >
+              <p className="text-text-secondary text-lg leading-relaxed">
                 Every system you see here — this website, the brand, the
                 client deliverables, the tools — was built by AI, directed by
                 one person. The company itself is the proof of concept.
               </p>
             </div>
 
-            <div
-              className="hidden md:block"
-              style={{ background: "var(--color-border)" }}
-            />
+            {/* Divider */}
+            <div className="hidden lg:block bg-border" />
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "var(--space-lg)",
-              }}
-            >
+            {/* Right — details */}
+            <div className="flex flex-col gap-8">
               <div>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--text-small)",
-                    fontWeight: 500,
-                    color: "var(--color-text-muted)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    marginBottom: "var(--space-xs)",
-                  }}
-                >
+                <p className="font-body text-xs font-medium text-text-muted uppercase tracking-wider mb-2">
                   Operator
                 </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontWeight: 700,
-                    fontSize: "var(--text-h3)",
-                    color: "var(--color-text-primary)",
-                  }}
-                >
+                <p className="font-display font-bold text-text-primary text-2xl">
                   Blake Pederson
                 </p>
               </div>
               <div>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--text-small)",
-                    fontWeight: 500,
-                    color: "var(--color-text-muted)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    marginBottom: "var(--space-xs)",
-                  }}
-                >
+                <p className="font-body text-xs font-medium text-text-muted uppercase tracking-wider mb-2">
                   Focus
                 </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--text-body)",
-                    color: "var(--color-text-secondary)",
-                    lineHeight: 1.6,
-                  }}
-                >
+                <p className="text-text-secondary leading-relaxed">
                   AI-powered marketing infrastructure, custom development,
                   workflow automation, and business operations for growth-stage
                   companies.
                 </p>
               </div>
               <div>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--text-small)",
-                    fontWeight: 500,
-                    color: "var(--color-text-muted)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    marginBottom: "var(--space-xs)",
-                  }}
-                >
+                <p className="font-body text-xs font-medium text-text-muted uppercase tracking-wider mb-2">
                   Thesis
                 </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--text-body)",
-                    color: "var(--color-text-secondary)",
-                    lineHeight: 1.6,
-                  }}
-                >
+                <p className="text-text-secondary leading-relaxed">
                   One person with AI infrastructure can outperform a 20-person
                   agency. Not in theory. In production. Every day.
                 </p>
@@ -170,49 +76,19 @@ export default function About() {
             </div>
           </div>
 
-          <div
-            className="rounded-[var(--radius-lg)] p-8 md:p-10"
-            style={{
-              background: "var(--color-surface-1)",
-              border: "1px solid var(--color-border-accent)",
-              textAlign: "center",
-            }}
-          >
-            <p
-              style={{
-                fontFamily: "var(--font-display)",
-                fontWeight: 700,
-                fontSize: "clamp(var(--text-h3), 3vw, var(--text-h2))",
-                color: "var(--color-accent-primary)",
-                marginBottom: "var(--space-md)",
-              }}
-            >
+          {/* Mission card */}
+          <div className="rounded-[var(--radius-lg)] p-10 md:p-14 bg-surface-1 border border-border-accent text-center">
+            <p className="font-display font-bold text-accent mb-5" style={{ fontSize: "clamp(1.5rem, 3vw, 40px)" }}>
               Slowly, then all at once.
             </p>
-            <p
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "var(--text-body)",
-                color: "var(--color-text-secondary)",
-                lineHeight: 1.6,
-                maxWidth: "50ch",
-                margin: "0 auto var(--space-xl)",
-              }}
-            >
+            <p className="text-text-secondary text-lg leading-relaxed max-w-[50ch] mx-auto mb-8">
               The companies that deploy AI infrastructure now will be
               unreachable in 18 months. LMS exists to make sure you&apos;re
               one of them.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
-              style={{
-                background: "var(--color-accent-primary)",
-                color: "#09090B",
-                fontFamily: "var(--font-body)",
-                fontWeight: 600,
-                fontSize: 18,
-              }}
+              className="inline-flex items-center justify-center px-8 py-4 bg-accent text-bg font-body font-semibold text-lg rounded-[var(--radius-md)] transition-all duration-150 hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
             >
               Start your build
             </Link>

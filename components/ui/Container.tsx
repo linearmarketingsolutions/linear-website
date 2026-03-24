@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-interface ContainerProps {
+type ContainerProps = {
   children: ReactNode;
   className?: string;
   as?: "div" | "section" | "article";
-}
+};
 
 export function Container({
   children,
@@ -13,14 +13,7 @@ export function Container({
 }: ContainerProps) {
   return (
     <Component
-      className={className}
-      style={{
-        maxWidth: "1200px",
-        marginLeft: "auto",
-        marginRight: "auto",
-        paddingLeft: "var(--space-lg)",
-        paddingRight: "var(--space-lg)",
-      }}
+      className={`max-w-[1200px] mx-auto px-6 ${className}`.trim()}
     >
       {children}
     </Component>

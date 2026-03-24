@@ -28,32 +28,24 @@ export function HowItWorks() {
   return (
     <Section id="how-it-works">
       <Container as="div">
-        <motion.h2
+        <motion.div
           variants={fadeUp}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
           transition={transitionBase}
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 700,
-            fontSize: "var(--text-h2)",
-            color: "var(--color-text-primary)",
-            marginBottom: "var(--space-xl)",
-          }}
+          className="mb-12"
         >
-          Three steps. Full deployment.
-        </motion.h2>
+          <h2 className="font-display font-bold text-text-primary text-[clamp(2rem,3.5vw,40px)] leading-tight mb-4">
+            Three steps. Full deployment.
+          </h2>
+        </motion.div>
 
-        {/* Desktop: horizontal flow with gradient connector */}
-        <div className="hidden md:flex relative items-stretch gap-0">
-          <div
-            className="absolute top-8 left-[16.66%] right-[16.66%] h-[2px] -z-[0]"
-            style={{
-              background: "var(--gradient-brand)",
-              opacity: 0.6,
-            }}
-          />
+        {/* Desktop: horizontal flow */}
+        <div className="hidden md:grid md:grid-cols-3 gap-0 relative">
+          {/* Connector line */}
+          <div className="absolute top-12 left-[16%] right-[16%] h-px bg-gradient-to-r from-accent/60 via-accent to-accent/60" />
+
           {STEPS.map((step, i) => (
             <motion.div
               key={step.number}
@@ -61,47 +53,30 @@ export function HowItWorks() {
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
-              transition={{ ...transitionBase, delay: i * 0.1 }}
-              className="flex-1 flex flex-col items-center text-center px-4 relative z-10"
+              transition={{ ...transitionBase, delay: i * 0.12 }}
+              className="flex flex-col items-center text-center px-8 relative z-10"
             >
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 14,
-                  color: "var(--color-accent-primary)",
-                  marginBottom: "var(--space-sm)",
-                }}
-              >
-                Step {step.number}
-              </span>
-              <h3
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontWeight: 600,
-                  fontSize: "var(--text-h3)",
-                  color: "var(--color-text-primary)",
-                  marginBottom: "var(--space-md)",
-                }}
-              >
+              {/* Step number badge */}
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent text-bg font-mono text-sm font-bold mb-6 shadow-[var(--shadow-glow)]">
+                {step.number}
+              </div>
+
+              <h3 className="font-body font-semibold text-text-primary text-xl mb-3">
                 {step.title}
               </h3>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "var(--text-body)",
-                  color: "var(--color-text-secondary)",
-                  lineHeight: 1.6,
-                  maxWidth: "28ch",
-                }}
-              >
+
+              <p className="text-text-secondary leading-relaxed max-w-[28ch]">
                 {step.body}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Mobile: vertical stack */}
-        <div className="flex flex-col md:hidden gap-8">
+        {/* Mobile: vertical timeline */}
+        <div className="flex flex-col md:hidden gap-0 relative">
+          {/* Vertical connector */}
+          <div className="absolute top-6 bottom-6 left-5 w-px bg-gradient-to-b from-accent/60 via-accent to-accent/60" />
+
           {STEPS.map((step, i) => (
             <motion.div
               key={step.number}
@@ -110,40 +85,16 @@ export function HowItWorks() {
               whileInView="animate"
               viewport={{ once: true }}
               transition={{ ...transitionBase, delay: i * 0.1 }}
-              className="flex gap-4"
+              className="flex gap-6 py-6 relative"
             >
-              <div
-                className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
-                style={{
-                  background: "var(--color-accent-primary)",
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 12,
-                  fontWeight: 600,
-                  color: "#09090B",
-                }}
-              >
+              <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-accent text-bg font-mono text-xs font-bold z-10 shadow-[var(--shadow-glow)]">
                 {step.number}
               </div>
               <div>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontWeight: 600,
-                    fontSize: "var(--text-h3)",
-                    color: "var(--color-text-primary)",
-                    marginBottom: "var(--space-sm)",
-                  }}
-                >
+                <h3 className="font-body font-semibold text-text-primary text-xl mb-2">
                   {step.title}
                 </h3>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--text-body)",
-                    color: "var(--color-text-secondary)",
-                    lineHeight: 1.6,
-                  }}
-                >
+                <p className="text-text-secondary leading-relaxed">
                   {step.body}
                 </p>
               </div>
@@ -157,17 +108,11 @@ export function HowItWorks() {
           whileInView="animate"
           viewport={{ once: true }}
           transition={{ ...transitionBase, delay: 0.4 }}
-          className="text-center mt-12"
+          className="text-center mt-14"
         >
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
-            style={{
-              background: "var(--color-accent-primary)",
-              color: "#09090B",
-              fontFamily: "var(--font-body)",
-              fontSize: 18,
-            }}
+            className="inline-flex items-center justify-center px-8 py-4 bg-accent text-bg font-body font-semibold text-lg rounded-[var(--radius-md)] transition-all duration-150 hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
           >
             Begin Your Build
           </Link>

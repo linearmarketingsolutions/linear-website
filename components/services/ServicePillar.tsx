@@ -7,10 +7,10 @@ import type { Pillar } from "./data";
 import { fadeUp, transitionBase } from "@/lib/animations";
 import { motion } from "framer-motion";
 
-interface ServicePillarProps {
+type ServicePillarProps = {
   pillar: Pillar;
   index: number;
-}
+};
 
 function CapabilityCard({
   title,
@@ -31,40 +31,20 @@ function CapabilityCard({
       whileInView="animate"
       viewport={{ once: true }}
       transition={{ ...transitionBase, delay: cardIndex * 0.03 }}
-      className="group block rounded-[var(--radius-lg)] p-5 transition-all duration-300 hover:shadow-[var(--shadow-glow)] hover:-translate-y-0.5 border relative overflow-hidden"
-      style={{
-        background: "var(--color-surface-2)",
-        borderColor: "var(--color-border)",
-      }}
+      className="group relative rounded-[var(--radius-lg)] p-6 bg-surface-2 border border-border overflow-hidden transition-all duration-300 hover:border-accent/30 hover:shadow-[var(--shadow-glow)] hover:-translate-y-0.5"
     >
-      <span
-        className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: "var(--gradient-brand)" }}
-      />
-      <span
-        className="inline-block mb-3"
-        style={{ color: "var(--color-accent-primary)" }}
-      >
+      {/* Top accent line on hover */}
+      <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent to-accent-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+      <span className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-accent/10 text-accent mb-4">
         <Icon />
       </span>
-      <h3
-        className="gradient-text mb-2"
-        style={{
-          fontFamily: "var(--font-body)",
-          fontWeight: 600,
-          fontSize: "var(--text-h3)",
-        }}
-      >
+
+      <h3 className="font-body font-semibold text-accent text-lg mb-2">
         {title}
       </h3>
-      <p
-        style={{
-          fontFamily: "var(--font-body)",
-          fontSize: "var(--text-body)",
-          color: "var(--color-text-secondary)",
-          lineHeight: 1.5,
-        }}
-      >
+
+      <p className="text-text-secondary leading-relaxed text-[15px]">
         {description}
       </p>
     </motion.div>
@@ -73,11 +53,8 @@ function CapabilityCard({
 
 export function ServicePillar({ pillar, index }: ServicePillarProps) {
   return (
-    <Section id={pillar.id} className="!py-[var(--space-2xl)]">
-      <div
-        className="w-full border-t"
-        style={{ borderColor: "var(--color-border)" }}
-      />
+    <Section id={pillar.id}>
+      <div className="w-full border-t border-border" />
       <Container as="div">
         <motion.h2
           variants={fadeUp}
@@ -85,14 +62,7 @@ export function ServicePillar({ pillar, index }: ServicePillarProps) {
           whileInView="animate"
           viewport={{ once: true }}
           transition={transitionBase}
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 700,
-            fontSize: "var(--text-h2)",
-            color: "var(--color-text-primary)",
-            marginTop: "var(--space-xl)",
-            marginBottom: "var(--space-sm)",
-          }}
+          className="font-display font-bold text-text-primary text-[clamp(1.75rem,3vw,40px)] leading-tight mt-12 mb-3"
         >
           {pillar.title}
         </motion.h2>
@@ -102,20 +72,11 @@ export function ServicePillar({ pillar, index }: ServicePillarProps) {
           whileInView="animate"
           viewport={{ once: true }}
           transition={{ ...transitionBase, delay: 0.05 }}
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "var(--text-body)",
-            color: "var(--color-text-secondary)",
-            marginBottom: "var(--space-xl)",
-            maxWidth: "60ch",
-          }}
+          className="text-text-secondary leading-relaxed max-w-[60ch] mb-10"
         >
           {pillar.tagline}
         </motion.p>
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-          style={{ gap: "var(--space-lg)" }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {pillar.capabilities.map((cap, i) => (
             <CapabilityCard
               key={cap.title}

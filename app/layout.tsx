@@ -42,6 +42,14 @@ export const metadata: Metadata = {
     siteName: "LMS",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/images/og-image.webp",
+        width: 1200,
+        height: 675,
+        alt: "LMS — The AI Growth Engine",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

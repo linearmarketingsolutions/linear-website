@@ -17,95 +17,57 @@ export function WhoWeWorkWith() {
   return (
     <Section id="who-we-work-with">
       <Container as="div">
-        <motion.h2
-          variants={fadeUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          transition={transitionBase}
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 700,
-            fontSize: "var(--text-h2)",
-            color: "var(--color-text-primary)",
-            marginBottom: "var(--space-md)",
-          }}
-        >
-          Built for operators.
-        </motion.h2>
-        <motion.p
-          variants={fadeUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          transition={{ ...transitionBase, delay: 0.05 }}
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "var(--text-body)",
-            color: "var(--color-text-secondary)",
-            lineHeight: 1.6,
-            maxWidth: "65ch",
-            marginBottom: "var(--space-xl)",
-          }}
-        >
-          LMS deploys for founders, operators, and growth-stage companies done
-          waiting for results. From first marketing system to multi-location
-          scale — execution without bureaucracy.
-        </motion.p>
-        <motion.div
-          variants={fadeUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          transition={{ ...transitionBase, delay: 0.1 }}
-          className="rounded-[var(--radius-lg)] p-6 max-w-2xl"
-          style={{
-            background: "var(--color-surface-2)",
-            border: "1px solid transparent",
-            backgroundImage:
-              "linear-gradient(var(--color-surface-2), var(--color-surface-2)), var(--gradient-brand)",
-            backgroundOrigin: "border-box",
-            backgroundClip: "padding-box, border-box",
-            boxShadow: "var(--shadow-glow)",
-          }}
-        >
-          <h3
-            style={{
-              fontFamily: "var(--font-body)",
-              fontWeight: 600,
-              fontSize: "var(--text-h3)",
-              color: "var(--color-text-primary)",
-              marginBottom: "var(--space-md)",
-            }}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          {/* Left — text content */}
+          <motion.div
+            variants={fadeUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            transition={transitionBase}
           >
-            You&apos;re a fit if:
-          </h3>
-          <ul className="space-y-3" style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {FIT_ITEMS.map((item, i) => (
-              <li
-                key={i}
-                className="flex gap-3 items-start"
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "var(--text-body)",
-                  color: "var(--color-text-primary)",
-                  lineHeight: 1.5,
-                }}
-              >
-                <span
-                  className="flex-shrink-0 mt-0.5"
-                  style={{
-                    color: "var(--color-accent-primary)",
-                    fontWeight: 700,
-                  }}
+            <h2 className="font-display font-bold text-text-primary text-[clamp(2rem,3.5vw,40px)] leading-tight mb-4">
+              Built for operators.
+            </h2>
+            <p className="text-text-secondary text-lg leading-relaxed max-w-[50ch]">
+              LMS deploys for founders, operators, and growth-stage companies done
+              waiting for results. From first marketing system to multi-location
+              scale — execution without bureaucracy.
+            </p>
+          </motion.div>
+
+          {/* Right — fit criteria card */}
+          <motion.div
+            variants={fadeUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            transition={{ ...transitionBase, delay: 0.15 }}
+            className="gradient-border-card p-8 shadow-[var(--shadow-glow)]"
+          >
+            <h3 className="font-body font-semibold text-text-primary text-xl mb-6">
+              You&apos;re a fit if:
+            </h3>
+            <ul className="flex flex-col gap-4">
+              {FIT_ITEMS.map((item, i) => (
+                <motion.li
+                  key={i}
+                  variants={fadeUp}
+                  initial="initial"
+                  whileInView="animate"
+                  viewport={{ once: true }}
+                  transition={{ ...transitionBase, delay: 0.2 + i * 0.06 }}
+                  className="flex gap-3 items-start text-text-primary leading-relaxed"
                 >
-                  ✓
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
+                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-accent/15 text-accent text-xs font-bold shrink-0 mt-0.5">
+                    ✓
+                  </span>
+                  {item}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
       </Container>
     </Section>
   );

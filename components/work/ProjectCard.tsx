@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import type { Project } from "./projectsData";
 
-interface ProjectCardProps {
+type ProjectCardProps = {
   project: Project;
   isFilteredOut: boolean;
-}
+};
 
 export function ProjectCard({ project, isFilteredOut }: ProjectCardProps) {
   return (
@@ -18,98 +18,44 @@ export function ProjectCard({ project, isFilteredOut }: ProjectCardProps) {
         scale: isFilteredOut ? 0.96 : 1,
       }}
       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-      style={{
-        background: "var(--color-surface-1)",
-        borderRadius: "var(--radius-lg)",
-        overflow: "hidden",
-        border: "1px solid var(--color-border)",
-        display: "flex",
-        flexDirection: "column",
-      }}
+      className="group bg-surface-1 rounded-[var(--radius-lg)] overflow-hidden border border-border flex flex-col transition-all duration-300 hover:border-accent/20 hover:shadow-[var(--shadow-glow)]"
     >
-      {/* Screenshot placeholder — labeled for easy swap */}
-      <div
-        className="relative flex items-center justify-center text-center"
-        style={{
-          aspectRatio: "16/10",
-          background:
-            "linear-gradient(135deg, var(--color-surface-2) 0%, var(--color-bg) 100%)",
-          borderBottom: "1px solid var(--color-border)",
-        }}
-      >
-        <span
-          style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: "var(--text-small)",
-            color: "var(--color-text-muted)",
-          }}
-        >
-          [Screenshot placeholder — swap for real asset]
+      {/* Screenshot placeholder */}
+      <div className="relative flex items-center justify-center text-center aspect-[16/10] bg-gradient-to-br from-surface-2 to-bg border-b border-border">
+        <span className="font-mono text-xs text-text-muted">
+          [Screenshot — swap for real asset]
         </span>
       </div>
-      <div
-        style={{
-          padding: "var(--space-lg)",
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          gap: "var(--space-sm)",
-        }}
-      >
-        <h3
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 700,
-            fontSize: "var(--text-h3)",
-            color: "var(--color-text-primary)",
-          }}
-        >
+
+      <div className="p-6 flex-1 flex flex-col gap-2">
+        <h3 className="font-display font-bold text-text-primary text-xl">
           {project.title}
         </h3>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "var(--space-xs)",
-          }}
-        >
+
+        <div className="flex flex-wrap gap-1.5">
           {project.categories.map((cat) => (
             <span
               key={cat}
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: 12,
-                color: "var(--color-text-muted)",
-                background: "var(--color-surface-2)",
-                padding: "4px 8px",
-                borderRadius: "var(--radius-sm)",
-              }}
+              className="font-body text-xs text-text-muted bg-surface-2 px-2 py-1 rounded-[var(--radius-sm)]"
             >
               {cat}
             </span>
           ))}
         </div>
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "var(--text-body)",
-            color: "var(--color-text-secondary)",
-            lineHeight: 1.5,
-            flex: 1,
-          }}
-        >
+
+        <p className="text-text-secondary leading-relaxed flex-1">
           {project.result}
         </p>
+
         <a
           href="#"
           title="Case study coming soon"
-          className="inline-flex items-center text-sm font-medium mt-auto"
-          style={{
-            color: "var(--color-accent-primary)",
-            fontFamily: "var(--font-body)",
-          }}
+          className="inline-flex items-center text-sm font-medium text-accent mt-2 group-hover:underline"
         >
-          View operation →
+          View operation
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 transition-transform duration-200 group-hover:translate-x-1">
+            <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+          </svg>
         </a>
       </div>
     </motion.article>

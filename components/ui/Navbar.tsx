@@ -109,7 +109,7 @@ export function Navbar() {
               <Link
                 key={href}
                 href={href}
-                className={`navbar-mobile-link ${isActive ? "gradient-text" : ""}`}
+                className={`navbar-mobile-link ${isActive ? "active-link" : ""}`}
                 onClick={() => setMobileOpen(false)}
                 aria-current={isActive ? "page" : undefined}
               >

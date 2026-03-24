@@ -3,60 +3,56 @@
 import { Container } from "@/components/ui/Container";
 import { fadeUp, transitionBase } from "@/lib/animations";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 export function FinalCTA() {
   return (
     <section
       id="final-cta"
-      className="layout-section relative overflow-hidden"
-      style={{ background: "var(--color-bg)" }}
+      className="relative overflow-hidden py-24 md:py-32"
     >
+      {/* Background image */}
+      <Image
+        src="/images/network-bg.webp"
+        alt=""
+        fill
+        className="object-cover opacity-30 pointer-events-none"
+      />
+
       {/* Ambient glow */}
       <div
-        className="absolute pointer-events-none inset-0 opacity-40"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse at 50% 50%, var(--gradient-glow), transparent 70%)",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(204, 255, 0, 0.06), transparent 60%)",
         }}
       />
-      <Container as="div" className="relative z-10">
+
+      <Container as="div" className="relative z-10 text-center">
         <motion.h2
           variants={fadeUp}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
           transition={transitionBase}
-          className="gradient-text text-center mb-4"
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 700,
-            fontSize: "clamp(var(--text-h2), 4vw, var(--text-h1))",
-            lineHeight: 1.2,
-          }}
+          className="font-display font-bold text-accent leading-tight mb-5"
+          style={{ fontSize: "clamp(2.5rem, 4.5vw, 56px)" }}
         >
           Ready to deploy?
         </motion.h2>
+
         <motion.p
           variants={fadeUp}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
           transition={{ ...transitionBase, delay: 0.05 }}
-          className="text-center mb-10"
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "var(--text-body)",
-            color: "var(--color-text-secondary)",
-            lineHeight: 1.6,
-            maxWidth: "45ch",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
+          className="text-text-secondary text-lg leading-relaxed max-w-[45ch] mx-auto mb-10"
         >
           One call. No pitch. A clear picture of what&apos;s possible — and a
           timeline to build it.
         </motion.p>
+
         <motion.div
           variants={fadeUp}
           initial="initial"
@@ -67,26 +63,13 @@ export function FinalCTA() {
         >
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
-            style={{
-              background: "var(--color-accent-primary)",
-              color: "#09090B",
-              fontFamily: "var(--font-body)",
-              fontSize: 18,
-            }}
+            className="inline-flex items-center justify-center px-8 py-4 bg-accent text-bg font-body font-semibold text-lg rounded-[var(--radius-md)] transition-all duration-150 hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
           >
             Begin Your Build
           </Link>
           <Link
             href="/services"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] font-medium transition-all hover:brightness-110"
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 18,
-              color: "var(--color-text-primary)",
-              border: "1px solid var(--color-accent-primary)",
-              background: "transparent",
-            }}
+            className="inline-flex items-center justify-center px-8 py-4 font-body font-semibold text-lg text-text-primary border border-accent bg-transparent rounded-[var(--radius-md)] transition-all duration-150 hover:bg-accent/10"
           >
             View Capabilities
           </Link>
