@@ -31,14 +31,14 @@ export function WorkHero() {
           transition={transitionBase}
           style={{
             fontFamily: "var(--font-display)",
-            fontWeight: 800,
+            fontWeight: 700,
             fontSize: "clamp(2rem, 4vw, 48px)",
             lineHeight: 1.1,
             color: "var(--color-text-primary)",
             marginBottom: "var(--space-md)",
           }}
         >
-          What we&apos;ve built.
+          Operations deployed.
         </motion.h1>
         <motion.p
           variants={fadeUp}
@@ -54,8 +54,8 @@ export function WorkHero() {
             maxWidth: "52ch",
           }}
         >
-          Real work. Real results. A growing library of websites, apps,
-          dashboards, and systems built for clients across industries.
+          Websites, apps, dashboards, and systems built for clients across
+          industries. Real infrastructure. Real outcomes.
         </motion.p>
       </Container>
     </section>

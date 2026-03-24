@@ -32,14 +32,14 @@ export function ServicesHero() {
           transition={transitionBase}
           style={{
             fontFamily: "var(--font-display)",
-            fontWeight: 800,
+            fontWeight: 700,
             fontSize: "clamp(2.5rem, 5vw, 56px)",
             lineHeight: 1.1,
             color: "var(--color-text-primary)",
             marginBottom: "var(--space-lg)",
           }}
         >
-          The full stack. All of it.
+          Every capability. One operator.
         </motion.h1>
         <motion.p
           variants={fadeUp}
@@ -55,9 +55,9 @@ export function ServicesHero() {
             maxWidth: "52ch",
           }}
         >
-          Linear Marketing Solutions is not a vendor. We are the operating layer
-          your business has been missing. From brand strategy to AI agent
-          development, we build and run the systems that move companies forward.
+          LMS is not a vendor. LMS is the operating layer your business has been
+          missing. From brand strategy to AI agent development — systems that
+          move companies forward.
         </motion.p>
       </Container>
     </section>

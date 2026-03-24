@@ -18,7 +18,7 @@ export const PILLARS: Pillar[] = [
     id: "marketing-growth",
     title: "Marketing & Growth",
     tagline:
-      "The foundation. Strategy, content, and campaigns that produce measurable outcomes.",
+      "Strategy, content, and campaigns engineered for measurable outcomes.",
     capabilities: [
       {
         title: "Full Funnel Marketing Strategy",
@@ -80,7 +80,7 @@ export const PILLARS: Pillar[] = [
     id: "technology-development",
     title: "Technology & Development",
     tagline:
-      "We build real things. Websites, apps, dashboards, and platforms that your business actually runs on.",
+      "Production-grade websites, apps, dashboards, and platforms. Built from scratch.",
     capabilities: [
       {
         title: "Custom Website Development",
@@ -136,7 +136,7 @@ export const PILLARS: Pillar[] = [
     id: "ai-automation",
     title: "AI & Automation",
     tagline:
-      "This is where LMS separates from every other agency. We don't just use AI — we build with it, train teams on it, and deploy it as infrastructure.",
+      "Where LMS separates from every other agency. AI deployed as infrastructure, not an afterthought.",
     capabilities: [
       {
         title: "Custom AI Agent Development",
@@ -192,7 +192,7 @@ export const PILLARS: Pillar[] = [
     id: "business-operations",
     title: "Business Operations & Development",
     tagline:
-      "The connective tissue. Strategy, systems, and support that keeps the whole operation running.",
+      "The connective tissue. Strategy, systems, and support that keeps the machine running.",
     capabilities: [
       {
         title: "Business Development Strategy",

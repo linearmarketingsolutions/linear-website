@@ -8,58 +8,40 @@ import Link from "next/link";
 
 const CAPABILITIES = [
   {
-    title: "Marketing & Strategy",
+    title: "Growth Engine",
     description:
-      "Full funnel strategy, brand development, campaign management, market research",
+      "Full-funnel strategy, brand systems, campaign architecture, market intelligence.",
     icon: ChartIcon,
   },
   {
-    title: "Content & Creative",
+    title: "Content Pipeline",
     description:
-      "Video, copy, design, social media, AI-assisted production at scale",
+      "Video, copy, design, social — AI-assisted production at scale.",
     icon: PaletteIcon,
   },
   {
     title: "Web & App Development",
     description:
-      "Hard-coded websites, web apps, UX/UI design, hosting, domain support",
+      "Production-grade websites, web apps, dashboards, UX/UI. Hard-coded, not templated.",
     icon: CodeIcon,
   },
   {
-    title: "AI Agent Development",
+    title: "AI Infrastructure",
     description:
-      "Custom agents, workflow automation, OpenClaw setup, AI integration",
+      "Custom agents, workflow automation, CRM integration, tool development.",
     icon: BotIcon,
   },
   {
     title: "Business Operations",
     description:
-      "CRM building, custom dashboards, SaaS development, process systems",
+      "CRM systems, analytics dashboards, SaaS development, process architecture.",
     icon: GridIcon,
   },
   {
-    title: "Custom Tools & Software",
+    title: "AI Education",
     description:
-      "Purpose-built tools, internal platforms, API integrations",
-    icon: WrenchIcon,
-  },
-  {
-    title: "AI Education & Onboarding",
-    description:
-      "Training courses, tool onboarding, team education programs",
+      "Team training, tool onboarding, operational integration. Your org learns to run on AI.",
     icon: BookIcon,
-  },
-  {
-    title: "Sales & Business Development",
-    description:
-      "Sales support, lead generation, competitor research, strategy",
-    icon: TargetIcon,
-  },
-  {
-    title: "Brand Systems",
-    description:
-      "Hard-coded brand kits, design systems, logo development, export-ready assets",
-    icon: ShapesIcon,
   },
 ];
 
@@ -113,13 +95,6 @@ function GridIcon() {
     </svg>
   );
 }
-function WrenchIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-    </svg>
-  );
-}
 function BookIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -127,25 +102,6 @@ function BookIcon() {
       <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
       <path d="M8 7h8" />
       <path d="M8 11h8" />
-    </svg>
-  );
-}
-function TargetIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <circle cx="12" cy="12" r="6" />
-      <circle cx="12" cy="12" r="2" />
-    </svg>
-  );
-}
-function ShapesIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="3" width="7" height="7" rx="1" />
-      <circle cx="16" cy="8" r="3" />
-      <rect x="3" y="14" width="7" height="7" rx="1" />
-      <path d="M14 14l6 6" />
     </svg>
   );
 }
@@ -168,7 +124,7 @@ export function Capabilities() {
             marginBottom: "var(--space-xl)",
           }}
         >
-          Everything your business needs. Nothing you don&apos;t.
+          Full-stack operations. Single point of contact.
         </motion.h2>
         <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
@@ -243,7 +199,7 @@ export function Capabilities() {
               fontSize: "var(--text-body)",
             }}
           >
-            Explore All Services →
+            View all capabilities →
           </Link>
         </motion.div>
       </Container>

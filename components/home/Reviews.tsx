@@ -11,45 +11,32 @@ const REVIEWS = [
       "Blake and his team didn't just run our marketing — they rebuilt our entire go-to-market system from scratch. Within 90 days we had a content engine, a CRM that actually worked, and campaigns producing real leads. I've never seen execution like this from a single partner.",
     author: "Marcus T.",
     role: "CEO, Pacific Rim Distributors",
-    stars: 5,
   },
   {
     quote:
       "We came to LMS for social media help and left with an automated lead pipeline, a new website, and a custom dashboard that our sales team uses every day. The scope of what they can do is genuinely surprising.",
     author: "Danielle K.",
     role: "Founder, Clearpath Wellness",
-    stars: 5,
   },
   {
     quote:
       "The AI integration work alone was worth the engagement. Our team now runs on tools that Blake built and trained us to use. We operate faster and smarter than companies three times our size.",
     author: "Jordan M.",
     role: "Director of Operations, NexLayer Tech",
-    stars: 5,
   },
   {
     quote:
       "I was skeptical about outsourcing marketing and operations to one partner. Six months later our monthly revenue has tripled and I have more clarity on our business than I've ever had. LMS is the real deal.",
     author: "Sofia R.",
     role: "Co-Founder, Forma Studio",
-    stars: 5,
   },
   {
     quote:
       "The website they built us is the best thing that's happened to our brand. It doesn't look like a template. It looks like us — better than we could have imagined. And the ongoing support has been seamless.",
     author: "Derek W.",
     role: "President, SummitCore Group",
-    stars: 5,
   },
 ];
-
-function Stars({ n }: { n: number }) {
-  return (
-    <span style={{ color: "var(--color-accent-primary)", letterSpacing: 2 }}>
-      {"★".repeat(n)}
-    </span>
-  );
-}
 
 export function Reviews() {
   return (
@@ -69,7 +56,7 @@ export function Reviews() {
             marginBottom: "var(--space-xl)",
           }}
         >
-          What our clients say.
+          Client operations.
         </motion.h2>
 
         {/* Mobile: horizontal scroll */}
@@ -91,7 +78,7 @@ export function Reviews() {
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px]"
-                  style={{ background: "var(--gradient-brand)" }}
+                  style={{ background: "var(--color-accent-primary)" }}
                 />
                 <p
                   style={{
@@ -109,12 +96,10 @@ export function Reviews() {
                     fontFamily: "var(--font-body)",
                     fontSize: "var(--text-small)",
                     color: "var(--color-text-secondary)",
-                    marginBottom: "var(--space-xs)",
                   }}
                 >
                   — {r.author}, {r.role}
                 </p>
-                <Stars n={r.stars} />
               </motion.div>
             ))}
           </div>
@@ -138,7 +123,7 @@ export function Reviews() {
             >
               <div
                 className="absolute top-0 left-0 right-0 h-[3px]"
-                style={{ background: "var(--gradient-brand)" }}
+                style={{ background: "var(--color-accent-primary)" }}
               />
               <p
                 style={{
@@ -156,12 +141,10 @@ export function Reviews() {
                   fontFamily: "var(--font-body)",
                   fontSize: "var(--text-small)",
                   color: "var(--color-text-secondary)",
-                  marginBottom: "var(--space-xs)",
                 }}
               >
                 — {r.author}, {r.role}
               </p>
-              <Stars n={r.stars} />
             </motion.div>
           ))}
         </div>

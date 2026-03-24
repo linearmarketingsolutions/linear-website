@@ -72,14 +72,15 @@ export function OpenClawCallout() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] text-white font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
             style={{
-              background: "var(--gradient-brand)",
+              background: "var(--color-accent-primary)",
+              color: "#09090B",
               fontFamily: "var(--font-body)",
               fontSize: 18,
             }}
           >
-            Get OpenClaw Set Up
+            Deploy OpenClaw
           </Link>
         </motion.div>
       </Container>

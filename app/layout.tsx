@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { PageShell } from "@/components/ui/PageShell";
 
-const syne = Syne({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: ["700"],
   variable: "--font-display",
   display: "swap",
   fallback: ["sans-serif"],
 });
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["400", "500", "600"],
   variable: "--font-body",
   display: "swap",
   fallback: ["sans-serif"],
@@ -27,9 +27,37 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Linear Marketing Solutions",
+  title: {
+    default: "LMS — The AI Growth Engine",
+    template: "%s | LMS",
+  },
   description:
-    "Strategy. Creative. AI. Execution. An AI-powered business operating system for companies ready to compete at the frontier.",
+    "One operator. Every capability. No ceiling. AI-powered marketing infrastructure for companies that refuse to move slowly.",
+  metadataBase: new URL("https://linearmarketingsolutions.com"),
+  openGraph: {
+    title: "LMS — The AI Growth Engine",
+    description:
+      "One operator. Every capability. No ceiling. AI-powered marketing infrastructure for companies that refuse to move slowly.",
+    url: "https://linearmarketingsolutions.com",
+    siteName: "LMS",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LMS — The AI Growth Engine",
+    description:
+      "One operator. Every capability. No ceiling. AI-powered marketing infrastructure for companies that refuse to move slowly.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -40,7 +68,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body>
         <PageShell>{children}</PageShell>

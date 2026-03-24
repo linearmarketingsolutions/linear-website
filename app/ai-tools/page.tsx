@@ -22,7 +22,7 @@ export default function AITools() {
               marginBottom: "var(--space-xl)",
             }}
           >
-            The LMS AI Stack
+            The AI stack
           </h2>
           <AIStackGrid />
         </Container>

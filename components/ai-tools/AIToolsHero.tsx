@@ -31,7 +31,7 @@ export function AIToolsHero() {
           transition={transitionBase}
           style={{
             fontFamily: "var(--font-display)",
-            fontWeight: 800,
+            fontWeight: 700,
             fontSize: "clamp(2.25rem, 4.5vw, 52px)",
             lineHeight: 1.1,
             color: "var(--color-text-primary)",

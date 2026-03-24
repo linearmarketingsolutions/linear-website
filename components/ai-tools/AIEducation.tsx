@@ -31,7 +31,7 @@ export function AIEducation() {
               marginBottom: "var(--space-lg)",
             }}
           >
-            We teach your team to operate in the AI era.
+            Your team learns to operate on AI.
           </h2>
           <p
             style={{
@@ -42,20 +42,21 @@ export function AIEducation() {
               marginBottom: "var(--space-xl)",
             }}
           >
-            LMS offers custom training programs, tool-specific onboarding
-            courses, and ongoing AI literacy development for teams. We don&apos;t
-            just deploy tools — we make sure your people know how to use them.
+            LMS delivers custom training programs, tool-specific onboarding,
+            and ongoing AI literacy development. Systems are only as powerful as
+            the people running them.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] text-white font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-[var(--radius-md)] font-medium transition-all hover:brightness-110 hover:shadow-[var(--shadow-glow)]"
             style={{
-              background: "var(--gradient-brand)",
+              background: "var(--color-accent-primary)",
+              color: "#09090B",
               fontFamily: "var(--font-body)",
               fontSize: 18,
             }}
           >
-            Book an AI Strategy Session
+            Start training
           </Link>
         </motion.div>
       </Container>

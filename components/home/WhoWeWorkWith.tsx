@@ -6,11 +6,11 @@ import { fadeUp, transitionBase } from "@/lib/animations";
 import { motion } from "framer-motion";
 
 const FIT_ITEMS = [
-  "You need marketing, technology, and AI under one roof",
-  "You're done paying for strategy that never gets executed",
-  "You want systems that work without you managing them daily",
-  "You're ready to compete like an enterprise brand — without enterprise overhead",
-  "You want a partner who is accountable to outcomes, not just deliverables",
+  "You need marketing, technology, and AI deployed as one system.",
+  "You're done paying for strategy that never ships.",
+  "You want infrastructure that runs without daily management.",
+  "You're ready to operate like a funded company — without the overhead.",
+  "You want a partner accountable to outcomes, not hours.",
 ];
 
 export function WhoWeWorkWith() {
@@ -31,7 +31,7 @@ export function WhoWeWorkWith() {
             marginBottom: "var(--space-md)",
           }}
         >
-          Built for businesses ready to move.
+          Built for operators.
         </motion.h2>
         <motion.p
           variants={fadeUp}
@@ -48,10 +48,9 @@ export function WhoWeWorkWith() {
             marginBottom: "var(--space-xl)",
           }}
         >
-          LMS works with founders, operators, and growth-stage companies who are
-          done waiting for results. Our clients range from local businesses
-          building their first real marketing system to multi-location companies
-          and distributors who need execution without bureaucracy.
+          LMS deploys for founders, operators, and growth-stage companies done
+          waiting for results. From first marketing system to multi-location
+          scale — execution without bureaucracy.
         </motion.p>
         <motion.div
           variants={fadeUp}
@@ -96,10 +95,7 @@ export function WhoWeWorkWith() {
                 <span
                   className="flex-shrink-0 mt-0.5"
                   style={{
-                    background: "var(--gradient-brand)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
+                    color: "var(--color-accent-primary)",
                     fontWeight: 700,
                   }}
                 >

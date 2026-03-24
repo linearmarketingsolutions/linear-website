@@ -8,7 +8,8 @@ import { useState, useEffect } from "react";
 const NAV_LINKS = [
   { href: "/services", label: "Services" },
   { href: "/work", label: "Work" },
-  { href: "/ai-tools", label: "AI Tools" },
+  { href: "/ai-tools", label: "Platform" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -46,12 +47,12 @@ export function Navbar() {
           <Link
             href="/"
             className="navbar-logo"
-            aria-label="Linear Marketing Solutions — Home"
+            aria-label="LMS — Home"
           >
             <Image
               src="/logo-full.svg"
               alt=""
-              width={320}
+              width={280}
               height={48}
               priority
               className="navbar-logo-img"
@@ -76,7 +77,7 @@ export function Navbar() {
 
           <div className="navbar-cta">
             <Link href="/contact" className="navbar-cta-btn">
-              Let&apos;s Talk
+              Start
             </Link>
           </div>
 
@@ -121,7 +122,7 @@ export function Navbar() {
             className="navbar-mobile-cta"
             onClick={() => setMobileOpen(false)}
           >
-            Let&apos;s Talk
+            Start
           </Link>
         </nav>
       </div>
