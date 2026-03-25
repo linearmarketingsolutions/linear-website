@@ -44,8 +44,8 @@ export function SectionDivider() {
         className="object-cover object-center pointer-events-none"
       />
       {/* Fade edges into background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-bg via-transparent to-bg" />
-      <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#09090B] via-transparent to-[#09090B]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#09090B] via-transparent to-[#09090B]" />
     </div>
   );
 }

@@ -32,12 +32,12 @@ export function AIToolsHero() {
           duration={0.6}
           scrollTrigger={false}
           className="font-display font-normal text-text-primary leading-[0.95] tracking-[-0.02em] mb-6"
-          {...{ style: { fontSize: "clamp(2.5rem, 5vw, 72px)" } } as React.HTMLAttributes<HTMLElement>}
+          {...{ style: { fontSize: "clamp(3rem, 6vw, 80px)" } } as React.HTMLAttributes<HTMLElement>}
         >
           AI isn&apos;t the future. It&apos;s the operating layer.
         </SplitText>
         <ScrollReveal direction="up" distance={30} delay={0.4} start="top 95%">
-          <p className="text-text-secondary text-xl leading-relaxed max-w-[52ch]">
+          <p className="text-text-secondary text-2xl leading-relaxed max-w-[52ch]">
             LMS doesn&apos;t just use AI — we deploy it as infrastructure.
             Here&apos;s what that means for your business.
           </p>

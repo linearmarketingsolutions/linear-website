@@ -26,7 +26,7 @@ export function OpenClawCallout() {
               mode="words"
               stagger={0.05}
               className="font-display font-bold text-accent leading-tight mb-5 relative z-10"
-              {...{ style: { fontSize: "clamp(1.5rem, 3.5vw, 40px)" } } as React.HTMLAttributes<HTMLElement>}
+              {...{ style: { fontSize: "clamp(2rem, 4vw, 56px)" } } as React.HTMLAttributes<HTMLElement>}
             >
               We set up OpenClaw for your business.
             </SplitText>

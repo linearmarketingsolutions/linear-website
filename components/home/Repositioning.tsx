@@ -73,7 +73,7 @@ export function Repositioning() {
     <section
       ref={sectionRef}
       id="repositioning"
-      className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32"
+      className="light-section relative py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32"
     >
       {/* Massive headline */}
       <div className="mb-20">
@@ -82,12 +82,12 @@ export function Repositioning() {
           mode="words"
           stagger={0.05}
           className="font-display font-normal text-text-primary leading-[0.95] tracking-[-0.03em]"
-          {...{ style: { fontSize: "clamp(2.5rem, 6vw, 88px)" } } as React.HTMLAttributes<HTMLElement>}
+          {...{ style: { fontSize: "clamp(3rem, 7vw, 96px)" } } as React.HTMLAttributes<HTMLElement>}
         >
           The old model is dead.
         </SplitText>
         <div className="mt-6 max-w-[600px]">
-          <TextRevealOnScroll as="p" className="text-xl leading-relaxed">
+          <TextRevealOnScroll as="p" className="text-2xl leading-relaxed">
             The marketing industry runs on bloat. Layers of people doing what one system could do better. We built the replacement.
           </TextRevealOnScroll>
         </div>
@@ -108,7 +108,7 @@ export function Repositioning() {
               <p
                 key={i}
                 data-old-item
-                className="text-text-secondary/60 text-xl lg:text-2xl leading-relaxed font-body"
+                className="text-text-secondary/60 text-2xl lg:text-3xl leading-relaxed font-body"
                 style={{ textDecoration: "line-through", textDecorationColor: "rgba(239,68,68,0.3)" }}
               >
                 {item}
@@ -133,7 +133,7 @@ export function Repositioning() {
               <p
                 key={i}
                 data-new-item
-                className="text-text-primary text-xl lg:text-2xl leading-relaxed font-body"
+                className="text-text-primary text-2xl lg:text-3xl leading-relaxed font-body"
               >
                 {item}
               </p>

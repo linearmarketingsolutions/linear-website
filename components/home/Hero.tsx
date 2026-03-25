@@ -129,7 +129,7 @@ export function Hero() {
 
             {/* Sub — indented like cmcc.vc */}
             <div className="mt-10 ml-0 lg:ml-[8vw] max-w-[500px]">
-              <p data-hero-sub className="text-text-secondary font-body text-lg leading-relaxed">
+              <p data-hero-sub className="text-text-secondary font-body text-xl leading-relaxed">
                 Marketing, development, automation, and intelligence —
                 deployed as a single integrated system. Infrastructure that compounds.
               </p>
@@ -166,7 +166,7 @@ export function Hero() {
         </div>
 
         {/* Stats — bottom row */}
-        <div className="flex flex-wrap gap-12 mt-12 pt-8 border-t border-white/[0.06]">
+        <div className="flex flex-wrap gap-12 mt-12 pt-8 border-t border-border">
           {STATS.map((stat) => (
             <div key={stat.label} data-stat className="flex flex-col">
               <span className="font-display font-normal text-accent text-4xl tracking-tight">

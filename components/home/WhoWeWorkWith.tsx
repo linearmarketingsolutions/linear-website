@@ -39,7 +39,7 @@ export function WhoWeWorkWith() {
   });
 
   return (
-    <section id="who-we-work-with" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32">
+    <section id="who-we-work-with" className="light-section relative py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
         {/* Left — huge text */}
         <div>
@@ -51,12 +51,12 @@ export function WhoWeWorkWith() {
             mode="words"
             stagger={0.05}
             className="font-display font-normal text-text-primary leading-[0.95] tracking-[-0.02em] mb-8"
-            {...{ style: { fontSize: "clamp(2.5rem, 5vw, 72px)" } } as React.HTMLAttributes<HTMLElement>}
+            {...{ style: { fontSize: "clamp(3rem, 6vw, 80px)" } } as React.HTMLAttributes<HTMLElement>}
           >
             Built for operators.
           </SplitText>
           <ScrollReveal direction="up" distance={30} delay={0.3}>
-            <p className="text-text-secondary text-xl leading-relaxed max-w-[45ch]">
+            <p className="text-text-secondary text-2xl leading-relaxed max-w-[45ch]">
               Founders, operators, and growth-stage companies done waiting for results.
               Execution without bureaucracy.
             </p>
@@ -69,12 +69,12 @@ export function WhoWeWorkWith() {
             <div
               key={i}
               data-fit-item
-              className="group flex items-start gap-5 py-6 border-b border-white/[0.06] transition-all duration-300 hover:border-accent/20 hover:pl-2"
+              className="group flex items-start gap-5 py-6 border-b border-border transition-all duration-300 hover:border-accent/20 hover:pl-2"
             >
               <span className="font-mono text-accent/40 text-sm mt-1 shrink-0 group-hover:text-accent transition-colors">
                 0{i + 1}
               </span>
-              <p className="text-text-primary/70 text-lg leading-relaxed group-hover:text-text-primary transition-colors">
+              <p className="text-text-primary/70 text-xl leading-relaxed group-hover:text-text-primary transition-colors">
                 {item}
               </p>
             </div>

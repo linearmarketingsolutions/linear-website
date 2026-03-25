@@ -19,10 +19,10 @@ export function ProjectCard({ project, isFilteredOut }: ProjectCardProps) {
         scale: isFilteredOut ? 0.96 : 1,
       }}
       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-      className="group bg-surface-1 rounded-2xl overflow-hidden border border-white/[0.06] flex flex-col transition-all duration-300 hover:border-accent/20 hover:shadow-[0_0_30px_rgba(204,255,0,0.08)]"
+      className="group bg-surface-1 rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-card)] flex flex-col transition-all duration-300 hover:border-accent/20 hover:shadow-[0_0_30px_rgba(204,255,0,0.08)]"
     >
       {/* Screenshot */}
-      <div className="relative aspect-[16/10] bg-gradient-to-br from-surface-2 to-bg border-b border-white/[0.06] overflow-hidden">
+      <div className="relative aspect-[16/10] bg-gradient-to-br from-surface-2 to-surface-1 border-b border-border overflow-hidden">
         {project.screenshot ? (
           <Image
             src={project.screenshot}

@@ -31,7 +31,7 @@ function CapabilityCard({
   return (
     <div
       data-cap-card
-      className="group relative rounded-[var(--radius-lg)] p-6 bg-surface-2 border border-border overflow-hidden transition-all duration-300 hover:border-accent/30 hover:shadow-[var(--shadow-glow)] hover:-translate-y-0.5"
+      className="group relative rounded-[var(--radius-lg)] p-6 bg-surface-1 border border-border shadow-[var(--shadow-card)] overflow-hidden transition-all duration-300 hover:border-accent/30 hover:shadow-[var(--shadow-glow)] hover:-translate-y-0.5"
     >
       <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent to-accent-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -43,7 +43,7 @@ function CapabilityCard({
         {title}
       </h3>
 
-      <p className="text-text-secondary leading-relaxed text-[15px]">
+      <p className="text-text-secondary leading-relaxed text-base">
         {description}
       </p>
     </div>
@@ -73,14 +73,14 @@ export function ServicePillar({ pillar, index }: ServicePillarProps) {
   });
 
   return (
-    <Section id={pillar.id}>
+    <Section id={pillar.id} className="light-section">
       <div className="w-full border-t border-border" />
       <Container as="div">
         <SplitText
           as="h2"
           mode="words"
           stagger={0.05}
-          className="font-display font-bold text-text-primary text-[clamp(1.75rem,3vw,40px)] leading-tight mt-12 mb-3"
+          className="font-display font-bold text-text-primary text-[clamp(2rem,4vw,56px)] leading-tight mt-12 mb-4"
         >
           {pillar.title}
         </SplitText>

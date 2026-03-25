@@ -20,7 +20,7 @@ export default function Work() {
   return (
     <>
       <WorkHero />
-      <Section id="work-grid">
+      <Section id="work-grid" className="light-section">
         <Container>
           <WorkFilter
             activeCategory={activeCategory}

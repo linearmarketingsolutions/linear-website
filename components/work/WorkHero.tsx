@@ -19,12 +19,12 @@ export function WorkHero() {
           duration={0.7}
           scrollTrigger={false}
           className="font-display font-bold text-text-primary leading-[1.1] mb-4"
-          {...{ style: { fontSize: "clamp(2rem, 4vw, 48px)" } } as React.HTMLAttributes<HTMLElement>}
+          {...{ style: { fontSize: "clamp(3rem, 6vw, 72px)" } } as React.HTMLAttributes<HTMLElement>}
         >
           Operations deployed.
         </SplitText>
         <ScrollReveal direction="up" distance={30} delay={0.3} start="top 95%">
-          <p className="text-text-secondary text-lg leading-relaxed max-w-[52ch]">
+          <p className="text-text-secondary text-xl leading-relaxed max-w-[52ch]">
             Websites, apps, dashboards, and systems built for clients across
             industries. Real infrastructure. Real outcomes.
           </p>

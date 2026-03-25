@@ -16,7 +16,7 @@ export function Section({
   return (
     <Component
       id={id}
-      className={`py-16 md:py-24 ${className}`.trim()}
+      className={`py-24 md:py-40 ${className}`.trim()}
     >
       {children}
     </Component>

@@ -22,12 +22,12 @@ export function ContactContent() {
                 duration={0.6}
                 scrollTrigger={false}
                 className="font-display font-bold text-text-primary leading-[1.1] mb-6"
-                {...{ style: { fontSize: "clamp(2.25rem, 4vw, 56px)" } } as React.HTMLAttributes<HTMLElement>}
+                {...{ style: { fontSize: "clamp(3rem, 5vw, 72px)" } } as React.HTMLAttributes<HTMLElement>}
               >
                 Start your build.
               </SplitText>
               <ScrollReveal direction="up" distance={30} delay={0.4} start="top 95%">
-                <p className="text-text-secondary text-lg leading-relaxed max-w-[40ch]">
+                <p className="text-text-secondary text-xl leading-relaxed max-w-[40ch]">
                   One call. We map your business, identify gaps, and design the
                   system. No pitch. No pressure. Just a clear picture of
                   what&apos;s possible.

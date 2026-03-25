@@ -66,10 +66,10 @@ export function Reviews() {
   });
 
   return (
-    <section id="reviews" className="relative py-24 md:py-40">
+    <section id="reviews" className="light-section relative py-32 md:py-48">
       {/* Header */}
       <div ref={headerRef} className="px-6 md:px-12 lg:px-20 xl:px-32 mb-12">
-        <span className="font-mono text-accent text-[11px] tracking-[0.3em] uppercase block mb-4">
+        <span className="font-mono text-accent text-xs tracking-[0.3em] uppercase block mb-4">
           Client Operations
         </span>
         <SplitText
@@ -77,7 +77,7 @@ export function Reviews() {
           mode="words"
           stagger={0.04}
           className="font-display font-normal text-text-primary leading-[0.95] tracking-[-0.02em]"
-          {...{ style: { fontSize: "clamp(2rem, 4.5vw, 64px)" } } as React.HTMLAttributes<HTMLElement>}
+          {...{ style: { fontSize: "clamp(2.5rem, 5vw, 72px)" } } as React.HTMLAttributes<HTMLElement>}
         >
           Real results. No case study fluff.
         </SplitText>
@@ -89,7 +89,7 @@ export function Reviews() {
           {REVIEWS.map((r, i) => (
             <div
               key={r.author}
-              className="group relative flex-shrink-0 w-[380px] md:w-[450px] rounded-2xl p-8 bg-surface-2 border border-white/[0.06] overflow-hidden transition-all duration-500 hover:border-accent/20 hover:shadow-[0_0_40px_rgba(204,255,0,0.08)]"
+              className="group relative flex-shrink-0 w-[380px] md:w-[450px] rounded-2xl p-8 bg-surface-1 border border-border shadow-[var(--shadow-card)] overflow-hidden transition-all duration-500 hover:border-accent/20 hover:shadow-[0_0_40px_rgba(204,255,0,0.08)]"
             >
               {/* Large metric */}
               <div className="mb-6">
@@ -102,12 +102,12 @@ export function Reviews() {
               </div>
 
               {/* Quote */}
-              <p className="text-text-primary/80 leading-relaxed mb-8 text-[15px]">
+              <p className="text-text-primary/80 leading-relaxed mb-8 text-base">
                 &ldquo;{r.quote}&rdquo;
               </p>
 
               {/* Author */}
-              <div className="mt-auto flex items-center gap-3 pt-6 border-t border-white/[0.06]">
+              <div className="mt-auto flex items-center gap-3 pt-6 border-t border-border">
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-accent/10 text-accent font-mono text-sm font-bold">
                   {r.author.charAt(0)}
                 </div>

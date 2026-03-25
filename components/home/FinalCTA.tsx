@@ -34,13 +34,13 @@ export function FinalCTA() {
           stagger={0.02}
           duration={0.5}
           className="font-display font-normal text-accent leading-[0.95] tracking-[-0.03em] mb-8"
-          {...{ style: { fontSize: "clamp(3rem, 7vw, 100px)" } } as React.HTMLAttributes<HTMLElement>}
+          {...{ style: { fontSize: "clamp(3.5rem, 8vw, 120px)" } } as React.HTMLAttributes<HTMLElement>}
         >
           Ready to deploy?
         </SplitText>
 
         <ScrollReveal direction="up" distance={30} delay={0.3}>
-          <p className="text-text-secondary text-xl leading-relaxed max-w-[40ch] mx-auto mb-12">
+          <p className="text-text-secondary text-2xl leading-relaxed max-w-[44ch] mx-auto mb-12">
             One call. No pitch. A clear picture of what&apos;s possible —
             and a timeline to build it.
           </p>

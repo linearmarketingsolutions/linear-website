@@ -1,12 +1,13 @@
 /**
  * LMS Design System — Tailwind v4 Theme + CSS Custom Properties
  * Linear Marketing Solutions. Dark monochrome + electric chartreuse.
+ * Hybrid light/dark: dark hero + accent sections, light content sections.
  */
 
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
+  /* Colors — dark mode defaults (hero, CTA, footer) */
   --color-bg: #09090B;
   --color-surface-1: #111113;
   --color-surface-2: #1A1A1D;
@@ -25,24 +26,24 @@
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  /* Font sizes with line-height */
-  --text-display: 80px;
-  --text-h1: 56px;
-  --text-h2: 40px;
-  --text-h3: 24px;
-  --text-body: 16px;
-  --text-sm: 14px;
-  --text-xs: 13px;
-  --text-overline: 11px;
+  /* Font sizes — oversized, cmcc.vc-inspired scale */
+  --text-display: 96px;
+  --text-h1: 72px;
+  --text-h2: 56px;
+  --text-h3: 32px;
+  --text-body: 18px;
+  --text-sm: 16px;
+  --text-xs: 14px;
+  --text-overline: 12px;
 
-  /* Spacing */
+  /* Spacing — generous, premium density */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
-  --spacing-xl: 48px;
-  --spacing-2xl: 80px;
-  --spacing-3xl: 120px;
+  --spacing-xl: 64px;
+  --spacing-2xl: 120px;
+  --spacing-3xl: 160px;
 
   /* Border radius */
   --radius-sm: 6px;
@@ -73,7 +74,38 @@
   --space-xl: var(--spacing-xl);
   --space-2xl: var(--spacing-2xl);
   --space-3xl: var(--spacing-3xl);
-  --text-display-line: 84px;
-  --text-body-line: 26px;
-  --text-small: 13px;
+  --text-display-line: 100px;
+  --text-body-line: 28px;
+  --text-small: 14px;
+}
+
+/* ── Light section overrides ─────────────────────────── */
+
+.light-section {
+  --color-bg: #FAFAFA;
+  --color-surface-1: #FFFFFF;
+  --color-surface-2: #F4F4F5;
+  --color-surface-3: #E4E4E7;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-accent: rgba(77, 124, 15, 0.25);
+  --color-text-primary: #18181B;
+  --color-text-secondary: #52525B;
+  --color-text-muted: #A1A1AA;
+  --color-accent: #65A30D;
+  --color-accent-secondary: #4D7C0F;
+  --color-accent-dim: rgba(101, 163, 13, 0.06);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 40px rgba(101, 163, 13, 0.12);
+  --shadow-glow-lg: 0 0 80px rgba(101, 163, 13, 0.15);
+  --gradient-brand: linear-gradient(135deg, #65A30D, #4D7C0F);
+
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+/* CTA buttons inside light sections keep the bright chartreuse */
+.light-section .cta-primary {
+  --color-accent: #CCFF00;
+  background: #CCFF00;
+  color: #09090B;
 }

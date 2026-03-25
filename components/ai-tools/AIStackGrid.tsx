@@ -70,7 +70,7 @@ export function AIStackGrid() {
           <div
             key={tool.id}
             data-tool-card
-            className="group relative rounded-2xl p-6 bg-surface-1 border border-white/[0.06] overflow-hidden transition-all duration-300 hover:border-white/[0.12] hover:shadow-lg"
+            className="group relative rounded-2xl p-6 bg-surface-1 border border-border shadow-[var(--shadow-card)] overflow-hidden transition-all duration-300 hover:border-accent/30 hover:shadow-lg"
           >
             {/* Color accent line on top */}
             <div

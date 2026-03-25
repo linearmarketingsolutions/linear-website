@@ -100,7 +100,7 @@ export function HowItWorks() {
   }, { scope: sectionRef });
 
   return (
-    <Section id="how-it-works" className="relative overflow-hidden">
+    <Section id="how-it-works" className="light-section relative overflow-hidden">
       <VeilGlow color="rgba(204, 255, 0, 0.04)" direction="left" />
 
       <Container as="div">
@@ -110,7 +110,7 @@ export function HowItWorks() {
               as="h2"
               mode="words"
               stagger={0.05}
-              className="font-display font-normal text-text-primary text-[clamp(2.5rem,5vw,72px)] leading-tight mb-4"
+              className="font-display font-normal text-text-primary text-[clamp(3rem,6vw,80px)] leading-tight mb-4"
             >
               Three steps. Full deployment.
             </SplitText>
@@ -134,7 +134,7 @@ export function HowItWorks() {
                   {step.number}
                 </div>
                 <div data-step-text>
-                  <h3 className="font-body font-semibold text-text-primary text-xl mb-3">
+                  <h3 className="font-body font-semibold text-text-primary text-2xl mb-3">
                     {step.title}
                   </h3>
                   <p className="text-text-secondary leading-relaxed max-w-[28ch]">
@@ -157,7 +157,7 @@ export function HowItWorks() {
                   {step.number}
                 </div>
                 <div data-step-text>
-                  <h3 className="font-body font-semibold text-text-primary text-xl mb-2">
+                  <h3 className="font-body font-semibold text-text-primary text-2xl mb-2">
                     {step.title}
                   </h3>
                   <p className="text-text-secondary leading-relaxed">
@@ -181,7 +181,7 @@ export function HowItWorks() {
             <MagneticButton strength={0.25}>
               <Link
                 href="/contact"
-                className="group relative inline-flex items-center justify-center px-8 py-4 bg-accent text-bg font-body font-semibold text-lg rounded-[var(--radius-md)] overflow-hidden transition-all duration-150 hover:shadow-[0_0_60px_rgba(204,255,0,0.3)]"
+                className="cta-primary group relative inline-flex items-center justify-center px-10 py-5 bg-accent text-[#09090B] font-body font-semibold text-xl rounded-full overflow-hidden transition-all duration-150 hover:shadow-[0_0_60px_rgba(204,255,0,0.3)]"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
                 <span className="relative">Begin Your Build</span>

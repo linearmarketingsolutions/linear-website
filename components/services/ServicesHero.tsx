@@ -33,12 +33,12 @@ export function ServicesHero() {
           duration={0.7}
           scrollTrigger={false}
           className="font-display font-bold text-text-primary leading-[1.1] mb-6"
-          {...{ style: { fontSize: "clamp(2.5rem, 5vw, 56px)" } } as React.HTMLAttributes<HTMLElement>}
+          {...{ style: { fontSize: "clamp(3rem, 6vw, 72px)" } } as React.HTMLAttributes<HTMLElement>}
         >
           Every capability. One operator.
         </SplitText>
         <ScrollReveal direction="up" distance={30} delay={0.3} start="top 95%">
-          <p className="text-text-secondary text-lg leading-relaxed max-w-[52ch]">
+          <p className="text-text-secondary text-xl leading-relaxed max-w-[52ch]">
             LMS is not a vendor. LMS is the operating layer your business has been
             missing. From brand strategy to AI agent development — systems that
             move companies forward.
