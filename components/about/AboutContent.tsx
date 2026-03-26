@@ -16,7 +16,7 @@ export function AboutContent() {
       {/* Full-bleed hero image — the operator */}
       <div className="relative w-full h-[60vh] md:h-[75vh] mb-16">
         <Image
-          src="/images/about-hero-operator.png"
+          src="/images/operator-command-center.png"
           alt="One operator commanding a wall of dashboards"
           fill
           priority

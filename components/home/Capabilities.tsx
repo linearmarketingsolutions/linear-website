@@ -71,7 +71,7 @@ export function Capabilities() {
   });
 
   return (
-    <section id="capabilities" className="light-section relative overflow-hidden py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32">
+    <section id="capabilities" className="light-section relative overflow-hidden py-20 md:py-28 px-6 md:px-12 lg:px-20 xl:px-32">
       <div className="mb-16 max-w-[900px]">
         <span className="font-mono text-[#7C3AED] text-xs tracking-[0.3em] uppercase block mb-4">
           Capabilities
