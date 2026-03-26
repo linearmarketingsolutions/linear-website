@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
 import Image from "next/image";
 import type { Project } from "./projectsData";
 
@@ -10,15 +11,21 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, isFilteredOut }: ProjectCardProps) {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    gsap.to(ref.current, {
+      opacity: isFilteredOut ? 0.35 : 1,
+      scale: isFilteredOut ? 0.96 : 1,
+      duration: 0.3,
+      ease: "power2.inOut",
+    });
+  }, [isFilteredOut]);
+
   return (
-    <motion.article
-      layout
-      initial={false}
-      animate={{
-        opacity: isFilteredOut ? 0.35 : 1,
-        scale: isFilteredOut ? 0.96 : 1,
-      }}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+    <article
+      ref={ref}
       className="group bg-surface-1 rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-card)] flex flex-col transition-all duration-300 hover:border-accent/20 hover:shadow-[0_0_30px_rgba(204,255,0,0.08)]"
     >
       {/* Screenshot */}
@@ -59,6 +66,6 @@ export function ProjectCard({ project, isFilteredOut }: ProjectCardProps) {
           {project.result}
         </p>
       </div>
-    </motion.article>
+    </article>
   );
 }

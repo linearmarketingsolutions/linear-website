@@ -89,7 +89,7 @@ export function Reviews() {
           {REVIEWS.map((r, i) => (
             <div
               key={r.author}
-              className="group relative flex-shrink-0 w-[380px] md:w-[450px] rounded-2xl p-8 bg-surface-1 border border-border shadow-[var(--shadow-card)] overflow-hidden transition-all duration-500 hover:border-accent/20 hover:shadow-[0_0_40px_rgba(204,255,0,0.08)]"
+              className="group relative flex-shrink-0 w-[85vw] md:w-[450px] rounded-2xl p-8 bg-surface-1 border border-border shadow-[var(--shadow-card)] overflow-hidden transition-all duration-500 hover:border-accent/20 hover:shadow-[0_0_40px_rgba(204,255,0,0.08)]"
             >
               {/* Large metric */}
               <div className="mb-6">

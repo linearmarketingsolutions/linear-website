@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { RobotEye } from "./RobotEye";
 
 const NAV_LINKS = [
   { href: "/services", label: "Services" },
@@ -43,23 +42,29 @@ export function Navbar() {
     }
   }, [mobileOpen]);
 
+  // Determine if we're at the top of a page with a dark hero
+  const isHome = pathname === "/";
+
   return (
     <>
       <header
         role="banner"
         className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${
           scrolled
-            ? "bg-bg/80 backdrop-blur-xl border-b border-white/[0.04]"
-            : "bg-transparent"
+            ? "bg-white/80 backdrop-blur-xl border-b border-black/[0.06] shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+            : isHome
+              ? "bg-transparent"
+              : "bg-transparent"
         }`}
       >
         <div className="flex items-center justify-between px-8 md:px-12 lg:px-20 xl:px-32 h-20 md:h-24">
-          {/* Logo — big, with robot eye */}
-          <Link href="/" className="flex items-center gap-4 group">
-            <span className="font-display font-bold text-text-primary text-3xl lg:text-4xl tracking-tight">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <span className={`font-display font-bold text-3xl lg:text-4xl tracking-tight transition-colors duration-300 ${
+              scrolled ? "text-[#18181B]" : isHome ? "text-white" : "text-[#18181B]"
+            }`}>
               LMS
             </span>
-            <RobotEye />
           </Link>
 
           {/* Desktop nav */}
@@ -71,19 +76,25 @@ export function Navbar() {
                   key={href}
                   href={href}
                   className={`relative font-body text-base font-medium tracking-wide transition-colors duration-300 py-2 ${
-                    isActive ? "text-accent" : "text-text-secondary hover:text-text-primary"
+                    isActive
+                      ? "text-[#7C3AED]"
+                      : scrolled
+                        ? "text-[#52525B] hover:text-[#18181B]"
+                        : isHome
+                          ? "text-white/70 hover:text-white"
+                          : "text-[#52525B] hover:text-[#18181B]"
                   }`}
                 >
                   {label}
                   {isActive && (
-                    <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-accent shadow-[0_0_8px_rgba(204,255,0,0.5)]" />
+                    <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.5)]" />
                   )}
                 </Link>
               );
             })}
             <Link
               href="/contact"
-              className="font-body text-base font-semibold text-bg bg-accent px-7 py-3 rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(204,255,0,0.35)]"
+              className="font-body text-base font-semibold text-white bg-gradient-to-r from-[#7C3AED] to-[#6366F1] px-7 py-3 rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(124,58,237,0.35)]"
             >
               Start a project
             </Link>
@@ -97,9 +108,15 @@ export function Navbar() {
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
-            <span className={`block w-6 h-0.5 bg-text-primary rounded-full transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-[5px]" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-text-primary rounded-full transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-text-primary rounded-full transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[5px]" : ""}`} />
+            <span className={`block w-6 h-0.5 rounded-full transition-all duration-300 ${
+              scrolled ? "bg-[#18181B]" : isHome ? "bg-white" : "bg-[#18181B]"
+            } ${mobileOpen ? "rotate-45 translate-y-[5px]" : ""}`} />
+            <span className={`block w-6 h-0.5 rounded-full transition-all duration-300 ${
+              scrolled ? "bg-[#18181B]" : isHome ? "bg-white" : "bg-[#18181B]"
+            } ${mobileOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-6 h-0.5 rounded-full transition-all duration-300 ${
+              scrolled ? "bg-[#18181B]" : isHome ? "bg-white" : "bg-[#18181B]"
+            } ${mobileOpen ? "-rotate-45 -translate-y-[5px]" : ""}`} />
           </button>
         </div>
       </header>
@@ -107,7 +124,7 @@ export function Navbar() {
       {/* Mobile fullscreen menu */}
       <div
         ref={mobileMenuRef}
-        className={`fixed inset-0 z-[999] bg-bg flex items-center justify-center transition-all duration-500 ${
+        className={`fixed inset-0 z-[999] bg-white flex items-center justify-center transition-all duration-500 ${
           mobileOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
@@ -118,8 +135,8 @@ export function Navbar() {
               href={href}
               data-mobile-link
               onClick={() => setMobileOpen(false)}
-              className={`font-display font-bold text-5xl tracking-tight transition-colors duration-300 ${
-                pathname === href ? "text-accent" : "text-text-primary hover:text-accent"
+              className={`font-display font-bold text-4xl sm:text-5xl tracking-tight transition-colors duration-300 ${
+                pathname === href ? "text-[#7C3AED]" : "text-[#18181B] hover:text-[#7C3AED]"
               }`}
             >
               {label}

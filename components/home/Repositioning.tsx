@@ -27,7 +27,6 @@ export function Repositioning() {
   useGSAP(() => {
     if (!sectionRef.current) return;
 
-    // Animate the divider line growing
     gsap.from("[data-divider]", {
       scaleY: 0,
       transformOrigin: "top",
@@ -40,7 +39,6 @@ export function Repositioning() {
       },
     });
 
-    // Stagger list items
     gsap.from("[data-old-item]", {
       x: -40,
       opacity: 0,
@@ -75,7 +73,6 @@ export function Repositioning() {
       id="repositioning"
       className="light-section relative py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32"
     >
-      {/* Massive headline */}
       <div className="mb-20">
         <SplitText
           as="h2"
@@ -87,13 +84,12 @@ export function Repositioning() {
           The old model is dead.
         </SplitText>
         <div className="mt-6 max-w-[600px]">
-          <TextRevealOnScroll as="p" className="text-2xl leading-relaxed">
+          <TextRevealOnScroll as="p" className="text-lg md:text-2xl leading-relaxed">
             The marketing industry runs on bloat. Layers of people doing what one system could do better. We built the replacement.
           </TextRevealOnScroll>
         </div>
       </div>
 
-      {/* Full-bleed split comparison */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1fr] gap-0 lg:gap-16">
         {/* Old Way */}
         <div className="py-8">
@@ -108,7 +104,7 @@ export function Repositioning() {
               <p
                 key={i}
                 data-old-item
-                className="text-text-secondary/60 text-2xl lg:text-3xl leading-relaxed font-body"
+                className="text-text-secondary/60 text-lg md:text-2xl lg:text-3xl leading-relaxed font-body"
                 style={{ textDecoration: "line-through", textDecorationColor: "rgba(239,68,68,0.3)" }}
               >
                 {item}
@@ -118,13 +114,13 @@ export function Repositioning() {
         </div>
 
         {/* Divider */}
-        <div data-divider className="hidden lg:block bg-gradient-to-b from-transparent via-accent/40 to-transparent" />
+        <div data-divider className="hidden lg:block bg-gradient-to-b from-transparent via-[#7C3AED]/40 to-transparent" />
 
         {/* LMS Way */}
         <div className="py-8">
           <div className="flex items-center gap-3 mb-8">
-            <span className="w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_rgba(204,255,0,0.5)]" />
-            <span className="font-mono text-accent text-xs tracking-[0.2em] uppercase">
+            <span className="w-3 h-3 rounded-full bg-[#7C3AED] shadow-[0_0_12px_rgba(124,58,237,0.5)]" />
+            <span className="font-mono text-[#7C3AED] text-xs tracking-[0.2em] uppercase">
               How it is
             </span>
           </div>
@@ -133,7 +129,7 @@ export function Repositioning() {
               <p
                 key={i}
                 data-new-item
-                className="text-text-primary text-2xl lg:text-3xl leading-relaxed font-body"
+                className="text-text-primary text-lg md:text-2xl lg:text-3xl leading-relaxed font-body"
               >
                 {item}
               </p>

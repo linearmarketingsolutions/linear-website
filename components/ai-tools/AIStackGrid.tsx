@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TOOL_COLORS: Record<string, string> = {
   claude: "#D97706",
-  openclaw: "#CCFF00",
+  openclaw: "#8B5CF6",
   chatgpt: "#10A37F",
   cursor: "#8B5CF6",
   make: "#6366F1",
@@ -59,11 +59,11 @@ export function AIStackGrid() {
       ref={gridRef}
       className="grid gap-5"
       style={{
-        gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 1fr))",
       }}
     >
       {AI_STACK.map((tool) => {
-        const color = TOOL_COLORS[tool.id] ?? "#CCFF00";
+        const color = TOOL_COLORS[tool.id] ?? "#8B5CF6";
         const letter = TOOL_LETTERS[tool.id] ?? tool.name.charAt(0);
 
         return (

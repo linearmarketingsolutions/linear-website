@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { SplitText } from "@/components/ui/SplitText";
-import { VeilGlow } from "@/components/ui/VeilGlow";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -14,7 +13,7 @@ const CAPABILITIES = [
   {
     title: "Growth\nEngine",
     description: "Full-funnel strategy, brand systems, campaign architecture, market intelligence.",
-    span: "col-span-2 row-span-2",
+    span: "col-span-1 md:col-span-2 row-span-2",
     accent: true,
   },
   {
@@ -44,7 +43,7 @@ const CAPABILITIES = [
   {
     title: "AI Education",
     description: "Team training, tool onboarding, operational integration.",
-    span: "col-span-2 row-span-1",
+    span: "col-span-1 md:col-span-2 row-span-1",
     accent: false,
   },
 ];
@@ -65,7 +64,7 @@ export function Capabilities() {
       ease: "power3.out",
       scrollTrigger: {
         trigger: gridRef.current,
-        start: "top 75%",
+        start: "top 80%",
         once: true,
       },
     });
@@ -73,10 +72,8 @@ export function Capabilities() {
 
   return (
     <section id="capabilities" className="light-section relative overflow-hidden py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32">
-      <VeilGlow color="rgba(204, 255, 0, 0.04)" direction="right" />
-
       <div className="mb-16 max-w-[900px]">
-        <span className="font-mono text-accent text-xs tracking-[0.3em] uppercase block mb-4">
+        <span className="font-mono text-[#7C3AED] text-xs tracking-[0.3em] uppercase block mb-4">
           Capabilities
         </span>
         <SplitText
@@ -92,7 +89,7 @@ export function Capabilities() {
 
       <div
         ref={gridRef}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[180px] gap-4"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(180px,auto)] gap-4"
       >
         {CAPABILITIES.map((cap) => (
           <Link
@@ -101,20 +98,20 @@ export function Capabilities() {
             data-bento-card
             className={`group relative rounded-2xl p-7 overflow-hidden transition-all duration-500 ${cap.span}
               ${cap.accent
-                ? "cta-primary bg-accent text-[#09090B] hover:shadow-[var(--shadow-glow-lg)]"
-                : "bg-surface-1 border border-border hover:border-accent/30 hover:shadow-[var(--shadow-glow)]"
+                ? "bg-gradient-to-br from-[#7C3AED] to-[#6366F1] text-white hover:shadow-[var(--shadow-glow-lg)]"
+                : "bg-white border border-black/[0.06] hover:border-[#7C3AED]/30 hover:shadow-[var(--shadow-glow)]"
               }`}
           >
             <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
               cap.accent
                 ? "bg-gradient-to-br from-white/10 to-transparent"
-                : "bg-gradient-to-br from-accent/[0.05] to-transparent"
+                : "bg-gradient-to-br from-[#7C3AED]/[0.04] to-transparent"
             }`} />
 
             <div className="relative z-10 h-full flex flex-col justify-between">
               <h3
                 className={`font-display font-normal leading-[1.05] tracking-tight whitespace-pre-line ${
-                  cap.accent ? "text-[#09090B]" : "text-text-primary"
+                  cap.accent ? "text-white" : "text-[#18181B]"
                 }`}
                 style={{ fontSize: cap.accent ? "clamp(2rem, 4vw, 48px)" : "clamp(1.25rem, 2vw, 24px)" }}
               >
@@ -123,13 +120,13 @@ export function Capabilities() {
 
               <div className="flex items-end justify-between gap-4">
                 <p className={`leading-relaxed max-w-[30ch] ${
-                  cap.accent ? "text-[#09090B]/70" : "text-text-secondary"
+                  cap.accent ? "text-white/70" : "text-[#52525B]"
                 }`}>
                   {cap.description}
                 </p>
                 <svg
                   className={`w-5 h-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ${
-                    cap.accent ? "text-[#09090B]/50" : "text-text-muted"
+                    cap.accent ? "text-white/50" : "text-[#A1A1AA]"
                   }`}
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
                 >

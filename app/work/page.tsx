@@ -7,8 +7,6 @@ import { WorkHero } from "@/components/work/WorkHero";
 import { WorkFilter } from "@/components/work/WorkFilter";
 import { ProjectCard } from "@/components/work/ProjectCard";
 import { PROJECTS } from "@/components/work/projectsData";
-import { motion } from "framer-motion";
-
 export default function Work() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
@@ -26,12 +24,11 @@ export default function Work() {
             activeCategory={activeCategory}
             onSelect={setActiveCategory}
           />
-          <motion.div
-            layout
+          <div
             className="layout-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fill, minmax(min(320px, 100%), 1fr))",
               gap: "var(--space-lg)",
             }}
           >
@@ -45,7 +42,7 @@ export default function Work() {
                 }
               />
             ))}
-          </motion.div>
+          </div>
         </Container>
       </Section>
     </>
