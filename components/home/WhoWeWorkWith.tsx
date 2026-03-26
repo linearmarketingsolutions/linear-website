@@ -39,9 +39,9 @@ export function WhoWeWorkWith() {
   });
 
   return (
-    <section id="who-we-work-with" className="light-section relative py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-        {/* Left — huge text */}
+    <section id="who-we-work-with" className="light-section relative py-20 md:py-32 px-6 md:px-12 lg:px-20 xl:px-32">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+        {/* Left — headline + context */}
         <div>
           <span className="font-mono text-accent text-[11px] tracking-[0.3em] uppercase block mb-4">
             Who we work with
@@ -56,10 +56,29 @@ export function WhoWeWorkWith() {
             Built for operators.
           </SplitText>
           <ScrollReveal direction="up" distance={30} delay={0.3}>
-            <p className="text-text-secondary text-2xl leading-relaxed max-w-[45ch]">
+            <p className="text-text-secondary text-xl leading-relaxed max-w-[45ch] mb-6">
               Founders, operators, and growth-stage companies done waiting for results.
               Execution without bureaucracy.
             </p>
+          </ScrollReveal>
+          <ScrollReveal direction="up" distance={20} delay={0.5}>
+            <p className="text-text-secondary/70 text-lg leading-relaxed max-w-[45ch] mb-8">
+              We work across industries — HVAC, fitness, distribution, professional services,
+              tattoo studios, real estate, and tech. The common thread: business owners who
+              want systems that run, not projects that stall.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal direction="up" distance={20} delay={0.6}>
+            <div className="flex flex-wrap gap-3">
+              {["Websites", "CRM Systems", "AI Agents", "Automation", "Content", "Dashboards"].map((tag) => (
+                <span
+                  key={tag}
+                  className="font-mono text-xs text-accent/70 bg-accent/[0.06] px-3 py-1.5 rounded-full border border-accent/10"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </ScrollReveal>
         </div>
 

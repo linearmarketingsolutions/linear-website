@@ -99,7 +99,7 @@ export function HowItWorks() {
   }, { scope: sectionRef });
 
   return (
-    <Section id="how-it-works" className="light-section relative overflow-hidden">
+    <Section id="how-it-works" className="light-section relative overflow-hidden !py-16 md:!py-24">
       <Container as="div">
         <section ref={sectionRef}>
           <div className="mb-12">
@@ -166,7 +166,7 @@ export function HowItWorks() {
           </div>
 
           {/* Terminal demo */}
-          <div className="mt-14 max-w-2xl mx-auto">
+          <div className="mt-14 max-w-4xl mx-auto">
             <TerminalBlock
               lines={TERMINAL_LINES}
               title="lms-deploy"

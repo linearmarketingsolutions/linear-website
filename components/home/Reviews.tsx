@@ -2,63 +2,61 @@
 
 import { useRef } from "react";
 import { SplitText } from "@/components/ui/SplitText";
-import { HorizontalScrollSection } from "@/components/ui/HorizontalScrollSection";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const REVIEWS = [
+const PROOF_POINTS = [
   {
-    quote: "Blake didn't just run our marketing — he rebuilt our entire go-to-market system. Within 90 days we had a content engine, a CRM, and campaigns producing real leads.",
-    author: "Marcus T.",
-    role: "CEO, Pacific Rim Distributors",
-    metric: "3x",
-    metricLabel: "Lead growth",
+    headline: "Full-stack client systems",
+    description: "Websites, CRMs, dashboards, automation pipelines, and AI integrations — deployed end-to-end for clients across HVAC, fitness, tattoo, distribution, and professional services.",
+    metric: "10+",
+    metricLabel: "Clients served",
   },
   {
-    quote: "We came for social media help and left with an automated lead pipeline, a new website, and a dashboard our sales team uses every day.",
-    author: "Danielle K.",
-    role: "Founder, Clearpath Wellness",
-    metric: "47%",
-    metricLabel: "Cost reduction",
+    headline: "AI-native operations",
+    description: "Every client engagement runs on AI infrastructure. Custom agents handle content production, lead routing, analytics, and reporting — eliminating manual overhead.",
+    metric: "1",
+    metricLabel: "Operator",
   },
   {
-    quote: "The AI integration alone was worth it. Our team now runs on tools Blake built and trained us to use. We operate faster than companies three times our size.",
-    author: "Jordan M.",
-    role: "Director of Ops, NexLayer Tech",
-    metric: "5x",
-    metricLabel: "Speed increase",
+    headline: "OpenClaw deployment",
+    description: "We set up and configure OpenClaw — the open-source AI agent platform — for businesses. One agent, every channel. WhatsApp, Slack, Gmail, iMessage. Your data stays yours.",
+    metric: "∞",
+    metricLabel: "Channels connected",
   },
   {
-    quote: "Six months later our monthly revenue has tripled and I have more clarity on our business than I've ever had. LMS is the real deal.",
-    author: "Sofia R.",
-    role: "Co-Founder, Forma Studio",
-    metric: "3x",
-    metricLabel: "Revenue growth",
+    headline: "Production-grade websites",
+    description: "Custom-coded sites with 3D visuals, GSAP scroll animations, and performance scores above 90. No templates. No page builders. Hard-coded infrastructure.",
+    metric: "90+",
+    metricLabel: "Lighthouse scores",
   },
   {
-    quote: "The website they built us is the best thing that's happened to our brand. It doesn't look like a template. It looks like us — better than we imagined.",
-    author: "Derek W.",
-    role: "President, SummitCore Group",
-    metric: "92",
-    metricLabel: "Lighthouse score",
+    headline: "CRM & automation systems",
+    description: "GoHighLevel, HubSpot, and custom-built CRM pipelines with automated follow-ups, lead scoring, and real-time dashboards. Sales teams use what we build every day.",
+    metric: "6+",
+    metricLabel: "Systems deployed",
   },
 ];
 
 export function Reviews() {
-  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    if (!headerRef.current) return;
-    gsap.from("[data-review-number]", {
-      textContent: 0,
-      duration: 2,
-      ease: "power2.out",
-      snap: { textContent: 1 },
+    if (!gridRef.current) return;
+    const cards = gridRef.current.querySelectorAll("[data-proof-card]");
+
+    gsap.from(cards, {
+      y: 50,
+      opacity: 0,
+      scale: 0.95,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: "power3.out",
       scrollTrigger: {
-        trigger: headerRef.current,
+        trigger: gridRef.current,
         start: "top 80%",
         once: true,
       },
@@ -66,11 +64,11 @@ export function Reviews() {
   });
 
   return (
-    <section id="reviews" className="light-section relative py-32 md:py-48">
+    <section id="proof" className="light-section relative py-20 md:py-32 px-6 md:px-12 lg:px-20 xl:px-32">
       {/* Header */}
-      <div ref={headerRef} className="px-6 md:px-12 lg:px-20 xl:px-32 mb-12">
+      <div className="mb-14">
         <span className="font-mono text-accent text-xs tracking-[0.3em] uppercase block mb-4">
-          Client Operations
+          What We Deploy
         </span>
         <SplitText
           as="h2"
@@ -79,47 +77,41 @@ export function Reviews() {
           className="font-display font-normal text-text-primary leading-[0.95] tracking-[-0.02em]"
           {...{ style: { fontSize: "clamp(2.5rem, 5vw, 72px)" } } as React.HTMLAttributes<HTMLElement>}
         >
-          Real results. No case study fluff.
+          Real systems. Real outcomes.
         </SplitText>
       </div>
 
-      {/* Horizontal scroll cards */}
-      <HorizontalScrollSection scrollHeight={200} className="!h-auto">
-        <div className="flex items-stretch gap-6 px-6 md:px-12 lg:px-20 xl:px-32 py-8">
-          {REVIEWS.map((r, i) => (
-            <div
-              key={r.author}
-              className="group relative flex-shrink-0 w-[85vw] md:w-[450px] rounded-2xl p-8 bg-surface-1 border border-border shadow-[var(--shadow-card)] overflow-hidden transition-all duration-500 hover:border-accent/20 hover:shadow-[0_0_40px_rgba(124,58,237,0.08)]"
-            >
-              {/* Large metric */}
-              <div className="mb-6">
-                <span className="font-display font-normal text-accent text-5xl tracking-tight">
-                  {r.metric}
-                </span>
-                <span className="block font-mono text-text-muted text-xs tracking-wider uppercase mt-1">
-                  {r.metricLabel}
-                </span>
-              </div>
-
-              {/* Quote */}
-              <p className="text-text-primary/80 leading-relaxed mb-8 text-base">
-                &ldquo;{r.quote}&rdquo;
-              </p>
-
-              {/* Author */}
-              <div className="mt-auto flex items-center gap-3 pt-6 border-t border-border">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-accent/10 text-accent font-mono text-sm font-bold">
-                  {r.author.charAt(0)}
-                </div>
-                <div>
-                  <p className="text-text-primary text-sm font-medium">{r.author}</p>
-                  <p className="text-text-muted text-xs">{r.role}</p>
-                </div>
-              </div>
+      {/* Grid cards */}
+      <div
+        ref={gridRef}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+      >
+        {PROOF_POINTS.map((item) => (
+          <div
+            key={item.headline}
+            data-proof-card
+            className="group relative rounded-2xl p-8 bg-surface-1 border border-border shadow-[var(--shadow-card)] overflow-hidden transition-all duration-500 hover:border-accent/20 hover:shadow-[0_0_40px_rgba(124,58,237,0.08)]"
+          >
+            {/* Large metric */}
+            <div className="mb-5">
+              <span className="font-display font-normal text-accent text-5xl tracking-tight">
+                {item.metric}
+              </span>
+              <span className="block font-mono text-text-muted text-xs tracking-wider uppercase mt-1">
+                {item.metricLabel}
+              </span>
             </div>
-          ))}
-        </div>
-      </HorizontalScrollSection>
+
+            {/* Headline + description */}
+            <h3 className="font-body font-semibold text-text-primary text-lg mb-3">
+              {item.headline}
+            </h3>
+            <p className="text-text-secondary leading-relaxed text-base">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

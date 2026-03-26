@@ -210,7 +210,7 @@ export function SystemLayersSection() {
         className="h-screen relative overflow-hidden dark-section"
       >
         {/* Headline — top left */}
-        <div className="absolute top-24 left-8 md:left-12 lg:left-20 xl:left-32 z-10 max-w-[500px]">
+        <div className="absolute top-28 md:top-32 left-8 md:left-12 lg:left-20 xl:left-32 z-10 max-w-[500px]">
           <span className="font-mono text-[#8B5CF6] text-xs tracking-[0.3em] uppercase block mb-4">
             System Architecture
           </span>
