@@ -89,7 +89,7 @@ export function Capabilities() {
 
       <div
         ref={gridRef}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(180px,auto)] gap-4"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(120px,auto)] md:auto-rows-[minmax(180px,auto)] gap-4"
       >
         {CAPABILITIES.map((cap) => (
           <Link

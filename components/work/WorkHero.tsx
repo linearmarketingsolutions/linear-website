@@ -8,7 +8,7 @@ export function WorkHero() {
   return (
     <section
       id="work-hero"
-      className="hero-grid-bg relative overflow-hidden flex items-center min-h-[40vh] bg-bg"
+      className="hero-grid-bg relative overflow-hidden flex items-center min-h-[30vh] md:min-h-[40vh] bg-bg"
     >
 
       <Container as="div" className="relative z-10 pt-40 pb-20">
