@@ -19,12 +19,12 @@ export function AIToolsHero() {
           gap={10}
           hoverRadius={4}
           color="rgba(255,255,255,0.02)"
-          hoverColor="rgba(204, 255, 0, 0.35)"
+          hoverColor="rgba(124, 58, 237, 0.35)"
           className="pointer-events-auto"
         />
       </div>
 
-      <div className="relative z-10 px-8 md:px-12 lg:px-20 xl:px-32 py-32">
+      <div className="relative z-10 px-8 md:px-12 lg:px-20 xl:px-32 pt-40 pb-20">
         <SplitText
           as="h1"
           mode="words"

@@ -18,7 +18,7 @@ export function OpenClawCallout() {
             {/* Subtle background glow */}
             <div
               className="absolute -top-20 -right-20 w-60 h-60 rounded-full pointer-events-none opacity-20"
-              style={{ background: "radial-gradient(circle, rgba(204, 255, 0, 0.3), transparent 70%)" }}
+              style={{ background: "radial-gradient(circle, rgba(124, 58, 237, 0.3), transparent 70%)" }}
             />
 
             <SplitText
@@ -51,7 +51,7 @@ export function OpenClawCallout() {
               <MagneticButton strength={0.25}>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-accent text-bg font-body font-semibold text-lg rounded-[var(--radius-md)] transition-all duration-150 hover:brightness-110 hover:shadow-[var(--shadow-glow)] relative z-10"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#7C3AED] to-[#6366F1] text-white font-body font-semibold text-lg rounded-[var(--radius-md)] transition-all duration-150 hover:brightness-110 hover:shadow-[var(--shadow-glow)] relative z-10"
                 >
                   Deploy OpenClaw
                 </Link>

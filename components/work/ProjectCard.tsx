@@ -26,7 +26,7 @@ export function ProjectCard({ project, isFilteredOut }: ProjectCardProps) {
   return (
     <article
       ref={ref}
-      className="group bg-surface-1 rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-card)] flex flex-col transition-all duration-300 hover:border-accent/20 hover:shadow-[0_0_30px_rgba(204,255,0,0.08)]"
+      className="group bg-surface-1 rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-card)] flex flex-col transition-all duration-300 hover:border-accent/20 hover:shadow-[0_0_30px_rgba(124,58,237,0.08)]"
     >
       {/* Screenshot */}
       <div className="relative aspect-[16/10] bg-gradient-to-br from-surface-2 to-surface-1 border-b border-border overflow-hidden">

@@ -2,7 +2,7 @@
 
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { RoundedBox, Environment, PerspectiveCamera } from "@react-three/drei";
+import { RoundedBox, Environment, PerspectiveCamera, Text } from "@react-three/drei";
 import * as THREE from "three";
 
 /* ── Layer definitions (bottom → top) ─────────────────── */
@@ -16,8 +16,8 @@ const LAYERS = [
   { label: "AI Intelligence", icon: "06", color: "#1a1a3e", emissive: "#8B5CF6" },
 ];
 
-const EXPLODED_GAP = 1.1;
-const ASSEMBLED_GAP = 0.08;
+const EXPLODED_GAP = 1.3;
+const ASSEMBLED_GAP = 0.1;
 const CENTER = (LAYERS.length - 1) / 2;
 
 /* ── Easing ───────────────────────────────────────────── */
@@ -106,6 +106,30 @@ function LayerPanel({ index, layer, progressRef }: LayerPanelProps) {
           depthWrite={false}
         />
       </RoundedBox>
+
+      {/* Layer label — number + name on surface */}
+      <Text
+        position={[-1.5, 0.06, 0]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        fontSize={0.16}
+        color={layer.emissive}
+        anchorX="left"
+        anchorY="middle"
+        letterSpacing={0.05}
+      >
+        {layer.icon}
+      </Text>
+      <Text
+        position={[-1.1, 0.06, 0]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        fontSize={0.14}
+        color="#ffffff"
+        anchorX="left"
+        anchorY="middle"
+        fillOpacity={0.8}
+      >
+        {layer.label}
+      </Text>
     </group>
   );
 }
@@ -222,6 +246,15 @@ function AssemblyGlow({ progressRef }: { progressRef: React.RefObject<{ value: n
   );
 }
 
+/* ── Camera look-at ──────────────────────────────────── */
+
+function CameraLookAt() {
+  useFrame(({ camera }) => {
+    camera.lookAt(0, 0, 0);
+  });
+  return null;
+}
+
 /* ── Main scene ───────────────────────────────────────── */
 
 type SystemLayersSceneProps = {
@@ -235,21 +268,22 @@ function SystemLayersScene({ progressRef }: SystemLayersSceneProps) {
     if (!groupRef.current || !progressRef.current) return;
     const p = progressRef.current.value;
 
-    // No constant spin — only scroll-driven rotation for clean readability
-    // Gentle isometric angle + scroll adds a quarter turn
+    // Scroll-driven rotation — gentle turn so you see labels
     groupRef.current.rotation.y = -0.5 + p * Math.PI * 0.3;
-    groupRef.current.rotation.x = -0.25 + p * 0.08;
+    // Tilt the stack slightly toward camera for 45° isometric feel
+    groupRef.current.rotation.x = -0.6;
 
     // Subtle breathing
-    const breathe = Math.sin(state.clock.elapsedTime * 0.4) * 0.01;
+    const breathe = Math.sin(state.clock.elapsedTime * 0.4) * 0.008;
     groupRef.current.rotation.z = breathe;
   });
 
   return (
     <>
-      {/* Centered camera — looking straight at the stack */}
-      <PerspectiveCamera makeDefault position={[0, 0.5, 7]} fov={40} />
-      <ambientLight intensity={0.2} />
+      {/* Elevated camera — angled down at the stack */}
+      <PerspectiveCamera makeDefault position={[0, 3, 7]} fov={38} />
+      <CameraLookAt />
+      <ambientLight intensity={0.3} />
       <directionalLight position={[5, 8, 5]} intensity={0.35} color="#ffffff" />
       <pointLight position={[-3, -1, 4]} intensity={0.3} color="#8B5CF6" />
       <pointLight position={[3, 2, -2]} intensity={0.15} color="#6366F1" />

@@ -14,15 +14,15 @@ export function AboutContent() {
   return (
     <Section id="about" className="light-section !pt-0 relative overflow-hidden">
       {/* Full-bleed hero image — the operator */}
-      <div className="relative w-full h-[50vh] md:h-[70vh] mb-16">
+      <div className="relative w-full h-[60vh] md:h-[75vh] mb-16">
         <Image
-          src="/images/about-hero-operator.webp"
+          src="/images/operator-command-center.png"
           alt="One operator commanding a wall of dashboards"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--color-bg)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[var(--color-bg)]" />
       </div>
 
       <Container>

@@ -20,12 +20,12 @@ export function ServicesHero() {
           gap={10}
           hoverRadius={4}
           color="rgba(255,255,255,0.02)"
-          hoverColor="rgba(204, 255, 0, 0.4)"
+          hoverColor="rgba(124, 58, 237, 0.4)"
         />
       </div>
 
 
-      <Container as="div" className="relative z-10 py-32">
+      <Container as="div" className="relative z-10 pt-40 pb-20">
         <SplitText
           as="h1"
           mode="words"

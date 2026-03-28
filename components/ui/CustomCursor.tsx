@@ -92,7 +92,7 @@ export function CustomCursor() {
       {/* Dot — instant follow */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference"
+        className="fixed top-0 left-0 z-[9999] pointer-events-none"
         style={{
           width: 8,
           height: 8,
@@ -104,7 +104,7 @@ export function CustomCursor() {
       {/* Ring — trails with spring */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 z-[9998] pointer-events-none mix-blend-difference"
+        className="fixed top-0 left-0 z-[9998] pointer-events-none"
         style={{
           width: 36,
           height: 36,

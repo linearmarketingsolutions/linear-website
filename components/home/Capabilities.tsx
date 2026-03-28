@@ -13,7 +13,7 @@ const CAPABILITIES = [
   {
     title: "Growth\nEngine",
     description: "Full-funnel strategy, brand systems, campaign architecture, market intelligence.",
-    span: "col-span-1 md:col-span-2 row-span-2",
+    span: "col-span-1 md:col-span-2 md:row-span-2",
     accent: true,
   },
   {
@@ -31,7 +31,7 @@ const CAPABILITIES = [
   {
     title: "AI Infrastructure",
     description: "Custom agents, workflow automation, CRM integration, tool development.",
-    span: "col-span-1 row-span-2",
+    span: "col-span-1 md:row-span-2",
     accent: false,
   },
   {
@@ -71,7 +71,7 @@ export function Capabilities() {
   });
 
   return (
-    <section id="capabilities" className="light-section relative overflow-hidden py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32">
+    <section id="capabilities" className="light-section relative overflow-hidden py-20 md:py-28 px-6 md:px-12 lg:px-20 xl:px-32">
       <div className="mb-16 max-w-[900px]">
         <span className="font-mono text-[#7C3AED] text-xs tracking-[0.3em] uppercase block mb-4">
           Capabilities
@@ -89,7 +89,7 @@ export function Capabilities() {
 
       <div
         ref={gridRef}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(180px,auto)] gap-4"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(120px,auto)] md:auto-rows-[minmax(180px,auto)] gap-4"
       >
         {CAPABILITIES.map((cap) => (
           <Link

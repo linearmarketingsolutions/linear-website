@@ -13,7 +13,7 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/[0.06] mt-auto">
+    <footer className="dark-section relative border-t border-[#8B5CF6]/20 mt-auto">
       <div className="px-6 md:px-12 lg:px-20 xl:px-32">
         {/* Big tagline */}
         <div className="py-20 md:py-32">
@@ -21,7 +21,7 @@ export function Footer() {
             as="p"
             mode="words"
             stagger={0.04}
-            className="font-display font-normal text-text-primary/10 leading-[0.95] tracking-[-0.03em]"
+            className="font-display font-normal text-white/[0.07] leading-[0.95] tracking-[-0.03em]"
             {...{ style: { fontSize: "clamp(3rem, 8vw, 120px)" } } as React.HTMLAttributes<HTMLElement>}
           >
             The AI growth engine.
@@ -31,10 +31,10 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 py-8 border-t border-white/[0.06]">
           <div className="flex items-center gap-6">
-            <span className="font-display font-normal text-text-primary text-sm">
+            <span className="font-display font-normal text-white text-sm">
               LMS
             </span>
-            <span className="text-text-muted text-xs">
+            <span className="text-[#A1A1AA] text-xs">
               &copy; {new Date().getFullYear()} Linear Marketing Solutions
             </span>
           </div>
@@ -44,14 +44,14 @@ export function Footer() {
               <Link
                 key={href}
                 href={href}
-                className="font-mono text-text-muted text-xs tracking-wider uppercase transition-colors duration-300 hover:text-text-primary"
+                className="font-mono text-[#A1A1AA] text-xs tracking-wider uppercase transition-colors duration-300 hover:text-white"
               >
                 {label}
               </Link>
             ))}
           </nav>
 
-          <p className="font-mono text-text-muted/50 text-xs italic">
+          <p className="font-mono text-[#52525B] text-xs italic">
             Built by AI. Directed by one.
           </p>
         </div>

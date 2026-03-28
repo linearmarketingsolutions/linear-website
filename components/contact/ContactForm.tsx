@@ -149,7 +149,7 @@ export function ContactForm() {
       </div>
 
       {status === "error" && (
-        <p className="text-red-400 text-sm">
+        <p role="alert" className="text-red-600 text-sm">
           {errorMsg}
         </p>
       )}
@@ -157,7 +157,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex items-center justify-center px-8 py-4 bg-accent text-bg font-body font-semibold text-lg rounded-[var(--radius-md)] border-none cursor-pointer transition-all duration-150 hover:brightness-110 hover:shadow-[var(--shadow-glow)] disabled:opacity-70 disabled:cursor-wait"
+        className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#7C3AED] to-[#6366F1] text-white font-body font-semibold text-lg rounded-[var(--radius-md)] border-none cursor-pointer transition-all duration-150 hover:brightness-110 hover:shadow-[var(--shadow-glow)] disabled:opacity-70 disabled:cursor-wait"
       >
         {status === "sending" ? "Sending..." : "Send message"}
       </button>

@@ -53,7 +53,7 @@ export function OpenClawDeepDive() {
 
             <Link
               href="/contact"
-              className="cta-primary inline-flex items-center justify-center px-10 py-5 rounded-full bg-accent text-[#09090B] font-body text-lg font-medium mt-8 transition-all hover:brightness-110 hover:shadow-[0_0_40px_rgba(204,255,0,0.3)]"
+              className="cta-primary inline-flex items-center justify-center px-10 py-5 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#6366F1] text-white font-body text-lg font-semibold mt-8 transition-all hover:brightness-110 hover:shadow-[0_0_40px_rgba(124,58,237,0.3)]"
             >
               Deploy OpenClaw
             </Link>

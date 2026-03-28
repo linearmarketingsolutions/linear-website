@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -26,9 +26,17 @@ export function DepthReveal() {
   const pinRef = useRef<HTMLDivElement>(null);
   const shapesRef = useRef<(HTMLDivElement | null)[]>([]);
   const textRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   useGSAP(() => {
-    if (!sectionRef.current || !pinRef.current) return;
+    if (!sectionRef.current || !pinRef.current || isMobile) return;
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -77,7 +85,31 @@ export function DepthReveal() {
         0.7
       );
     }
-  });
+  }, { dependencies: [isMobile] });
+
+  if (isMobile) {
+    return (
+      <section
+        className="relative py-24 flex items-center justify-center"
+        style={{ background: "linear-gradient(180deg, #FAFAFA 0%, #F0EEFA 50%, #FAFAFA 100%)" }}
+      >
+        <div className="text-center px-6 max-w-[700px]">
+          <p className="font-mono text-[#7C3AED] text-xs tracking-[0.3em] uppercase mb-4">
+            The Infrastructure
+          </p>
+          <h2
+            className="font-display font-normal text-[#18181B] leading-[0.95] tracking-[-0.03em] mb-6"
+            style={{ fontSize: "clamp(2rem, 6vw, 48px)" }}
+          >
+            Every tool. Every layer. One system.
+          </h2>
+          <p className="text-[#52525B] text-lg leading-relaxed">
+            AI, automation, code, content, analytics — integrated into a single operating system that compounds.
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <div ref={sectionRef} style={{ height: "300vh" }}>

@@ -99,7 +99,7 @@ export function HowItWorks() {
   }, { scope: sectionRef });
 
   return (
-    <Section id="how-it-works" className="light-section relative overflow-hidden">
+    <Section id="how-it-works" className="light-section relative overflow-hidden !py-16 md:!py-24">
       <Container as="div">
         <section ref={sectionRef}>
           <div className="mb-12">
@@ -166,7 +166,7 @@ export function HowItWorks() {
           </div>
 
           {/* Terminal demo */}
-          <div className="mt-14 max-w-2xl mx-auto">
+          <div className="mt-14 max-w-4xl mx-auto">
             <TerminalBlock
               lines={TERMINAL_LINES}
               title="lms-deploy"
@@ -178,7 +178,7 @@ export function HowItWorks() {
             <MagneticButton strength={0.25}>
               <Link
                 href="/contact"
-                className="cta-primary group relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-[#7C3AED] to-[#6366F1] text-white font-body font-semibold text-xl rounded-full overflow-hidden transition-all duration-150 hover:shadow-[0_0_60px_rgba(124,58,237,0.3)]"
+                className="cta-primary group relative inline-flex items-center justify-center px-8 py-4 md:px-10 md:py-5 bg-gradient-to-r from-[#7C3AED] to-[#6366F1] text-white font-body font-semibold text-lg md:text-xl rounded-full overflow-hidden transition-all duration-150 hover:shadow-[0_0_60px_rgba(124,58,237,0.3)]"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
                 <span className="relative">Begin Your Build</span>
