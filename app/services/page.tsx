@@ -4,9 +4,9 @@ import { Container } from "@/components/ui/Container";
 import { ServicesHero } from "@/components/services/ServicesHero";
 
 export const metadata: Metadata = {
-  title: "Services — Full-Stack Growth Operations | LMS",
+  title: "Services — AI Marketing, Web Dev & Automation | Southern California",
   description:
-    "Marketing, web development, AI infrastructure, content production, business operations, and AI education — deployed as one integrated system by Linear Marketing Solutions.",
+    "Marketing strategy, web development, AI agents, content production, and business operations for companies in Los Angeles, Inland Empire, Orange County, and San Diego. One integrated system by LMS.",
 };
 
 const SERVICES = [

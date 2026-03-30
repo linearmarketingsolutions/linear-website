@@ -66,8 +66,9 @@ export function WhoWeWorkWith() {
           </ScrollReveal>
           <ScrollReveal direction="up" distance={20} delay={0.5}>
             <p className="text-text-secondary/70 text-lg leading-relaxed max-w-[45ch] mb-8">
-              We work across industries — HVAC, fitness, distribution, professional services,
-              tattoo studios, real estate, and tech. The common thread: business owners who
+              Based in Rancho Cucamonga, we work with businesses across Los Angeles,
+              the Inland Empire, Orange County, and San Diego — HVAC, fitness, distribution,
+              professional services, real estate, and tech. The common thread: owners who
               want systems that run, not projects that stall.
             </p>
           </ScrollReveal>

@@ -67,7 +67,18 @@ export function AboutContent() {
                 </p>
               </div>
             </ScrollReveal>
-            <ScrollReveal direction="right" distance={40} delay={0.2}>
+            <ScrollReveal direction="right" distance={40} delay={0.15}>
+              <div>
+                <p className="font-body text-xs font-medium text-text-muted uppercase tracking-wider mb-2">
+                  Based in
+                </p>
+                <p className="text-text-secondary leading-relaxed">
+                  Rancho Cucamonga, CA — serving Los Angeles, the Inland Empire,
+                  Orange County, San Diego, and remote nationwide.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="right" distance={40} delay={0.25}>
               <div>
                 <p className="font-body text-xs font-medium text-text-muted uppercase tracking-wider mb-2">
                   Focus
@@ -75,7 +86,7 @@ export function AboutContent() {
                 <p className="text-text-secondary leading-relaxed">
                   AI-powered marketing infrastructure, custom development,
                   workflow automation, and business operations for growth-stage
-                  companies.
+                  companies across Southern California.
                 </p>
               </div>
             </ScrollReveal>

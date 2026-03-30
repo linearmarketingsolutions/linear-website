@@ -31,18 +31,18 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "LMS — The AI Growth Engine",
-    template: "%s | LMS",
+    default: "LMS — AI Marketing & Web Development | Southern California",
+    template: "%s | LMS — Southern California",
   },
   description:
-    "One operator. Every capability. No ceiling. AI-powered marketing infrastructure for companies that refuse to move slowly.",
+    "AI-powered marketing, web development, and automation for businesses in Los Angeles, Inland Empire, Orange County, and San Diego. One operator. Every capability. No ceiling.",
   metadataBase: new URL("https://linearmarketingsolutions.com"),
   openGraph: {
-    title: "LMS — The AI Growth Engine",
+    title: "LMS — AI Marketing & Web Development | Southern California",
     description:
-      "One operator. Every capability. No ceiling. AI-powered marketing infrastructure for companies that refuse to move slowly.",
+      "AI-powered marketing, web development, and automation for businesses in Los Angeles, Inland Empire, Orange County, and San Diego. One operator. Every capability.",
     url: "https://linearmarketingsolutions.com",
-    siteName: "LMS",
+    siteName: "Linear Marketing Solutions",
     locale: "en_US",
     type: "website",
     images: [
@@ -50,15 +50,15 @@ export const metadata: Metadata = {
         url: "/images/og-image.webp",
         width: 1200,
         height: 675,
-        alt: "LMS — The AI Growth Engine",
+        alt: "Linear Marketing Solutions — AI-Powered Growth for Southern California Businesses",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "LMS — The AI Growth Engine",
+    title: "LMS — AI Marketing & Web Development | Southern California",
     description:
-      "One operator. Every capability. No ceiling. AI-powered marketing infrastructure for companies that refuse to move slowly.",
+      "AI-powered marketing, web development, and automation for businesses in Los Angeles, Inland Empire, Orange County, and San Diego.",
   },
   robots: {
     index: true,
@@ -68,6 +68,10 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
+  },
+  other: {
+    "geo.region": "US-CA",
+    "geo.placename": "Rancho Cucamonga",
   },
 };
 
@@ -81,6 +85,64 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "Linear Marketing Solutions",
+              alternateName: "LMS",
+              url: "https://linearmarketingsolutions.com",
+              telephone: "+1-928-302-4852",
+              email: "info@linearmarketingsolutions.com",
+              description:
+                "AI-powered marketing infrastructure, web development, automation, and business operations for growth-stage companies across Southern California.",
+              founder: {
+                "@type": "Person",
+                name: "Blake Pederson",
+              },
+              areaServed: [
+                {
+                  "@type": "State",
+                  name: "California",
+                  containsPlace: [
+                    { "@type": "City", name: "Rancho Cucamonga" },
+                    { "@type": "City", name: "Los Angeles" },
+                    { "@type": "City", name: "San Bernardino" },
+                    { "@type": "City", name: "Riverside" },
+                    { "@type": "City", name: "Irvine" },
+                    { "@type": "City", name: "San Diego" },
+                    { "@type": "City", name: "Ontario" },
+                    { "@type": "City", name: "Pasadena" },
+                    { "@type": "City", name: "Temecula" },
+                    { "@type": "City", name: "Anaheim" },
+                  ],
+                },
+              ],
+              serviceType: [
+                "AI Marketing",
+                "Web Development",
+                "AI Agent Development",
+                "Workflow Automation",
+                "SEO",
+                "Content Production",
+                "CRM Integration",
+                "Business Operations",
+              ],
+              knowsAbout: [
+                "Artificial Intelligence",
+                "Marketing Automation",
+                "Next.js Development",
+                "Search Engine Optimization",
+                "AI Infrastructure",
+              ],
+              sameAs: [],
+            }),
+          }}
+        />
+      </head>
       <body>
         <SmoothScroll>
           <CustomCursor />

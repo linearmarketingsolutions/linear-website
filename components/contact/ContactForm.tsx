@@ -12,6 +12,28 @@ const INPUT_CLASS =
 const LABEL_CLASS =
   "block font-body text-xs font-medium text-text-secondary uppercase tracking-wider mb-1.5";
 
+const SELECT_CLASS =
+  `${INPUT_CLASS} appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2371717a%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_12px_center] bg-no-repeat pr-10`;
+
+const SERVICE_OPTIONS = [
+  "Growth Engine (Marketing Strategy)",
+  "Content Pipeline",
+  "Web & App Development",
+  "AI Infrastructure",
+  "Business Operations",
+  "AI Education & Training",
+  "Multiple / Not sure yet",
+];
+
+const BUDGET_OPTIONS = [
+  "Under $2,500/mo",
+  "$2,500 – $5,000/mo",
+  "$5,000 – $10,000/mo",
+  "$10,000+/mo",
+  "Project-based (one-time)",
+  "Let's discuss",
+];
+
 function SuccessMessage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
@@ -22,15 +44,15 @@ function SuccessMessage() {
       gsap.fromTo(
         containerRef.current,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.3, ease: "power2.inOut" }
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.inOut" },
       );
       gsap.fromTo(
         iconRef.current,
         { scale: 0 },
-        { scale: 1, duration: 0.6, delay: 0.1, ease: "back.out(2.5)" }
+        { scale: 1, duration: 0.6, delay: 0.1, ease: "back.out(2.5)" },
       );
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   return (
@@ -44,7 +66,17 @@ function SuccessMessage() {
         style={{ transform: "scale(0)" }}
         className="flex items-center justify-center w-16 h-16 rounded-full bg-accent/15 mx-auto mb-5"
       >
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-accent">
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-accent"
+        >
           <polyline points="20 6 9 17 4 12" />
         </svg>
       </div>
@@ -68,11 +100,17 @@ export function ContactForm() {
     setErrorMsg("");
 
     const form = e.currentTarget;
+    const fd = form.elements;
     const data = {
-      name: (form.elements.namedItem("name") as HTMLInputElement).value,
-      email: (form.elements.namedItem("email") as HTMLInputElement).value,
-      company: (form.elements.namedItem("company") as HTMLInputElement).value,
-      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      name: (fd.namedItem("name") as HTMLInputElement).value,
+      email: (fd.namedItem("email") as HTMLInputElement).value,
+      phone: (fd.namedItem("phone") as HTMLInputElement).value || undefined,
+      company: (fd.namedItem("company") as HTMLInputElement).value || undefined,
+      website: (fd.namedItem("website") as HTMLInputElement).value || undefined,
+      service: (fd.namedItem("service") as HTMLSelectElement).value || undefined,
+      budget: (fd.namedItem("budget") as HTMLSelectElement).value || undefined,
+      referral: (fd.namedItem("referral") as HTMLInputElement).value || undefined,
+      message: (fd.namedItem("message") as HTMLTextAreaElement).value,
     };
 
     try {
@@ -91,7 +129,9 @@ export function ContactForm() {
       form.reset();
     } catch (err) {
       setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
+      setErrorMsg(
+        err instanceof Error ? err.message : "Something went wrong.",
+      );
     }
   }
 
@@ -100,50 +140,134 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      {/* Row 1 — Name + Email */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="name" className={LABEL_CLASS}>
+            Name *
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            placeholder="Your name"
+            className={INPUT_CLASS}
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className={LABEL_CLASS}>
+            Email *
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            placeholder="you@company.com"
+            className={INPUT_CLASS}
+          />
+        </div>
+      </div>
+
+      {/* Row 2 — Phone + Company */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="phone" className={LABEL_CLASS}>
+            Phone
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="(555) 555-5555"
+            className={INPUT_CLASS}
+          />
+        </div>
+        <div>
+          <label htmlFor="company" className={LABEL_CLASS}>
+            Company
+          </label>
+          <input
+            id="company"
+            name="company"
+            type="text"
+            placeholder="Your company"
+            className={INPUT_CLASS}
+          />
+        </div>
+      </div>
+
+      {/* Website */}
       <div>
-        <label htmlFor="name" className={LABEL_CLASS}>Name</label>
+        <label htmlFor="website" className={LABEL_CLASS}>
+          Website
+        </label>
         <input
-          id="name"
-          name="name"
+          id="website"
+          name="website"
+          type="url"
+          placeholder="https://yourcompany.com"
+          className={INPUT_CLASS}
+        />
+      </div>
+
+      {/* Row 3 — Service + Budget */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="service" className={LABEL_CLASS}>
+            What do you need?
+          </label>
+          <select id="service" name="service" className={SELECT_CLASS}>
+            <option value="">Select a service</option>
+            {SERVICE_OPTIONS.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="budget" className={LABEL_CLASS}>
+            Budget range
+          </label>
+          <select id="budget" name="budget" className={SELECT_CLASS}>
+            <option value="">Select a range</option>
+            {BUDGET_OPTIONS.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Referral */}
+      <div>
+        <label htmlFor="referral" className={LABEL_CLASS}>
+          How did you find us?
+        </label>
+        <input
+          id="referral"
+          name="referral"
           type="text"
-          required
-          placeholder="Your name"
+          placeholder="Google, referral, social media..."
           className={INPUT_CLASS}
         />
       </div>
 
+      {/* Message */}
       <div>
-        <label htmlFor="email" className={LABEL_CLASS}>Email</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          placeholder="you@company.com"
-          className={INPUT_CLASS}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="company" className={LABEL_CLASS}>Company</label>
-        <input
-          id="company"
-          name="company"
-          type="text"
-          placeholder="Your company (optional)"
-          className={INPUT_CLASS}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="message" className={LABEL_CLASS}>Message</label>
+        <label htmlFor="message" className={LABEL_CLASS}>
+          Tell us about your project *
+        </label>
         <textarea
           id="message"
           name="message"
           required
           rows={5}
-          placeholder="Tell us about your business and what you're looking to build."
+          placeholder="What are you building? What problems are you trying to solve? What does success look like?"
           className={`${INPUT_CLASS} resize-y`}
         />
       </div>

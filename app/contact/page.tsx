@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ContactContent } from "@/components/contact/ContactContent";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact — AI Marketing Agency | Rancho Cucamonga, CA",
   description:
-    "Start your build. One call to map your business, identify gaps, and deploy an AI-powered growth system.",
+    "Get in touch with Linear Marketing Solutions in Rancho Cucamonga. AI-powered marketing, web development, and automation for businesses across Southern California. Book a free discovery call.",
 };
 
 export default function Contact() {

@@ -109,8 +109,9 @@ export function Hero() {
 
             <div className="mt-10 ml-0 lg:ml-[8vw] max-w-[500px]">
               <p data-hero-sub className="text-white/60 font-body text-xl leading-relaxed">
-                Marketing, development, automation, and intelligence —
-                deployed as a single integrated system. Infrastructure that compounds.
+                AI-powered marketing, development, automation, and intelligence
+                for businesses across Southern California — deployed as a single
+                integrated system. Infrastructure that compounds.
               </p>
 
               <div className="flex flex-wrap gap-4 mt-8">
