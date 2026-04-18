@@ -10,6 +10,7 @@
  * follow-up job for the art pipeline.
  */
 
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -24,6 +25,7 @@ type Chapter = {
   outcome: string;
   metric: { value: string; label: string };
   palette: { from: string; to: string };
+  art: string;
 };
 
 const CHAPTERS: Chapter[] = [
@@ -35,6 +37,7 @@ const CHAPTERS: Chapter[] = [
       "Redesigned the entire surface, migrated the question bank, shipped adaptive scoring — in six weeks.",
     metric: { value: "+210%", label: "session length" },
     palette: { from: "#1a0f1d", to: "#2a1840" },
+    art: "/v5/art/chapter-01.png",
   },
   {
     n: "CHAPTER 02",
@@ -44,6 +47,7 @@ const CHAPTERS: Chapter[] = [
       "60+ SKU catalog, dealer intel engine, automated distributor outreach — deployed as a single operator.",
     metric: { value: "$3M+", label: "revenue deployed" },
     palette: { from: "#100a1a", to: "#1f1238" },
+    art: "/v5/art/chapter-02.png",
   },
   {
     n: "CHAPTER 03",
@@ -53,6 +57,7 @@ const CHAPTERS: Chapter[] = [
       "Store build, AI SEO stack, distributor research, and operational runbook — before the paddle market peaked.",
     metric: { value: "4 sessions", label: "zero to launch" },
     palette: { from: "#12091a", to: "#24143d" },
+    art: "/v5/art/chapter-03.png",
   },
 ];
 
@@ -145,6 +150,18 @@ export function CaseStudyChapter() {
             background: `linear-gradient(180deg, ${chapter.palette.from}, ${chapter.palette.to})`,
           }}
         >
+          {/* Generated atmospheric art */}
+          <div className="absolute inset-0 pointer-events-none">
+            <Image
+              src={chapter.art}
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover"
+              style={{ opacity: 0.55, mixBlendMode: "screen" }}
+              priority={false}
+            />
+          </div>
           <div
             className="absolute inset-0 pointer-events-none opacity-40"
             style={{
