@@ -77,19 +77,34 @@ export function Navbar() {
         role="banner"
         className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${
           scrolled
-            ? "bg-white/80 backdrop-blur-xl border-b border-black/[0.06] shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
-            : isHome
-              ? "bg-transparent"
-              : "bg-transparent"
+            ? isHome
+              ? "bg-[#0C0914]/75 backdrop-blur-xl border-b border-white/[0.06]"
+              : "bg-white/80 backdrop-blur-xl border-b border-black/[0.06] shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+            : "bg-transparent"
         }`}
       >
         <div className="flex items-center justify-between px-8 md:px-12 lg:px-20 xl:px-32 h-20 md:h-24">
           {/* Logo — LMS wordmark (mark lives in favicon, OG, app icon, social) */}
           <Link href="/" className="flex items-center group" aria-label="Linear Marketing Solutions — Home">
-            <span className={`font-display font-black text-4xl lg:text-5xl tracking-[-0.04em] leading-none transition-colors duration-300 ${
-              scrolled ? "text-[#0F0A1F]" : isHome ? "text-white" : "text-[#0F0A1F]"
-            }`}>
-              <span className="text-[#7C3AED]">L</span>MS
+            <span
+              className={`text-4xl lg:text-5xl leading-none transition-colors duration-300 ${
+                scrolled
+                  ? isHome
+                    ? "text-[#F5F2EE]"
+                    : "text-[#0F0A1F]"
+                  : isHome
+                    ? "text-white"
+                    : "text-[#0F0A1F]"
+              }`}
+              style={{
+                fontFamily: "var(--font-fraunces), ui-serif, Georgia, serif",
+                fontWeight: 500,
+                letterSpacing: "-0.03em",
+                fontVariationSettings: '"SOFT" 80, "WONK" 0, "opsz" 144',
+              }}
+            >
+              <span style={{ color: "#7C3AED", fontStyle: "italic", fontVariationSettings: '"SOFT" 100, "WONK" 1, "opsz" 144' }}>L</span>
+              ms
             </span>
           </Link>
 
@@ -105,11 +120,11 @@ export function Navbar() {
                 href="/services"
                 className={`relative font-body text-base font-medium tracking-wide transition-colors duration-300 py-2 inline-flex items-center gap-1.5 ${
                   isServicesActive
-                    ? "text-[#7C3AED]"
-                    : scrolled
-                      ? "text-[#52525B] hover:text-[#18181B]"
-                      : isHome
-                        ? "text-white/70 hover:text-white"
+                    ? "text-[#C89EFE]"
+                    : isHome
+                      ? "text-white/70 hover:text-white"
+                      : scrolled
+                        ? "text-[#52525B] hover:text-[#18181B]"
                         : "text-[#52525B] hover:text-[#18181B]"
                 }`}
               >
@@ -179,11 +194,13 @@ export function Navbar() {
                   href={href}
                   className={`relative font-body text-base font-medium tracking-wide transition-colors duration-300 py-2 ${
                     isActive
-                      ? "text-[#7C3AED]"
-                      : scrolled
-                        ? "text-[#52525B] hover:text-[#18181B]"
-                        : isHome
-                          ? "text-white/70 hover:text-white"
+                      ? isHome
+                        ? "text-[#C89EFE]"
+                        : "text-[#7C3AED]"
+                      : isHome
+                        ? "text-white/70 hover:text-white"
+                        : scrolled
+                          ? "text-[#52525B] hover:text-[#18181B]"
                           : "text-[#52525B] hover:text-[#18181B]"
                   }`}
                 >
@@ -196,9 +213,28 @@ export function Navbar() {
             })}
             <Link
               href="/contact"
-              className="font-body text-base font-semibold text-white bg-gradient-to-r from-[#7C3AED] to-[#6366F1] px-7 py-3 rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(124,58,237,0.35)]"
+              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full border transition-all duration-300 ${
+                isHome
+                  ? "border-white/15 text-[#F5F2EE] hover:border-[#C89EFE]/60 hover:bg-white/[0.03]"
+                  : "border-black/10 text-[#18181B] hover:border-[#7C3AED]/50 hover:bg-[#7C3AED]/[0.04]"
+              }`}
+              style={{
+                fontFamily: "var(--font-jetbrains), ui-monospace, monospace",
+                fontSize: "12px",
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+              }}
             >
-              Start a project
+              <span
+                aria-hidden
+                style={{
+                  color: isHome ? "#C89EFE" : "#7C3AED",
+                  opacity: 0.8,
+                }}
+              >
+                ›
+              </span>
+              Deploy
             </Link>
           </nav>
 
