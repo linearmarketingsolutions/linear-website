@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import { PageShell } from "@/components/ui/PageShell";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { CommandPalette } from "@/components/v6/CommandPalette";
 
 export const metadata: Metadata = {
   title: {
@@ -119,6 +120,7 @@ export default function RootLayout({
       <body>
         <SmoothScroll>
           <CustomCursor />
+          <CommandPalette />
           <PageShell>{children}</PageShell>
         </SmoothScroll>
       </body>

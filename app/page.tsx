@@ -1,41 +1,23 @@
-import Image from "next/image";
-import { Capabilities } from "@/components/home/Capabilities";
-import { DepthReveal } from "@/components/home/DepthReveal";
-import { FinalCTA } from "@/components/home/FinalCTA";
-import { Hero } from "@/components/home/Hero";
-import { HowItWorks } from "@/components/home/HowItWorks";
-import { MarqueeStrip } from "@/components/home/MarqueeStrip";
-import { Repositioning } from "@/components/home/Repositioning";
-import { Reviews } from "@/components/home/Reviews";
-import { SystemLayersSection } from "@/components/home/SystemLayersSection";
-import { WhoWeWorkWith } from "@/components/home/WhoWeWorkWith";
+import { CapabilityBento } from "@/components/v6/CapabilityBento";
+import { CoverageMap } from "@/components/v6/CoverageMap";
+import { DirectoryList } from "@/components/v6/DirectoryList";
+import { EarmarkBar } from "@/components/v6/EarmarkBar";
+import { FinalCTAV6 } from "@/components/v6/FinalCTAV6";
+import { HeroV6 } from "@/components/v6/HeroV6";
+import { ImpactSpotlight } from "@/components/v6/ImpactSpotlight";
+import { SystemLayersV6 } from "@/components/v6/SystemLayersV6";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <MarqueeStrip />
-      <Repositioning />
-      <DepthReveal />
-      <SystemLayersSection />
-      <Capabilities />
-
-      {/* Section divider — AI infrastructure visual */}
-      <div className="relative w-full h-[30vh] md:h-[40vh] overflow-hidden">
-        <Image
-          src="/images/ai-infrastructure-bg.png"
-          alt=""
-          fill
-          className="object-cover"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA] via-transparent to-[#FAFAFA]" />
-      </div>
-
-      <HowItWorks />
-      <Reviews />
-      <WhoWeWorkWith />
-      <FinalCTA />
+      <HeroV6 />
+      <EarmarkBar />
+      <CapabilityBento />
+      <SystemLayersV6 />
+      <DirectoryList />
+      <CoverageMap />
+      <ImpactSpotlight />
+      <FinalCTAV6 />
     </>
   );
 }

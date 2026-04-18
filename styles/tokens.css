@@ -139,3 +139,183 @@
   background: linear-gradient(135deg, #7C3AED, #6366F1);
   color: #FFFFFF;
 }
+
+/* ── v6 PALANTIR-CLASS SECTIONS ─────────────────────────────
+   Intelligence-infrastructure aesthetic. Geist + LMS purple.
+   Opt-in via .v6-dark, coexists with v4 and v5 tokens.
+*/
+
+.v6-dark {
+  --color-bg: #0F0B14;
+  --color-surface-1: #17121F;
+  --color-surface-2: #1E1827;
+  --color-surface-3: #261F33;
+  --color-border: rgba(245, 242, 238, 0.08);
+  --color-border-accent: rgba(124, 58, 237, 0.32);
+  --color-text-primary: #FAFAFA;
+  --color-text-secondary: rgba(250, 250, 250, 0.66);
+  --color-text-muted: rgba(250, 250, 250, 0.38);
+  --color-accent: #7C3AED;
+  --color-accent-secondary: #A78BFA;
+  --color-accent-hot: #C4B5FD;
+  --color-accent-dim: rgba(124, 58, 237, 0.14);
+
+  --v6-bg: #0F0B14;
+  --v6-fg: #FAFAFA;
+  --v6-fg-2: rgba(250, 250, 250, 0.66);
+  --v6-fg-3: rgba(250, 250, 250, 0.38);
+  --v6-accent: #7C3AED;
+  --v6-accent-soft: #A78BFA;
+  --v6-accent-hot: #C4B5FD;
+  --v6-border: rgba(245, 242, 238, 0.08);
+  --v6-border-hot: rgba(124, 58, 237, 0.32);
+
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+}
+
+/* v6 ease + timing — Palantir's `.15s cubic-bezier(.645,.045,.355,1)` snap */
+.v6-dark, .v6-paper {
+  --ease-v6-snap: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-v6-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-v6-snap: 150ms;
+  --dur-v6-reveal: 400ms;
+}
+
+.v6-paper {
+  --color-bg: #FAFAFA;
+  --color-text-primary: #0F0B14;
+  --color-text-secondary: rgba(15, 11, 20, 0.62);
+  --color-text-muted: rgba(15, 11, 20, 0.38);
+  --color-border: rgba(15, 11, 20, 0.08);
+  --color-accent: #7C3AED;
+
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+/* v6 earmark — the Palantir-signature uppercase tracking label */
+.v6-earmark {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--v6-fg-3);
+}
+.v6-earmark-hot {
+  color: var(--v6-accent-soft);
+}
+
+/* v6 display — tight Geist at scale */
+.v6-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  line-height: 0.98;
+}
+.v6-display-tight {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 0.92;
+}
+
+.v6-body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--v6-fg-2);
+}
+
+.v6-mono {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+  font-feature-settings: "ss01" off;
+}
+
+/* v6 reveal — 400ms power2, 8px travel, both fill, stagger by CSS var */
+@keyframes v6-reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.v6-reveal {
+  animation: v6-reveal var(--dur-v6-reveal) var(--ease-v6-out) both;
+  animation-delay: calc(var(--v6-index, 0) * 60ms + 120ms);
+}
+
+/* v6 status dot — live ops pulse */
+@keyframes v6-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.6; transform: scale(1.14); }
+}
+.v6-pulse {
+  animation: v6-pulse 1.6s ease-in-out infinite;
+}
+
+/* v6 barber pole — marching accent for active indicators */
+@keyframes v6-march {
+  from { background-position: 0 0; }
+  to   { background-position: 12px 0; }
+}
+.v6-march {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--v6-accent) 0 3px,
+    transparent 3px 6px
+  );
+  animation: v6-march 0.9s linear infinite;
+}
+
+/* v6 hairline — Palantir's thin purple rule */
+.v6-hairline {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--v6-border-hot) 8%,
+    var(--v6-border-hot) 92%,
+    transparent
+  );
+}
+
+/* v6 grid background — 32px operator grid */
+.v6-grid-bg {
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* v6 scanline — imperceptibly alive horizontal sweep, 12s loop */
+@keyframes v6-scan {
+  from { transform: translateY(-100%); opacity: 0; }
+  10%  { opacity: 0.55; }
+  90%  { opacity: 0.55; }
+  to   { transform: translateY(100vh); opacity: 0; }
+}
+.v6-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(124, 58, 237, 0.25),
+    transparent
+  );
+  animation: v6-scan 12s linear infinite;
+  pointer-events: none;
+}
+
+/* v6 snap hover — the Palantir 150ms transform snap */
+.v6-snap {
+  transition:
+    transform var(--dur-v6-snap) var(--ease-v6-snap),
+    border-color var(--dur-v6-snap) var(--ease-v6-snap),
+    color var(--dur-v6-snap) var(--ease-v6-snap);
+}
+.v6-snap:hover { transform: translateY(-2px); }
