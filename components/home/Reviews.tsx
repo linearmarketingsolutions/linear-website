@@ -11,33 +11,33 @@ gsap.registerPlugin(ScrollTrigger);
 const PROOF_POINTS = [
   {
     headline: "Full-stack client systems",
-    description: "Websites, CRMs, dashboards, automation pipelines, and AI integrations — deployed end-to-end for clients across HVAC, fitness, tattoo, distribution, and professional services.",
+    description: "Websites, CRMs, dashboards, automation pipelines, and AI integrations — deployed end-to-end across distribution, fiber-optic manufacturing, fitness, tattoo, exam-prep education, and e-commerce.",
     metric: "10+",
     metricLabel: "Clients served",
   },
   {
-    headline: "AI-native operations",
-    description: "Every client engagement runs on AI infrastructure. Custom agents handle content production, lead routing, analytics, and reporting — eliminating manual overhead.",
-    metric: "1",
-    metricLabel: "Operator",
-  },
-  {
-    headline: "OpenClaw deployment",
-    description: "We set up and configure OpenClaw — the open-source AI agent platform — for businesses. One agent, every channel. WhatsApp, Slack, Gmail, iMessage. Your data stays yours.",
-    metric: "∞",
-    metricLabel: "Channels connected",
+    headline: "AI agent operations",
+    description: "Custom agents run content production, lead enrichment, reporting, and inbox triage on every engagement. Daily autonomous loops — not manual labor at scale.",
+    metric: "Daily",
+    metricLabel: "Autonomous runs",
   },
   {
     headline: "Production-grade websites",
-    description: "Custom-coded sites with 3D visuals, GSAP scroll animations, and performance scores above 90. No templates. No page builders. Hard-coded infrastructure.",
+    description: "Custom-coded Next.js sites with hand-built 3D, GSAP scroll animations, and Lighthouse scores above 90. No drag-drop builders. No template reskins. Real infrastructure.",
     metric: "90+",
-    metricLabel: "Lighthouse scores",
+    metricLabel: "Lighthouse score",
   },
   {
-    headline: "CRM & automation systems",
-    description: "GoHighLevel, HubSpot, and custom-built CRM pipelines with automated follow-ups, lead scoring, and real-time dashboards. Sales teams use what we build every day.",
-    metric: "6+",
-    metricLabel: "Systems deployed",
+    headline: "CRM & sales pipelines",
+    description: "GoHighLevel, HubSpot, Airtable, and custom-built sales pipelines — lead routing, follow-up cadences, real-time dashboards. Sales teams use what we ship every day.",
+    metric: "4",
+    metricLabel: "CRM platforms wired",
+  },
+  {
+    headline: "Research-grade reports",
+    description: "Industry intelligence, funding-source mapping, distributor audits, and product spec systems. Multi-page deliverables that stand up under client review.",
+    metric: "200+",
+    metricLabel: "Sources mapped",
   },
 ];
 

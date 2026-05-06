@@ -137,6 +137,7 @@ export function SystemLayersSection() {
   const pinRef = useRef<HTMLDivElement>(null);
   const completionRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef({ value: 0 });
+  const mouseRef = useRef({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -145,6 +146,28 @@ export function SystemLayersSection() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
+
+  // Cursor → normalized [-1, 1] tilt input for the 3D scene
+  useEffect(() => {
+    if (isMobile) return;
+    const el = pinRef.current;
+    if (!el) return;
+    const onMove = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      mouseRef.current.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+      mouseRef.current.y = ((e.clientY - r.top) / r.height) * 2 - 1;
+    };
+    const onLeave = () => {
+      mouseRef.current.x = 0;
+      mouseRef.current.y = 0;
+    };
+    el.addEventListener("pointermove", onMove);
+    el.addEventListener("pointerleave", onLeave);
+    return () => {
+      el.removeEventListener("pointermove", onMove);
+      el.removeEventListener("pointerleave", onLeave);
+    };
+  }, [isMobile]);
 
   // GSAP ScrollTrigger → progress bridge
   useGSAP(() => {
@@ -230,7 +253,7 @@ export function SystemLayersSection() {
 
         {/* R3F Canvas — centered */}
         <Suspense fallback={null}>
-          <SystemLayers progressRef={progressRef} />
+          <SystemLayers progressRef={progressRef} mouseRef={mouseRef} />
         </Suspense>
 
         {/* Completion text — fades in at end of scroll */}
