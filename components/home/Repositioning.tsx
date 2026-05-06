@@ -9,16 +9,19 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const OLD_WAY = [
-  "Teams of 12 doing the work of one system.",
-  "Agencies billing hours instead of shipping outcomes.",
-  "Freelancers who see one piece, never the whole machine.",
-];
-
-const LMS_WAY = [
-  "One integrated operator. Strategy through deployment.",
-  "AI at every layer — content, automation, research, code.",
-  "Systems built once, compounding indefinitely.",
+const PRINCIPLES = [
+  {
+    title: "One operator, every layer",
+    body: "Strategy, content, design, code, automation, and analytics handled by a single accountable person. Not a 12-person agency. Not three freelancers stitched together.",
+  },
+  {
+    title: "AI at every step",
+    body: "Custom agents and pipelines do the work that used to need headcount — research, content production, lead routing, reporting. Built into the engagement, not bolted on.",
+  },
+  {
+    title: "Systems, not projects",
+    body: "We ship infrastructure that keeps running after we hand it off. Compounding, not one-shot deliverables you re-buy every quarter.",
+  },
 ];
 
 export function Repositioning() {
@@ -27,37 +30,11 @@ export function Repositioning() {
   useGSAP(() => {
     if (!sectionRef.current) return;
 
-    gsap.from("[data-divider]", {
-      scaleY: 0,
-      transformOrigin: "top",
-      duration: 1.2,
-      ease: "power3.inOut",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 60%",
-        once: true,
-      },
-    });
-
-    gsap.from("[data-old-item]", {
-      x: -40,
+    gsap.from("[data-principle]", {
+      y: 50,
       opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 65%",
-        once: true,
-      },
-    });
-
-    gsap.from("[data-new-item]", {
-      x: 40,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      delay: 0.2,
+      duration: 0.8,
+      stagger: 0.15,
       ease: "power3.out",
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -73,7 +50,10 @@ export function Repositioning() {
       id="repositioning"
       className="light-section relative py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32"
     >
-      <div className="mb-20">
+      <div className="mb-20 max-w-[900px]">
+        <span className="font-mono text-[#7C3AED] text-xs tracking-[0.3em] uppercase block mb-4">
+          How we work
+        </span>
         <SplitText
           as="h2"
           mode="words"
@@ -81,61 +61,34 @@ export function Repositioning() {
           className="font-display font-normal text-text-primary leading-[0.95] tracking-[-0.03em]"
           {...{ style: { fontSize: "clamp(3rem, 7vw, 96px)" } } as React.HTMLAttributes<HTMLElement>}
         >
-          The old model is dead.
+          Marketing built like infrastructure.
         </SplitText>
-        <div className="mt-6 max-w-[600px]">
+        <div className="mt-6 max-w-[640px]">
           <TextRevealOnScroll as="p" className="text-lg md:text-2xl leading-relaxed">
-            The marketing industry runs on bloat. Layers of people doing what one system could do better. We built the replacement.
+            Every system we ship runs on AI, integrates with the next one, and keeps working without us. That&apos;s the whole offer.
           </TextRevealOnScroll>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1fr] gap-0 lg:gap-16">
-        {/* Old Way */}
-        <div className="py-8">
-          <div className="flex items-center gap-3 mb-8">
-            <span className="w-3 h-3 rounded-full bg-red-500/40" />
-            <span className="font-mono text-text-muted text-xs tracking-[0.2em] uppercase">
-              How it was
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
+        {PRINCIPLES.map((principle, i) => (
+          <div
+            key={principle.title}
+            data-principle
+            className="relative pl-7 border-l border-[#7C3AED]/15"
+          >
+            <span className="absolute left-0 top-1 w-3 h-3 -translate-x-[6.5px] rounded-full bg-[#7C3AED] shadow-[0_0_18px_rgba(124,58,237,0.45)]" />
+            <span className="font-mono text-[#7C3AED]/70 text-xs tracking-[0.2em] uppercase block mb-3">
+              0{i + 1}
             </span>
+            <h3 className="font-display font-normal text-text-primary text-2xl md:text-3xl leading-tight tracking-tight mb-3">
+              {principle.title}
+            </h3>
+            <p className="text-text-secondary/80 text-base md:text-lg leading-relaxed">
+              {principle.body}
+            </p>
           </div>
-          <div className="flex flex-col gap-6">
-            {OLD_WAY.map((item, i) => (
-              <p
-                key={i}
-                data-old-item
-                className="text-text-secondary/60 text-lg md:text-2xl lg:text-3xl leading-relaxed font-body"
-                style={{ textDecoration: "line-through", textDecorationColor: "rgba(239,68,68,0.3)" }}
-              >
-                {item}
-              </p>
-            ))}
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div data-divider className="hidden lg:block bg-gradient-to-b from-transparent via-[#7C3AED]/40 to-transparent" />
-
-        {/* LMS Way */}
-        <div className="py-8">
-          <div className="flex items-center gap-3 mb-8">
-            <span className="w-3 h-3 rounded-full bg-[#7C3AED] shadow-[0_0_12px_rgba(124,58,237,0.5)]" />
-            <span className="font-mono text-[#7C3AED] text-xs tracking-[0.2em] uppercase">
-              How it is
-            </span>
-          </div>
-          <div className="flex flex-col gap-6">
-            {LMS_WAY.map((item, i) => (
-              <p
-                key={i}
-                data-new-item
-                className="text-text-primary text-lg md:text-2xl lg:text-3xl leading-relaxed font-body"
-              >
-                {item}
-              </p>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

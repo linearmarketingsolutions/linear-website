@@ -2,6 +2,8 @@
 
 import { SplitText } from "@/components/ui/SplitText";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { AuroraBackground } from "@/components/ui/AuroraBackground";
+import { Spotlight } from "@/components/ui/Spotlight";
 import { CountUp } from "./CountUp";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -16,15 +18,20 @@ const ParticleField = dynamic(
   () => import("@/components/three/ParticleField").then((m) => m.ParticleField),
   { ssr: false }
 );
-const IsometricScene = dynamic(
-  () => import("@/components/three/IsometricScene").then((m) => m.IsometricScene),
+const CobeGlobe = dynamic(
+  () => import("@/components/ui/CobeGlobe").then((m) => m.CobeGlobe),
   { ssr: false }
 );
 
+/**
+ * Hero stats — verified-only metrics. The earlier "$3M Revenue / 160K Systems /
+ * 50 Operations" numbers were fabrications stripped 2026-05-05. These three
+ * are grounded in the actual client roster.
+ */
 const STATS = [
-  { end: 3, prefix: "$", suffix: "M+", label: "Revenue Deployed" },
-  { end: 160, suffix: "K+", label: "Systems Online" },
-  { end: 50, suffix: "+", label: "Operations Active" },
+  { end: 10, suffix: "+", label: "Clients Served" },
+  { end: 7, label: "Verticals Deployed" },
+  { end: 1, label: "Operator" },
 ];
 
 export function Hero() {
@@ -59,24 +66,16 @@ export function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="dark-section relative h-[100dvh] overflow-hidden"
+      className="dark-section relative h-[100dvh] overflow-hidden bg-zinc-950"
     >
-      {/* 3D Particle field */}
-      <ParticleField className="z-[1] opacity-50" />
+      {/* Layer 1 — atmospheric aurora drift */}
+      <AuroraBackground className="z-0" />
 
-      {/* Gradient mesh background */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: `
-              radial-gradient(ellipse 80% 60% at 20% 40%, rgba(124, 58, 237, 0.3), transparent),
-              radial-gradient(ellipse 60% 80% at 80% 60%, rgba(99, 102, 241, 0.2), transparent),
-              radial-gradient(ellipse 40% 40% at 50% 80%, rgba(139, 92, 246, 0.15), transparent)
-            `,
-          }}
-        />
-      </div>
+      {/* Layer 2 — cursor-tracking spotlight */}
+      <Spotlight className="z-[1]" color="rgba(167, 139, 250, 0.22)" size={700} />
+
+      {/* Layer 3 — subtle particle field for depth */}
+      <ParticleField className="z-[2] opacity-40" />
 
       {/* Content */}
       <div data-hero-content className="relative z-10 h-full flex flex-col justify-end pb-16 lg:pb-24 px-5 md:px-12 lg:px-20 xl:px-32">
@@ -109,9 +108,9 @@ export function Hero() {
 
             <div className="mt-10 ml-0 lg:ml-[8vw] max-w-[500px]">
               <p data-hero-sub className="text-white/60 font-body text-xl leading-relaxed">
-                AI-powered marketing, development, automation, and intelligence
-                for businesses across Southern California — deployed as a single
-                integrated system. Infrastructure that compounds.
+                AI-native marketing, development, automation, and intelligence
+                for businesses across Southern California — built and run by one
+                operator using infrastructure that compounds.
               </p>
 
               <div className="flex flex-wrap gap-4 mt-8">
@@ -139,9 +138,17 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right — Isometric 3D Scene */}
-          <div className="hidden lg:block w-[500px] h-[500px] -mb-8">
-            <IsometricScene className="w-full h-full" />
+          {/* Right — Cobe globe pinned to SoCal client regions */}
+          <div className="hidden lg:flex items-center justify-center w-[500px] h-[500px] -mb-8 relative">
+            <CobeGlobe size={500} />
+            {/* Soft purple wash bleeding from globe */}
+            <div
+              className="absolute inset-0 -z-10 blur-3xl opacity-40 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(circle at 50% 50%, rgba(124,58,237,0.55) 0%, transparent 70%)",
+              }}
+            />
           </div>
         </div>
 
@@ -150,7 +157,7 @@ export function Hero() {
           {STATS.map((stat) => (
             <div key={stat.label} data-stat className="flex flex-col">
               <span className="font-display font-normal bg-gradient-to-r from-[#8B5CF6] to-[#A78BFA] bg-clip-text text-transparent text-2xl md:text-4xl tracking-tight">
-                <CountUp end={stat.end} prefix={stat.prefix} suffix={stat.suffix} duration={1800} />
+                <CountUp end={stat.end} suffix={stat.suffix} duration={1800} />
               </span>
               <span className="font-body text-white/40 text-xs tracking-wider uppercase mt-1">
                 {stat.label}

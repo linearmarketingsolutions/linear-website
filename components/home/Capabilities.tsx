@@ -46,9 +46,9 @@ const CAPABILITIES = [
     accent: false,
   },
   {
-    title: "AI Education",
-    href: "/services/ai-education",
-    description: "Team training, tool onboarding, operational integration.",
+    title: "Research & Intelligence",
+    href: "/services/research-intelligence",
+    description: "Industry reports, funding-source mapping, distributor audits, product spec systems.",
     span: "col-span-1 md:col-span-2 row-span-1",
     accent: false,
   },
