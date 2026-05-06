@@ -11,16 +11,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 const PRINCIPLES = [
   {
-    title: "One operator, every layer",
-    body: "Strategy, content, design, code, automation, and analytics handled by a single accountable person. Not a 12-person agency. Not three freelancers stitched together.",
+    title: "End-to-end delivery",
+    body: "Strategy, content, design, code, automation, and analytics handled inside one engagement. No handoff seams between an agency, three freelancers, and an internal hire.",
   },
   {
     title: "AI at every step",
-    body: "Custom agents and pipelines do the work that used to need headcount — research, content production, lead routing, reporting. Built into the engagement, not bolted on.",
+    body: "Custom agents and pipelines do the work that used to need headcount — research, content production, lead routing, reporting. Built into the engagement, not bolted on after.",
   },
   {
     title: "Systems, not projects",
-    body: "We ship infrastructure that keeps running after we hand it off. Compounding, not one-shot deliverables you re-buy every quarter.",
+    body: "Every deliverable is infrastructure that keeps running after handoff. Compounding, not one-shot work that gets re-bought every quarter.",
   },
 ];
 
@@ -47,12 +47,12 @@ export function Repositioning() {
   return (
     <section
       ref={sectionRef}
-      id="repositioning"
+      id="thesis"
       className="light-section relative py-32 md:py-48 px-6 md:px-12 lg:px-20 xl:px-32"
     >
       <div className="mb-20 max-w-[900px]">
         <span className="font-mono text-[#7C3AED] text-xs tracking-[0.3em] uppercase block mb-4">
-          How we work
+          Our thesis
         </span>
         <SplitText
           as="h2"

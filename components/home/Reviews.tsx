@@ -16,10 +16,10 @@ const PROOF_POINTS = [
     metricLabel: "Clients served",
   },
   {
-    headline: "AI-native operations",
-    description: "Every engagement runs on AI infrastructure. Custom agents handle content production, lead routing, analytics, and reporting — replacing the headcount that used to do it manually.",
-    metric: "1",
-    metricLabel: "Operator",
+    headline: "AI agent operations",
+    description: "Custom agents run content production, lead enrichment, reporting, and inbox triage on every engagement. Daily autonomous loops — not manual labor at scale.",
+    metric: "Daily",
+    metricLabel: "Autonomous runs",
   },
   {
     headline: "Production-grade websites",

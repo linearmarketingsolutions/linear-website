@@ -12,9 +12,9 @@ gsap.registerPlugin(ScrollTrigger);
 const FIT_ITEMS = [
   "You need marketing, technology, and AI deployed as one system.",
   "You're done paying for strategy that never ships.",
-  "You want infrastructure that runs without daily management.",
-  "You're ready to operate like a funded company — without the overhead.",
-  "You want a partner accountable to outcomes, not hours.",
+  "You want infrastructure that runs without daily babysitting.",
+  "You want a partner accountable to outcomes, not billed hours.",
+  "You'd rather invest once in compounding systems than re-buy every quarter.",
 ];
 
 export function WhoWeWorkWith() {
@@ -56,11 +56,11 @@ export function WhoWeWorkWith() {
             className="font-display font-normal text-text-primary leading-[0.95] tracking-[-0.02em] mb-8"
             {...{ style: { fontSize: "clamp(3rem, 6vw, 80px)" } } as React.HTMLAttributes<HTMLElement>}
           >
-            Built for operators.
+            Built for owners.
           </SplitText>
           <ScrollReveal direction="up" distance={30} delay={0.3}>
             <p className="text-text-secondary text-xl leading-relaxed max-w-[45ch] mb-6">
-              Founders, operators, and growth-stage companies done waiting for results.
+              Founders, owners, and growth-stage teams done waiting for results.
               Execution without bureaucracy.
             </p>
           </ScrollReveal>
